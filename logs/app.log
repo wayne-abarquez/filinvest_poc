@@ -1,0 +1,123 @@
+2016-02-01 15:35:35,258 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-01 15:35:35,459 INFO - run.py <module>: Starting app
+2016-02-01 18:23:10,682 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-01 18:23:10,846 INFO - run.py <module>: Starting app
+2016-02-01 18:24:39,220 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-01 18:24:39,244 INFO - run.py <module>: Starting app
+2016-02-01 18:27:27,055 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-01 18:27:27,075 INFO - run.py <module>: Starting app
+2016-02-01 18:35:12,295 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-01 18:35:12,314 INFO - run.py <module>: Starting app
+2016-02-02 13:11:34,675 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-02 13:11:36,266 INFO - run.py <module>: Starting app
+2016-02-03 19:07:19,050 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-03 19:07:19,560 INFO - run.py <module>: Starting app
+2016-02-03 20:43:05,988 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-03 20:43:06,142 INFO - run.py <module>: Starting app
+2016-02-11 20:29:03,916 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-11 20:29:04,491 INFO - run.py <module>: Starting app
+2016-02-17 14:47:28,056 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-02-17 14:47:28,279 INFO - run.py <module>: Starting app
+2016-03-03 18:09:35,588 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-03-03 18:09:35,846 INFO - run.py <module>: Starting app
+2016-03-17 15:40:32,285 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-03-17 15:40:32,406 INFO - run.py <module>: Starting app
+2016-05-04 16:12:27,110 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:12:27,242 INFO - run.py <module>: Starting app
+2016-05-04 16:13:59,865 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:13:59,874 INFO - run.py <module>: Starting app
+2016-05-04 16:15:39,574 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:15:39,583 INFO - run.py <module>: Starting app
+2016-05-04 16:17:02,531 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:17:02,539 INFO - run.py <module>: Starting app
+2016-05-04 16:17:53,824 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:17:53,832 INFO - run.py <module>: Starting app
+2016-05-04 16:18:10,853 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:18:10,861 INFO - run.py <module>: Starting app
+2016-05-04 16:18:40,785 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:18:40,792 INFO - run.py <module>: Starting app
+2016-05-04 16:18:54,373 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:18:54,385 INFO - run.py <module>: Starting app
+2016-05-04 16:21:47,261 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:21:47,270 INFO - run.py <module>: Starting app
+2016-05-04 16:23:23,954 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:23:23,962 INFO - run.py <module>: Starting app
+2016-05-04 16:23:49,905 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:23:49,914 INFO - run.py <module>: Starting app
+2016-05-04 16:26:43,328 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:26:43,337 INFO - run.py <module>: Starting app
+2016-05-04 16:26:57,771 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:26:57,779 INFO - run.py <module>: Starting app
+2016-05-04 16:29:03,331 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:29:03,339 INFO - run.py <module>: Starting app
+2016-05-04 16:34:24,004 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:34:24,013 INFO - run.py <module>: Starting app
+2016-05-04 16:35:04,539 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-05-04 16:35:04,547 INFO - run.py <module>: Starting app
+2016-06-06 17:34:51,843 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-06-06 17:34:51,987 INFO - run.py <module>: Starting app
+2016-06-06 17:35:13,348 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-06-06 17:35:13,356 INFO - run.py <module>: Starting app
+2016-06-06 17:35:28,293 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-06-06 17:35:28,301 INFO - run.py <module>: Starting app
+2016-06-06 17:36:08,046 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-06-06 17:36:08,055 INFO - run.py <module>: Starting app
+2016-06-06 18:05:44,750 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2016-06-06 18:05:44,782 INFO - run.py <module>: Starting app
+2017-07-06 15:34:39,100 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 15:34:39,584 INFO - run.py <module>: Starting app
+2017-07-06 15:47:51,150 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 15:47:51,261 INFO - run.py <module>: Starting app
+2017-07-06 16:03:22,775 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:03:22,868 INFO - run.py <module>: Starting app
+2017-07-06 16:42:55,125 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:42:55,250 INFO - run.py <module>: Starting app
+2017-07-06 16:43:07,464 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:43:07,470 INFO - run.py <module>: Starting app
+2017-07-06 16:44:02,980 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:44:02,986 INFO - run.py <module>: Starting app
+2017-07-06 16:45:34,381 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:45:34,389 INFO - run.py <module>: Starting app
+2017-07-06 16:46:02,470 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:46:02,475 INFO - run.py <module>: Starting app
+2017-07-06 16:46:44,009 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:46:44,014 INFO - run.py <module>: Starting app
+2017-07-06 16:47:49,591 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:47:49,597 INFO - run.py <module>: Starting app
+2017-07-06 16:48:27,485 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:48:27,490 INFO - run.py <module>: Starting app
+2017-07-06 16:50:11,147 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:50:11,265 INFO - run.py <module>: Starting app
+2017-07-06 16:50:59,235 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:50:59,242 INFO - run.py <module>: Starting app
+2017-07-06 16:51:23,624 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:51:23,631 INFO - run.py <module>: Starting app
+2017-07-06 16:52:31,862 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2017-07-06 16:52:31,868 INFO - run.py <module>: Starting app
+2018-01-29 17:17:41,051 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-29 17:17:41,188 INFO - run.py <module>: Starting app
+2018-01-29 17:35:47,534 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-29 17:37:02,760 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-29 17:37:59,586 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-29 17:38:53,245 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-29 17:38:53,265 INFO - run.py <module>: Starting app
+2018-01-30 02:00:54,262 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:01:26,656 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:01:40,267 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:01:40,368 INFO - run.py <module>: Starting app
+2018-01-30 02:02:13,009 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:02:13,031 INFO - run.py <module>: Starting app
+2018-01-30 02:08:54,312 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:08:54,328 INFO - run.py <module>: Starting app
+2018-01-30 02:09:14,658 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:09:14,678 INFO - run.py <module>: Starting app
+2018-01-30 02:09:30,276 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:09:30,296 INFO - run.py <module>: Starting app
+2018-01-30 02:10:50,698 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:10:50,721 INFO - run.py <module>: Starting app
+2018-01-30 02:11:19,117 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:11:19,137 INFO - run.py <module>: Starting app
+2018-01-30 02:13:47,645 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:13:47,666 INFO - run.py <module>: Starting app
+2018-01-30 02:57:25,179 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-01-30 02:57:25,230 INFO - run.py <module>: Starting app

@@ -1,0 +1,24 @@
+<md-sidenav ng-click="mainCtl.toggleMainMenu()"
+            md-component-id="mainMenuSidenav"
+            class="md-whiteframe-z2"
+            id="main-menu-sidenav">
+    <div class="user-info">
+        <div class="profile-image">
+            <md-icon class="user-avatar">account_circle</md-icon>
+        </div>
+        <div class="profile-details">
+            <h3>Firstname</h3>
+            <p class="profile-role">Role</p>
+        </div>
+    </div>
+    <md-list>
+        <md-list-item ng-repeat="it in mainCtl.menu">
+            <md-divider></md-divider>
+            <a ui-sref="{{it.state}}">
+                <md-icon>{{it.icon}}</md-icon>
+                <span class="title">{{it.title}}</span>
+                <span class="arrow material-icons">keyboard_arrow_right</span>
+            </a>
+        </md-list-item>
+    </md-list>
+</md-sidenav>

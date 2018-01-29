@@ -1,0 +1,123 @@
+.full-bg-image {
+  background: url('/resources/images/login-bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+#ui-login {
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35));
+
+  .header-container {
+    background-color: $primary-color;
+    color: $primary-font-color;
+    padding: 0 5rem;
+
+    .company-logo-container {
+      img {
+        max-height: 8vh;
+      }
+    }
+  }
+
+  .login-frame {
+    md-card {
+      max-width: 400px;
+      margin: auto;
+    }
+    md-checkbox {
+      margin: 0;
+    }
+    img {
+      max-height: 80px;
+      width: auto;
+    }
+
+    .ui-login-container {
+
+      > div {
+        margin: 1rem 4rem 0 0 !important;
+      }
+
+        .md-headline {
+          padding-top: 15px;
+          color: #888;
+          font-size: 25px;
+          font-weight: 500;
+          margin: 0;
+        }
+        p {
+          color: rgba(#888, 0.5);
+          text-align: center;
+          font-weight: 300;
+          font-size: 16px;
+          margin-top: 5px;
+          margin-bottom: 0;
+        }
+
+      md-content {
+        padding-top: 0px;
+
+        form {
+          .login-errors {
+            ul {
+              padding: 0;
+              list-style-type: none;
+            }
+            color: red;
+            text-align: center;
+          }
+          label {
+            color: rgba(0, 0, 0, 0.4) !important;
+          }
+
+          //md-input-container .md-input {
+          //  border-color: $input-border-color !important;
+          //}
+        }
+
+        .md-button {
+          letter-spacing: 1px;
+        }
+      }
+    }
+
+
+
+    footer {
+      text-align: center;
+      padding-top: 25px;
+      img {
+        height: 40px;
+        width: auto;
+      }
+    }
+  }
+
+  .round-avatar {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+  }
+
+  .avatar {
+    //@extend .round-avatar;
+
+    max-height: 120px !important;
+    width: auto;
+    //margin: 25px auto;
+  }
+}
+
+#login-toolbar {
+  background-color: white;
+  padding: 2rem 2rem 0;
+}
+
+#login-img-left {
+  height: 100%;
+  padding: 0;
+
+  img {
+    width: auto;
+    max-height: 200px;
+  }
+}

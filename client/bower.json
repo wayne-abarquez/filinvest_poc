@@ -1,0 +1,30 @@
+{
+  "name": "demo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Your Name <you@example.com>"
+  ],
+  "license": "BSD-2-Clause",
+  "moduleType": [],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "2.2.0",
+    "underscore": "1.8.3",
+    "angular": "1.5.5",
+    "angular-animate": "1.5.5",
+    "angular-aria": "1.5.5",
+    "angular-messages": "1.5.5",
+    "angular-material": "1.1.5",
+    "ngSweetAlert": "angular-sweetalert#~1.1.0",
+    "v-accordion": "~1.4.1",
+    "angular-ui-router": "^1.0.13"
+  }
+}

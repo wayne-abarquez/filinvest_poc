@@ -1,0 +1,32 @@
+<md-toolbar id="app-top-nav" layout="row">
+
+    <md-button class="menu" aria-label="Show Menu" ng-click="mainCtl.toggleMainMenu()">
+        <md-icon>&#xE5D2;</md-icon>
+    </md-button>
+
+    <span class="title">
+      <a href="/index">
+          <img class="company-logo" src="/resources/images/company_logo.png">
+      </a>
+    </span>
+
+    <span flex></span>
+
+    <div class="right-user-menu" layout="row" layout-align="center center">
+        <span class="welcome">Welcome</span>
+        <div class="user-dropdown" layout="row" layout-align="center center">
+            <img src="/resources/images/default-avatar.png" alt="">
+            <span>Username</span>
+            <md-menu md-offset="10 30">
+                <md-button class="md-icon-button" ng-click="mainCtl.openRightMenu($mdMenu, $event)">
+                    <md-icon md-menu-origin>&#xE5C5;</md-icon>
+                </md-button>
+                <md-menu-content width="2">
+                    <md-menu-item>
+                        <md-button ng-click="mainCtl.logout($event)">Logout</md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
+        </div>
+    </div>
+</md-toolbar>
