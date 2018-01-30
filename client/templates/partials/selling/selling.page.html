@@ -1,3 +1,80 @@
-<div>
-    <h2>Selling Page</h2>
+<div id="selling-page" class="md-whiteframe-4dp">
+    <div class="selling-filter-dialog">
+        <md-toolbar>
+            <div class="md-toolbar-tools" layout="column" layout-align="center center" flex>
+                <filter-address-bar></filter-address-bar>
+                <span flex></span>
+                <section layout="row" layout-padding>
+                    <md-button class="box-button">
+                        <md-icon>star</md-icon>
+                        Save
+                    </md-button>
+                    <md-button class="box-button">
+                        <md-icon>my_location</md-icon>
+                        Save
+                    </md-button>
+                    <md-button class="box-button">
+                        <md-icon>send</md-icon>
+                        Send
+                    </md-button>
+                    <md-button class="box-button">
+                        <md-icon>share</md-icon>
+                        Share
+                    </md-button>
+                </section>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content class="selling-filter-content" flex>
+            <div layout="column">
+                <label for="">PROPERTY SEARCH</label>
+                <form action="" layout="column">
+                    <md-input-container>
+                        <label>Property Type</label>
+                        <md-select ng-model="vm.filter.type">
+                            <md-option ng-repeat="type in vm.propTypes">{{ type }}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Location</label>
+                        <md-select ng-model="vm.filter.location">
+                            <md-option ng-repeat="loc in vm.propsLocation">{{ loc }}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <div layout="column">
+                        <label>Price Range</label>
+                        <div layout="row">
+                            <md-input-container>
+                                <input type="number"
+                                       placeholder="Min"
+                                       max="{{ vm.filter.priceRange.max }}"
+                                       ng-model="vm.filter.priceRange.min">
+                            </md-input-container>
+                            <md-input-container>
+                                <input type="number"
+                                       placeholder="Max"
+                                       min="{{ vm.filter.priceRange.min }}"
+                                       ng-model="vm.filter.priceRange.max">
+                            </md-input-container>
+                        </div>
+                    </div>
+
+                    <md-input-container>
+                        <label>Property</label>
+                        <md-select ng-model="vm.filter.propName">
+                            <md-option ng-repeat="prop in vm.propsList">{{ prop.name | capitalize }}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <section layout="row" layout-align="end center">
+                        <md-button>Clear</md-button>
+                        <md-button class="md-raised md-primary">Search</md-button>
+                    </section>
+                </form>
+            </div>
+        </md-dialog-content>
+    </div>
+
 </div>

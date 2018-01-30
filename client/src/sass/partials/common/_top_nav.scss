@@ -1,0 +1,66 @@
+$nav_bg: $primary-color;
+$nav_height: 42px;
+$icon-color: $primary-font-color;
+$grey-darken: #212121;
+
+#app-top-nav {
+  padding: 0 0.75rem 0 0;
+  background-color: $nav_bg;
+  color: $icon-color;
+  min-height: $nav_height;
+  max-height: $nav_height;
+  z-index: 6;
+  //border-bottom: 2px solid lighten($primary-color, 10%);
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .26);
+
+  button.menu {
+    margin: 0;
+    padding: 0;
+  }
+
+  .title {
+    height: $nav_height;
+    margin: 0;
+
+    img.company-logo {
+      height: 40px;
+    }
+  }
+
+  md-icon {
+    color: $icon-color;
+  }
+
+  .powered-by {
+    img {
+      max-height: 35px;
+      margin: 0;
+    }
+  }
+
+  .right-user-menu {
+    .welcome {
+      font-size: 0.8rem;
+      padding: 0 0.5rem;
+    }
+
+    .user-dropdown {
+      img {
+        padding: 0 0.25rem;
+        border-radius: 50%;
+        max-height: 20px;
+        width: auto;
+      }
+      span {
+        font-size: 0.8rem;
+      }
+
+      md-menu {
+        button.md-icon-button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+

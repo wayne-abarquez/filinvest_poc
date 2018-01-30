@@ -19,6 +19,7 @@ class Config(object):
     TMP_DIR = '/var/www/' + project_name + '/tmp'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     SQLALCHEMY_DATABASE_URI = 'postgresql://' + db_user + ':youcantguess@localhost:5432/' + db_name
+    GOOGLE_MAP_API_KEY = 'AIzaSyBT-gDeG_IxPZKqYu5u-QHPR12w9sXV7_8'  # this i personally created
 
 
 class DevelopmentConfig(Config):

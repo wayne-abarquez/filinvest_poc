@@ -2,8 +2,6 @@
     'use strict';
 
     angular
-        .module('demoApp.home', [
-            'vAccordion'
-        ]);
+        .module('demoApp.home', []);
 
 }());

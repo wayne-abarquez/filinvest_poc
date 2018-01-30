@@ -9,22 +9,20 @@
   "ui/_ui",
 
   // Partials
-  "partials/_top_nav",
-  "partials/_layer_panel",
-  "partials/_main_menu_sidenav",
-//  "partials/_side_nav",
-//  "partials/_map",
-//  "partials/_drawing_tools",
-//  "partials/_solar_modal",
-//  "partials/_bottom_list_panel",
-//  "partials/_solar_card_photo_item",
+  "partials/common/_top_nav",
+  "partials/common/_layer_panel",
+  "partials/common/_main_menu_sidenav",
+  "partials/common/_filter_address_bar",
 
-  // Pages
+  // Base Pages
   "pages/_base",
   "pages/_index",
   "pages/_login",
 
+  // Pages
+  "partials/selling/_selling_page"
+
   // Libraries Overrides
-  "libs/_v-accordion"
+  //"libs/_v-accordion"
 
 ;

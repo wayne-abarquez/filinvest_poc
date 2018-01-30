@@ -1,0 +1,41 @@
+#selling-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  height: 100%;
+  width: 340px;
+
+  .selling-filter-dialog {
+    height: 100%;
+
+    md-toolbar {
+      min-height: 150px;
+
+      .md-toolbar-tools {
+        padding: 0;
+      }
+    }
+
+    .selling-filter-content {
+      overflow-y: auto;
+
+      label {
+        padding: 1rem 1rem 0.5rem;
+        @extend .text-muted;
+        font-weight: 600;
+      }
+
+      form {
+        padding: 0 1rem;
+
+        label {
+          padding: 0;
+          font-weight: 400;
+
+        }
+      }
+
+    }
+  }
+}

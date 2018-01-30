@@ -16,7 +16,7 @@
         <span class="welcome">Welcome</span>
         <div class="user-dropdown" layout="row" layout-align="center center">
             <img src="/resources/images/default-avatar.png" alt="">
-            <span>Username</span>
+            <span>{{ currentUser.username }}</span>
             <md-menu md-offset="10 30">
                 <md-button class="md-icon-button" ng-click="mainCtl.openRightMenu($mdMenu, $event)">
                     <md-icon md-menu-origin>&#xE5C5;</md-icon>

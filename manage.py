@@ -3,8 +3,9 @@ from flask.ext.migrate import Migrate, MigrateCommand
 
 from app import app
 from app import db
-# Dont forget to import Sqlalchemy models here
-# ex from app.home.models import Solar
+from app.seeder.base_seeder import BaseSeeder
+from app.authentication.models import Role, User
+from app.selling.models import PropertyType, Property, PropertyLocation
 
 
 manager = Manager(app)
@@ -25,6 +26,13 @@ def dropdb():
         db.drop_all()
         print "Database Dropped"
 
+@manager.command
+def populatedb():
+    BaseSeeder.load_data()
+
+@manager.command
+def load_locations():
+    BaseSeeder.load_locations_data()
 
 if __name__ == '__main__':
     manager.run()

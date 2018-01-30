@@ -9,6 +9,11 @@
 
         var originatorEv;
 
+        $rootScope.currentUser = {
+            username: 'admin',
+            role: 'admin'
+        };
+
         $rootScope.appName = APP_NAME;
 
         /* Side Nav Menus */

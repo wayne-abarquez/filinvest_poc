@@ -7,10 +7,11 @@
             'ngMaterial',
             'ngMessages',
             'oitozero.ngSweetAlert',
-            'demoApp.home'
+            'demoApp.home',
+            'demoApp.selling'
         ])
 
-        .constant('APP_NAME', 'Demo App')
+        .constant('APP_NAME', 'Filinvest')
         .constant('BASE_URL', window.location.origin)
 
         //.config(function ($mdThemingProvider) {
@@ -37,8 +38,7 @@
                     abstract: true,
                     url: '/map',
                     templateUrl: '/partials/base/map.page.html',
-                    controller: 'mapPageController',
-                    controllerAs: 'vm'
+                    controller: 'mapPageController'
                 })
 
                 // selling state
@@ -46,8 +46,8 @@
                     name: 'map.selling',
                     url: '/selling',
                     templateUrl: '/partials/selling/selling.page.html',
-                    //controller: 'mapPageController',
-                    //controllerAs: 'vm'
+                    controller: 'sellingPageController',
+                    controllerAs: 'vm'
                 })
 
                 //.state('pageNotFoundState', {

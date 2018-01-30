@@ -1,0 +1,326 @@
+[
+  {
+    "id": 1,
+    "lat": 14.4228137,
+    "lng": 121.0391591,
+    "type": "Commercial",
+    "name": "Northgate Cyberzone",
+    "price": 1000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 2,
+    "lat": 14.4239346,
+    "lng": 121.0357735,
+    "type": "Condominium",
+    "name": "West Parc",
+    "price": 2000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 3,
+    "lat": 14.4245587,
+    "lng": 121.0398853,
+    "type": "Hotel",
+    "name": "The Bellevue Manila",
+    "price": 3000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 4,
+    "lat": 14.4263725,
+    "lng": 121.0409454,
+    "type": "Condominium",
+    "name": "Studio One",
+    "price": 4000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 5,
+    "lat": 14.4265972,
+    "lng": 121.0407858,
+    "type": "Condominium",
+    "name": "Studio Two",
+    "price": 5000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 6,
+    "lat": 14.4246262,
+    "lng": 121.0339542,
+    "type": "Condominium",
+    "name": "Studio City",
+    "price": 6000,
+    "FOR WAYNE": "has floorplan\nhttp://www.filinvest.com/projects/studio-city/"
+  },
+  {
+    "id": 7,
+    "lat": 14.4221838,
+    "lng": 121.0339432,
+    "type": "Mall",
+    "name": "Westgate Center",
+    "price": 7000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 8,
+    "lat": 14.4204953,
+    "lng": 121.0354596,
+    "type": "Hotel",
+    "name": "Acacia",
+    "price": 8000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 9,
+    "lat": 14.4210284,
+    "lng": 121.037364,
+    "type": "Commercial",
+    "name": "The Filinvest Tent",
+    "price": 9000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 10,
+    "lat": 14.4200269,
+    "lng": 121.0381238,
+    "type": "Commercial",
+    "name": "Asian Star",
+    "price": 1000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 11,
+    "lat": 14.420042,
+    "lng": 121.039153,
+    "type": "Hotel",
+    "name": "Vivere",
+    "price": 2000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 12,
+    "lat": 14.4187827,
+    "lng": 121.0384798,
+    "type": "Commercial",
+    "name": "Insular Life Corporate Center",
+    "price": 3000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 13,
+    "lat": 14.4200108,
+    "lng": 121.0332589,
+    "type": "Condominium",
+    "name": "The Levels",
+    "price": 4000,
+    "FOR WAYNE": "Pics are here\nhttp://www.filinvest.com/projects/the-levels/"
+  },
+  {
+    "id": 14,
+    "lat": 14.418406,
+    "lng": 121.0344774,
+    "type": "Commercial",
+    "name": "Spectrum",
+    "price": 5000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 15,
+    "lat": 14.4152803,
+    "lng": 121.0380419,
+    "type": "Commercial",
+    "name": "Parkway Corporate Center",
+    "price": 6000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 16,
+    "lat": 14.414369,
+    "lng": 121.0378998,
+    "type": "Condominium",
+    "name": "Aspen Condominium",
+    "price": 7000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 17,
+    "lat": 14.4135716,
+    "lng": 121.0365593,
+    "type": "Condominium",
+    "name": "Vivant Flats",
+    "price": 8000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 18,
+    "lat": 14.4133125,
+    "lng": 121.0362033,
+    "type": "Condominium",
+    "name": "La Vie Flats",
+    "price": 9000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 19,
+    "lat": 14.4127171,
+    "lng": 121.0331517,
+    "type": "Housing",
+    "name": "Palms Pointe",
+    "price": 1000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 20,
+    "lat": 14.411018,
+    "lng": 121.0338729,
+    "type": "Recreation",
+    "name": "The Palms Country Club",
+    "price": 2000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 21,
+    "lat": 14.4097382,
+    "lng": 121.0387604,
+    "type": "School",
+    "name": "FEU Alabang",
+    "price": 3000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 22,
+    "lat": 14.4164078,
+    "lng": 121.0363909,
+    "type": "Recreation",
+    "name": "The Promenade",
+    "price": 4000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 23,
+    "lat": 14.413496,
+    "lng": 121.0437959,
+    "type": "Hospital",
+    "name": "Asian Hospital",
+    "price": 5000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 24,
+    "lat": 14.4143769,
+    "lng": 121.0439964,
+    "type": "Hospital",
+    "name": "Ospital Ng Muntinlupa",
+    "price": 6000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 25,
+    "lat": 14.4141139,
+    "lng": 121.0434211,
+    "type": "Condominium",
+    "name": "2301 Civic Place",
+    "price": 7000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 26,
+    "lat": 14.415949,
+    "lng": 121.044374,
+    "type": "Condominium",
+    "name": "Civic Plaza",
+    "price": 8000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 27,
+    "lat": 14.4182885,
+    "lng": 121.0432588,
+    "type": "Condominium",
+    "name": "Civic Prime",
+    "price": 9000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 28,
+    "lat": 14.4192724,
+    "lng": 121.0427204,
+    "type": "Condominium",
+    "name": "Entrata",
+    "price": 1000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 29,
+    "lat": 14.419678,
+    "lng": 121.042256,
+    "type": "Hotel",
+    "name": "Crimson Hotel",
+    "price": 2000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 30,
+    "lat": 14.4210375,
+    "lng": 121.0426741,
+    "type": "Mall",
+    "name": "South Station",
+    "price": 3000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 31,
+    "lat": 14.4146932,
+    "lng": 121.0390028,
+    "type": "Commercial",
+    "name": "Filinvest Alabang",
+    "price": 4000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 32,
+    "lat": 14.4169071,
+    "lng": 121.0409783,
+    "type": "Mall",
+    "name": "Festival Supermal",
+    "price": 5000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 33,
+    "lat": 14.4167792,
+    "lng": 121.0468107,
+    "type": "Mall",
+    "name": "Starmall",
+    "price": 6000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 34,
+    "lat": 14.4144523,
+    "lng": 121.0384376,
+    "type": "Condominium",
+    "name": "Bristol Parkway Place",
+    "price": 7000,
+    "FOR WAYNE": "Floorplan here\nhttp://www.propertyboxonline.com/uploads/1/3/2/0/13208763/3rd-36th-floor-large_1_orig.jpg"
+  },
+  {
+    "id": 35,
+    "lat": 14.4204868,
+    "lng": 121.0405183,
+    "type": "Recreation",
+    "name": "Filinvest City Event Grounds",
+    "price": 8000,
+    "FOR WAYNE": ""
+  },
+  {
+    "id": 36,
+    "lat": 14.4191373,
+    "lng": 121.0351753,
+    "type": "Condominium",
+    "name": "The Mondrian Residences",
+    "price": 9000,
+    "FOR WAYNE": ""
+  }
+]
