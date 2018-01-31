@@ -7,6 +7,16 @@ $boxFooterHeight: 170px;
 
 $infowindow-bg: #fff;
 
+.property-infobox {
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, .2), 0 12px 17px 2px rgba(0, 0, 0, .14), 0 5px 22px 4px rgba(0, 0, 0, .12);
+
+  > img {
+    position: absolute !important;
+    right: -10px;
+    top: -10px;
+  }
+}
+
 .marker_info {
   font-family: 'Roboto', sans-serif;
 
@@ -30,46 +40,61 @@ $infowindow-bg: #fff;
     }
 
     .infobox-header {
-      //background-color: red;
       height: $boxHeaderHeight;
       width: 100%;
+      display: flex;
+      flex-direction: row;
 
       img, .header-right-container {
-        display: inline-block;
+        display: flex;
       }
 
       img {
-        //width: $boxWidth / 3;
-        //height: auto;
-        width: 120px;
+        min-width: 120px;
         height: 100px;
       }
 
-      p {
-        padding: 0;
-      }
+      .header-right-container {
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+        padding: 0 1rem 0 1.5rem;
 
-      .header-right-property-name,
-      .header-right-property-sub {
-        display: block;
-      }
-
-      .header-right-property-sub {
-        .header-right-average {
-
+        p.header-right-property-name {
+          padding: 0;
+          font-size: 14px;
+          font-weight: 600;
+          margin: 0.25rem 0;
         }
-        .header-right-stars-container {
 
-        }
-        .header-right-reviews{
+        .header-right-property-sub {
+          .header-right-average {
+            color: #d35400;
+            font-size: 13px;
+          }
 
+          .header-right-stars-container {
+            padding: 0 0.25rem;
+
+            .header-right-star {
+              color: #d35400;
+              font-size: 11px;
+            }
+          }
+
+          .header-right-reviews {
+            @extend .text-muted;
+          }
         }
+
       }
 
     }
 
     .infobox-body {
-      background-color: green;
+      background: #74ebd5; /* fallback for old browsers */
+      background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
       height: $boxBodyHeight;
       width: 100%;
     }

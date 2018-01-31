@@ -28,7 +28,7 @@
                 disableAutoPan: true,
                 maxWidth: 0,
                 // closeBoxMargin: '8px 5px',
-                boxClass: 'md-whiteframe-12dp',
+                boxClass: 'property-infobox',
                 // pixelOffset: new google.maps.Size(28, -95),
                 pixelOffset: new google.maps.Size(30, -290), // -250 because of infobox height is 500px, half of height + -40
                 // closeBoxURL: '/images/close-icon.png',
@@ -55,7 +55,7 @@
                     content += '<span class="header-right-stars-container">';
 
                     for (var i=1; i<=5; i++) {
-                        content += '<i class="material-icons header-right-star-' + i + ' ">&#xE8CF;</i>';
+                        content += '<i class="material-icons header-right-star header-right-star-' + i + ' ">star</i>';
                     }
 
                     content += '</span>';
