@@ -8,12 +8,17 @@
         var vm = this;
 
         vm.form = {};
+        vm.isFiltering = false;
+        vm.result = {
+            items: []
+        };
 
         vm.filter =  {
-            propType: '',
-            location: '',
-            priceRange: '',
-            propId: ''
+            propTypeId: '', // property type id
+            propertyLocation: '', // property location
+            minPrice: '',
+            maxPrice: '',
+            propertyId: '' // property id
         };
 
         vm.options = {
@@ -22,25 +27,51 @@
             propsList: []
         };
 
-        function initialize() {
-            propertyServices.loadProperties()
-                .then(function (list) {
-                    console.log('getProperties: ', list);
-                    vm.options.propsList = list.map(function(item){
-                        return {
-                            id: item.id,
-                            name: item.name
-                        }
-                    })
-                });
+        vm.clearForm = clearForm;
+        vm.search = search;
+        vm.onListItemClick = onListItemClick;
 
+        function clearForm() {
+            vm.filter = {};
+            vm.form.$setPristine();
+            vm.form.$setValidity();
+            vm.form.$setUntouched();
+        }
+
+        function search() {
+            vm.isFiltering = true;
+
+            propertyServices.searchProperties(vm.filter)
+                .then(function (list) {
+                    if (!vm.filter.propId) {
+                        vm.options.propsList = [''].concat(list.map(function (item) {
+                            return {
+                                id: item.id,
+                                name: item.name
+                            }
+                        }));
+                    }
+
+                    vm.result.items = [].concat(list);
+                    // TODO: group the items by province
+                    // TODO: then by location
+                })
+                .finally(function(){
+                    vm.isFiltering = false;
+                });
+        }
+
+        function onListItemClick(property) {
+            propertyServices.highlightProperty(property.id);
+        }
+
+        function initialize() {
             propertyServices.getPropertyTypes()
                 .then(function (response) {
-                    console.log('getPropertyTypes: ', response);
-                    vm.options.propTypes = [].concat(response.data);
+                    vm.options.propTypes = [''].concat(response.data);
                 });
 
-            vm.options.propsLocation = [].concat(propertyServices.getLocations());
+            vm.options.propsLocation = [''].concat(propertyServices.getLocations());
 
             $scope.$watch(function(){
                 return vm.filter;

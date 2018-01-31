@@ -4,11 +4,7 @@
     angular
         .module('demoApp.selling', [])
 
-        .constant('PROPERTY_TYPES', ['commercial', 'condominium', 'hotel', 'mall', 'housing', 'recreation', 'school', 'hospital'])
-
-
-
-        .constant('PROPERTY_LOCATION', ['alabang'])
+        .constant('PROPERTY_ICONS', ['fi-marker-blue.png', 'fi-marker-green.png', 'fi-marker-orange.png', 'fi-marker-red.png'])
     ;
 
 }());

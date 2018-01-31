@@ -10,14 +10,13 @@
         service.getProperties = getProperties;
         service.getPropertyTypes = getPropertyTypes;
 
-        function getProperties() {
-            return webRequest.get('/api/properties');
+        function getProperties(filter) {
+            return webRequest.get('/api/properties', filter);
         }
 
         function getPropertyTypes() {
             return webRequest.get('/api/property_types');
         }
-
 
         // function createBuilding(data) {
         //     return webRequest.post('/api/buildings', data);

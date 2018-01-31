@@ -1,4 +1,5 @@
 from .models import PropertyType, Property, PropertyLocation
+from sqlalchemy import func
 from app.utils import forms_helper
 import logging
 
@@ -11,6 +12,26 @@ def get_property_types():
 
 def get_property_locations():
     return PropertyLocation.query.all()
+
+
+def get_property_by_filter(args):
+    q = Property.query
+
+    if 'propertyId' in args and args['propertyId']:
+        return [q.get(args['propertyId'])]
+
+    for key, value in args.iteritems():
+        print "{} : {}".format(key, value)
+        if key == 'propTypeId':
+            q = q.filter(Property.typeid == value)
+        elif key == 'location':
+            q = q.filter(func.lower(Property.location) == value.lower())
+
+    if  'maxPrice' in args and args['maxPrice']:
+        minPrice = args['minPrice'] if 'minPrice' in args and args['minPrice'] else 0
+        q = q.filter(Property.price.between(minPrice, args['maxPrice']))
+
+    return q.all()
 
 
 def get_property_for_user(user=None):

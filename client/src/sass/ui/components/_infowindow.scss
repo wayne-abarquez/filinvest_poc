@@ -1,90 +1,147 @@
-$infowindow-bg: rgba($primary-color, 0.8);
-$white: whitesmoke;
+$boxHeight: 500px;
+$boxWidth: 320px;
+
+$boxHeaderHeight: 100px;
+$boxBodyHeight: 230px;
+$boxFooterHeight: 170px;
+
+$infowindow-bg: #fff;
 
 .marker_info {
+  font-family: 'Roboto', sans-serif;
 
   .info {
     background-color: $infowindow-bg;
-    width: 250px;
-    height: 140px;
-    border-radius: 5px;
+    width: $boxWidth;
+    height: $boxHeight;
     position: relative;
-    z-index: 9999999;
-    text-align: center;
-
-    p {
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
-      //color: #FFFFFF;
-      //line-height: 5px;
-      //text-align: center;
-      //margin-bottom: 15px;
-      margin-top: 5px;
-      //margin-bottom: 0px;
-      //display: block;
-      color: rgba(255, 255, 255, 0.7);
-      //padding: 0px 30px;
-      font-size: 14px;
-    }
-
-    h4 {
-      width: 230px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-
-      padding: 5px;
-      margin: 5px;
-      font-size: 20px;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 300;
-      color: #ffffff;
-
-      span {
-        width: 100px;
-        height: 1px;
-        background: rgba(#FFFFFF, 0.8);
-        display: block;
-        margin: 0px auto;
-      }
-    }
+    z-index: 11;
+    border-radius: 3px;
 
     .arrow {
       width: 0px;
       height: 0px;
       position: absolute;
-      padding: 0px !important;
+      padding: 0px;
       left: -28px;
-      top: 60px !important;
+      top: $boxHeight / 2;
       border: 14px solid rgba(255, 0, 0, 0);
-      top: 0px;
       border-right-color: $infowindow-bg;
     }
 
-    a.infowindow_btn {
-      background: $white;
-      padding: 10px 50px;
-      color: $infowindow-bg;
-      font-size: 14px;
-      text-decoration: none;
-      border-radius: 4px;
-      display: block;
-      width: calc(40% - 10px);
-      text-align: center;
-      bottom: 10px;
-      left: 33px;
-      position: absolute;
-      transition: 0.3s;
+    .infobox-header {
+      //background-color: red;
+      height: $boxHeaderHeight;
+      width: 100%;
 
-      &:hover {
-        background: darken($infowindow-bg, 20%); /* Old browsers */
-        color: $white;
-        box-shadow: none;
-        text-align: center;
-        text-decoration: none;
+      img, .header-right-container {
+        display: inline-block;
+      }
+
+      img {
+        //width: $boxWidth / 3;
+        //height: auto;
+        width: 120px;
+        height: 100px;
+      }
+
+      p {
+        padding: 0;
+      }
+
+      .header-right-property-name,
+      .header-right-property-sub {
+        display: block;
+      }
+
+      .header-right-property-sub {
+        .header-right-average {
+
+        }
+        .header-right-stars-container {
+
+        }
+        .header-right-reviews{
+
+        }
       }
 
     }
+
+    .infobox-body {
+      background-color: green;
+      height: $boxBodyHeight;
+      width: 100%;
+    }
+
+    .infobox-footer {
+      background-color: blue;
+      height: $boxFooterHeight;
+      width: 100%;
+    }
+
+
+    //p {
+    //  font-family: 'Roboto', sans-serif;
+    //  font-weight: 300;
+    //  //color: #FFFFFF;
+    //  //line-height: 5px;
+    //  //text-align: center;
+    //  //margin-bottom: 15px;
+    //  margin-top: 5px;
+    //  //margin-bottom: 0px;
+    //  //display: block;
+    //  color: rgba(255, 255, 255, 0.7);
+    //  //padding: 0px 30px;
+    //  font-size: 14px;
+    //}
+
+    //h4 {
+    //  width: 230px;
+    //  white-space: nowrap;
+    //  overflow: hidden;
+    //  text-overflow: ellipsis;
+    //
+    //  padding: 5px;
+    //  margin: 5px;
+    //  font-size: 20px;
+    //  font-family: 'Roboto', sans-serif;
+    //  font-weight: 300;
+    //  color: #ffffff;
+    //
+    //  span {
+    //    width: 100px;
+    //    height: 1px;
+    //    background: rgba(#FFFFFF, 0.8);
+    //    display: block;
+    //    margin: 0px auto;
+    //  }
+    //}
+
+    //a.infowindow_btn {
+    //  background: $white;
+    //  padding: 10px 50px;
+    //  color: $infowindow-bg;
+    //  font-size: 14px;
+    //  text-decoration: none;
+    //  border-radius: 4px;
+    //  display: block;
+    //  width: calc(40% - 10px);
+    //  text-align: center;
+    //  bottom: 10px;
+    //  left: 33px;
+    //  position: absolute;
+    //  transition: 0.3s;
+    //
+    //  &:hover {
+    //    background: darken($infowindow-bg, 20%); /* Old browsers */
+    //    color: $white;
+    //    box-shadow: none;
+    //    text-align: center;
+    //    text-decoration: none;
+    //  }
+    //
+    //}
 
   }
 

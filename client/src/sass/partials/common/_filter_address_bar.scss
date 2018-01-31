@@ -1,10 +1,8 @@
+$barHeight: 40px;
+
 #filter-address-bar {
-  //position: absolute;
-  //top: 0;
-  //left: 0;
-  //width: 100%;
-  width: auto;
-  height: 50px;
+  width: 100%;
+  height: $barHeight;
   margin: 0.25rem;
   background-color: white;
 
@@ -16,16 +14,19 @@
   }
 
   .address-bar-inner-container {
-    padding: 3px;
-    height: 50px;
+    padding: 0;
+    height: $barHeight;
 
     .toggle-layers-container {
       display: inline-block;
-      padding: 5px 0;
+      padding: 0;
     }
 
-    & > button.md-button {
-      margin: 5px 10px 5px 6px !important;
+    button.md-button {
+      margin: 0;
+      padding: 0;
+      height: $barHeight;
+      //margin: 5px 10px 5px 6px !important;
     }
 
     md-icon {
@@ -33,17 +34,18 @@
     }
 
     md-input-container {
-      display: inline-block !important;
-      height: 50px;
+      display: inline-block;
+      height: $barHeight;
       margin: 0;
       padding: 0;
 
       &:before {
         content: "";
         position: absolute;
-        top: 10px;
+        top: 0;
         border-left: 1px solid #ddd;
-        height: 28px;
+        height: $barHeight - 10px;
+        margin: 5px 0;
       }
 
       input {
@@ -55,7 +57,7 @@
         left: 0px;
         line-height: 24px;
         padding: 0 0 0 20px;
-        height: 50px;
+        height: $barHeight;
         border-bottom: none;
         font-size: 1rem;
 
