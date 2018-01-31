@@ -37,10 +37,10 @@ class OrmObject(object):
 
 
     @classmethod
-    def from_dict(cls, data):
+    def from_dict(cls, data, exception=[]):
         U = cls()
         for k, v in data.iteritems():
-            if hasattr(U, k):
+            if k not in exception and hasattr(U, k):
                 setattr(U, k, v)
 
         return U

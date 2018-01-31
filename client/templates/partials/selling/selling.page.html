@@ -28,18 +28,18 @@
         <md-dialog-content class="selling-filter-content" flex>
             <div layout="column">
                 <label for="">PROPERTY SEARCH</label>
-                <form action="" layout="column">
+                <form name="vm.form" layout="column">
                     <md-input-container>
                         <label>Property Type</label>
                         <md-select ng-model="vm.filter.type">
-                            <md-option ng-repeat="type in vm.propTypes">{{ type }}</md-option>
+                            <md-option ng-value="type.id" ng-repeat="type in vm.options.propTypes">{{ type.name | capitalize }}</md-option>
                         </md-select>
                     </md-input-container>
 
                     <md-input-container>
                         <label>Location</label>
                         <md-select ng-model="vm.filter.location">
-                            <md-option ng-repeat="loc in vm.propsLocation">{{ loc }}</md-option>
+                            <md-option ng-value="loc" ng-repeat="loc in vm.options.propsLocation">{{ loc | capitalize }}</md-option>
                         </md-select>
                     </md-input-container>
 
@@ -63,18 +63,27 @@
 
                     <md-input-container>
                         <label>Property</label>
-                        <md-select ng-model="vm.filter.propName">
-                            <md-option ng-repeat="prop in vm.propsList">{{ prop.name | capitalize }}</md-option>
+                        <md-select ng-model="vm.filter.propId">
+                            <md-option ng-value="prop.id" ng-repeat="prop in vm.options.propsList">{{ prop.name | capitalize }}</md-option>
                         </md-select>
                     </md-input-container>
 
                     <section layout="row" layout-align="end center">
                         <md-button>Clear</md-button>
-                        <md-button class="md-raised md-primary">Search</md-button>
+                        <md-button class="md-raised md-primary" ng-disabled="vm.form.$invalid">Search</md-button>
                     </section>
                 </form>
             </div>
         </md-dialog-content>
+    </div>
+
+    <div class="selling-result-list">
+        <md-list flex>
+            <md-subheader class="md-no-sticky">{{ vm.result.projectName }}</md-subheader>
+            <md-list-item class="md-3-line" ng-repeat="item in vm.result.items" ng-click="null">
+                <p>{{ item.name | capitalize }}</p>
+            </md-list-item>
+        </md-list>
     </div>
 
 </div>

@@ -7,7 +7,7 @@
   width: 340px;
 
   .selling-filter-dialog {
-    height: 100%;
+    //height: 100%;
 
     md-toolbar {
       min-height: 150px;
@@ -37,5 +37,9 @@
       }
 
     }
+  }
+
+  .selling-result-list {
+
   }
 }

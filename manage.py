@@ -5,7 +5,7 @@ from app import app
 from app import db
 from app.seeder.base_seeder import BaseSeeder
 from app.authentication.models import Role, User
-from app.selling.models import PropertyType, Property, PropertyLocation
+from app.selling.models import Project, PropertyType, Property, PropertyLocation
 
 
 manager = Manager(app)
