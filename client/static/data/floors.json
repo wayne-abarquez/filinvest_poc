@@ -14,7 +14,45 @@
             "lat": 14.424490,
             "lng": 121.033881
           }
-        }
+        },
+        "rooms": [
+          {
+            "id": 9,
+            "name": "Unit 9",
+            "type": "studio",
+            "price": "3m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424546987942602,
+              "lng": 121.03393144905567
+            }
+          },
+          {
+            "id": 8,
+            "name": "Unit 8",
+            "type": "studio",
+            "price": "3m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424538220851826,
+              "lng": 121.03396899998188
+            }
+          },
+          {
+            "id": 7,
+            "name": "Unit 7",
+            "type": "studio",
+            "price": "3.5m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424527180811117,
+              "lng": 121.0340092331171
+            }
+          }
+        ]
       },
       {
         "name": "UG",
@@ -31,20 +69,256 @@
         },
         "rooms": [
           {
-            "name": "",
-            "type": "",
-            "floorplan_url": "",
-            "bounds": {
-              "north_east": {
-                "lat": 14.424604,
-                "lng": 121.034060
-              },
-              "south_west": {
-                "lat": 14.424583,
-                "lng": 121.033987
-              }
-            },
-            "status": ""
+            "id": 1,
+            "name": "UNIT 1",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424545689114348,
+              "lng": 121.03391770273447
+            }
+          },
+          {
+            "id": 2,
+            "name": "UNIT 2",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424555105618921,
+              "lng": 121.0339193791151
+            }
+          },
+          {
+            "id": 3,
+            "name": "UNIT 3",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424564522123086,
+              "lng": 121.0339230671525
+            }
+          },
+          {
+            "id": 4,
+            "name": "UNIT 4",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.42457491274791,
+              "lng": 121.03392507880926
+            }
+          },
+          {
+            "id": 5,
+            "name": "UNIT 5",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424583679837237,
+              "lng": 121.03392742574215
+            }
+          },
+          {
+            "id": 6,
+            "name": "UNIT 6",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424568743314486,
+              "lng": 121.03395760059357
+            }
+          },
+          {
+            "id": 7,
+            "name": "UNIT 7",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.42456549624419,
+              "lng": 121.03396899998188
+            }
+          },
+          {
+            "id": 8,
+            "name": "UNIT 8",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424563223294959,
+              "lng": 121.03397872298956
+            }
+          },
+          {
+            "id": 9,
+            "name": "UNIT 9",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424559976224574,
+              "lng": 121.03398878127337
+            }
+          },
+          {
+            "id": 10,
+            "name": "UNIT 10",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424557703275278,
+              "lng": 121.03399850428104
+            }
+          },
+          {
+            "id": 11,
+            "name": "UNIT 11",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.42455607974006,
+              "lng": 121.03400755673647
+            }
+          },
+          {
+            "id": 12,
+            "name": "UNIT 12",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.42455835268937,
+              "lng": 121.03402867913246
+            }
+          },
+          {
+            "id": 13,
+            "name": "UNIT 13",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424548286770833,
+              "lng": 121.03402700275183
+            }
+          },
+          {
+            "id": 14,
+            "name": "UNIT 14",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424538870265978,
+              "lng": 121.03402398526669
+            }
+          },
+          {
+            "id": 15,
+            "name": "UNIT 15",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424528804346552,
+              "lng": 121.03402096778154
+            }
+          },
+          {
+            "id": 16,
+            "name": "UNIT 16",
+            "type": "1-bedroom",
+            "price": "1.2m",
+            "status": "vacant",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424519712547973,
+              "lng": 121.03401862084866
+            }
+          },
+          {
+            "id": 17,
+            "name": "UNIT 17",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424535623195238,
+              "lng": 121.03399146348238
+            }
+          },
+          {
+            "id": 18,
+            "name": "UNIT 18",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424536922023544,
+              "lng": 121.03398274630308
+            }
+          },
+          {
+            "id": 19,
+            "name": "UNIT 19",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424539844387184,
+              "lng": 121.03397101163864
+            }
+          },
+          {
+            "id": 20,
+            "name": "UNIT 20",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "occupied",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424542117336655,
+              "lng": 121.03396262973547
+            }
+          },
+          {
+            "id": 21,
+            "name": "UNIT 21",
+            "type": "1-bedroom",
+            "price": "1.1m",
+            "status": "sold",
+            "unitplan_url": "",
+            "latlng": {
+              "lat": 14.424544390286105,
+              "lng": 121.03395223617554
+            }
           }
         ]
       }

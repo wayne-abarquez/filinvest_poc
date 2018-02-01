@@ -19,7 +19,8 @@ gulp.task('vendor-scripts', function () {
         paths.bower + 'angular-material/angular-material.js',
         paths.bower + 'sweetalert/dist/sweetalert.min.js',
         paths.bower + 'ngSweetAlert/SweetAlert.min.js',
-        paths.bower + 'v-accordion/dist/v-accordion.min.js'
+        paths.bower + 'v-accordion/dist/v-accordion.min.js',
+        paths.bower + 'angular-jk-carousel/dist/jk-carousel.min.js'
     ])
         .pipe($.plumber())
         .pipe($.concat('vendor.min.js'))

@@ -13,6 +13,7 @@
   "partials/common/_layer_panel",
   "partials/common/_main_menu_sidenav",
   "partials/common/_filter_address_bar",
+  "partials/common/_gallery",
 
   // Base Pages
   "pages/_base",
@@ -21,9 +22,10 @@
 
   // Pages
   "partials/selling/_selling_page",
-  "partials/selling/_floor"
+  "partials/selling/_floor",
+  "partials/selling/_property_details.modal"
 
-// Libraries Overrides
+  // Libraries Overrides
   //"libs/_v-accordion"
 
 ;

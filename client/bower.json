@@ -25,6 +25,7 @@
     "angular-material": "1.1.5",
     "ngSweetAlert": "angular-sweetalert#~1.1.0",
     "v-accordion": "~1.4.1",
-    "angular-ui-router": "^1.0.13"
+    "angular-ui-router": "^1.0.13",
+    "angular-jk-carousel": "^0.5.0"
   }
 }

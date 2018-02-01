@@ -57,9 +57,7 @@
 
         function createHeaderContent(property) {
             var content = '';
-
             content += '<img src="/images/properties/studio-city/Studio-City-Overview-bldg.jpg">';
-
             content += '<div class="header-right-container">';
                 content += '<p class="header-right-property-name"> ' + property.name + '</p>';
                 content += '<div class="header-right-property-sub">';
@@ -74,14 +72,11 @@
                     content += '<span class="header-right-reviews">22 reviews</span>';
                 content += '</div>';
             content += '</div>';
-
             return content;
         }
 
         function createBodyContent(property) {
             var content = '';
-
-
             content += '<div class="body-header">';
                 content += '<h3>THE PROJECT IN A CAPSULE</h3>';
                 content += '<p>Taking cue from Studio One and Studio Two, Studio City is a five-tower residential condominium laid out to accommodate open, shaded and indoor spaces for the enjoyment of young professionals.</p>';
@@ -103,25 +98,18 @@
                     content += '</div>';
                 content += '</section>';
             content += '</div>';
-
             return content;
         }
 
         function createButtonsContent(property) {
             var content = '';
-
             content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-gallery"><i class="material-icons">photo_library</i> <span>Gallery</span></button>'
             content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-floorplans"><i class="material-icons">layers</i> <span>Floorplans</span></button>'
             content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-details"><i class="material-icons">info</i> <span>More Details</span></button>'
-
             return content;
         }
 
         function createInfoboxTemplate(property) {
-            //var imageSrc = property.photos && property.photos.length
-            //    ? property.photos[0].src
-            //    : '/images/default-infowindow-bg.jpg';
-
             return '<div class="marker_info none" id="marker_info"> ' +
                     '<div class="info" id="info">' +
                         '<span class="arrow"></span>' +
@@ -132,17 +120,6 @@
 
                 '</div>' +
                 '</div>';
-
-            // return '<div class="marker_info none" id="marker_info" ' +
-            //     'style="background: no-repeat linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imageSrc + ')  50%/100%;"' +
-            //
-            //     '><div class="info" id="info">' +
-            //     '<h4>' + property.name + '<span></span></h4>' +
-            //     '<p>' + (property.type && property.type.name ? property.type.name : 'Not Specified') + '</p>' +
-            //     '<a href="#!" class="infowindow_btn btn_view_project_detail">More info</a>' +
-            //     '<span class="arrow"></span>' +
-            //     '</div>' +
-            //     '</div>';
         }
 
         return service;

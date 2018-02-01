@@ -11,6 +11,7 @@
         service.getPropertyTypes = getPropertyTypes;
 
         service.loadFloorplan = loadFloorplan;
+        service.getFloorUnits = getFloorUnits;
 
         function getProperties(filter) {
             return webRequest.get('/api/properties', filter);
@@ -28,6 +29,27 @@
                     var foundFloor = _.findWhere(response.data, {propertyid: propertyId});
                     dfd.resolve(foundFloor || response.data[0]);
                 },function(err){
+                    dfd.reject(err);
+                });
+
+            return dfd.promise;
+        }
+
+        function getFloorUnits(propertyId, floorName) {
+            var dfd = $q.defer();
+
+            loadFloorplan(propertyId)
+                .then(function(propertyData){
+
+                    var foundFloor = _.findWhere(propertyData.floors, {name: floorName});
+                    if (foundFloor) {
+                        dfd.resolve(foundFloor.rooms);
+                    } else {
+                        dfd.reject();
+                    }
+
+                    dfd.resolve(foundFloor || response.data[0]);
+                }, function (err) {
                     dfd.reject(err);
                 });
 

@@ -2,13 +2,15 @@
     'use strict';
 
     angular.module('demoApp.selling')
-        .controller('sellingPageController', ['$rootScope', '$scope', 'propertyServices', 'INFOBOX_CLOSED', sellingPageController]);
+        .controller('sellingPageController', ['$rootScope', '$scope', 'propertyServices', 'INFOBOX_CLOSED', 'PROPERTY_MARKER_SELECTED', 'alertServices', 'floorplanServices', sellingPageController]);
 
-    function sellingPageController($rootScope, $scope, propertyServices, INFOBOX_CLOSED) {
+    function sellingPageController($rootScope, $scope, propertyServices, INFOBOX_CLOSED, PROPERTY_MARKER_SELECTED, alertServices, floorplanServices) {
         var vm = this;
 
         vm.form = {};
         vm.isFiltering = false;
+        vm.hasSearched = false;
+
         vm.result = {
             items: []
         };
@@ -48,6 +50,8 @@
         }
 
         function search() {
+            vm.hasSearched = true;
+
             vm.isFiltering = true;
             vm.propertySelectedId = null;
 
@@ -83,17 +87,23 @@
         }
 
         function onPropertyInfoboxClosed(e, params) {
-            console.log('onPropertyInfoboxClosed: ',params);
-
             propertyServices.setMarkerToDefault(params.propertyid);
-
             vm.propertySelectedId = null;
+            floorplanServices.clearFloorplanControl();
         }
 
         function cleanUp() {
             $(document).off('click', '#show-property-gallery');
             $(document).off('click', '#show-property-floorplans');
             $(document).off('click', '#show-property-details');
+        }
+
+        function showPropertyDetails(propertyId) {
+            propertyServices.showPropertyDetails(propertyId)
+                .finally(function(){
+                    onPropertyInfoboxClosed({}, {propertyid: propertyId});
+                    propertyServices.setBoundsFromProperties();
+                });
         }
 
         function initialize() {
@@ -110,17 +120,46 @@
                 console.log(newValue, ' = ', oldValue);
             }, true);
 
-            $('#show-property-gallery').on('click', function(e){
+            $(document).on('click', '#show-property-gallery', function(e){
                 var propId = $(this).data('propertyid');
+                propertyServices.showGallery(propId);
             });
 
             $(document).on('click', '#show-property-floorplans', function (e) {
                 var propId = $(this).data('propertyid');
+
+                // show floorplan details on left as modal, covering the filter panel
+                showPropertyDetails(propId);
+
+                alertServices.showTopRightToast('Select Floor Plan below');
+
                 propertyServices.initFloorplan(propId);
             });
 
-            $('#show-property-details').on('click', function (e) {
+            $(document).on('click', '#show-property-details', function (e) {
                 var propId = $(this).data('propertyid');
+                showPropertyDetails(propId);
+            });
+
+            $rootScope.$on(PROPERTY_MARKER_SELECTED, function(e, params){
+                if (!$scope.$$phase) {
+                    $scope.$apply(function(){
+                        vm.propertySelectedId = params.propertyid;
+                    });
+                } else {
+                    vm.propertySelectedId = params.propertyid;
+                }
+
+                propertyServices.highlightProperty(params.propertyid, true);
+
+                var container = $('#selling-page .selling-result-list md-list'),
+                    scrollTo = $('#selling-page .selling-result-list md-list md-list-item#property-item-' + params.propertyid);
+
+                var scrollToValue = scrollTo.offset().top - container.offset().top + container.scrollTop();
+
+                container.animate({
+                    scrollTop: scrollToValue
+                }, 1500);
             });
 
             $rootScope.$on(INFOBOX_CLOSED, onPropertyInfoboxClosed);

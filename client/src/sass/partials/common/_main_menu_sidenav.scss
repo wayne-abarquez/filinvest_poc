@@ -2,6 +2,7 @@
   background-color: $menu-bg-color;
   color: $menu-font-color;
   text-align: center;
+  z-index: 82;
 
   @media screen and (min-width: 456px) {
     width: 200px;

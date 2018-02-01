@@ -6,7 +6,8 @@
  */
 function FloorsControl(controlDiv, map, data) {
     var that = this;
-    var overlay;
+    that.overlay_ = null;
+    that.map_ = map;
 
     // Set CSS for the control border.
     var controlUI = document.createElement('div');
@@ -33,16 +34,28 @@ function FloorsControl(controlDiv, map, data) {
         controlUI.appendChild(borderBottomDiv);
 
         controlButton.addEventListener('click', function () {
-            if (overlay) overlay.setMap(null);
-
             var bounds = new google.maps.LatLngBounds(floor.bounds.south_west, floor.bounds.north_east);
-
-            overlay = new FloorplanOverlay(bounds, floor.image_url, map, floorName);
-            map.fitBounds(bounds);
+            that.loadFloorPlanOverlay(floorName, floor.image_url, bounds);
+            $(controlButton).trigger('ON_FLOOR_CLICKED', {propertyid: data.propertyid, floor: floorName});
         });
 
-        // $(controlButton).trigger('ON_FLOOR_CLICKED', {floor: floor.name});
+        //
         // show floorplan here
      });
 
 }
+
+FloorsControl.prototype.loadFloorPlanOverlay = function (floorName, floorImgUrl, latLngBounds) {
+    this.clearFloorPlanOverlay();
+
+    this.overlay_ = new FloorplanOverlay(latLngBounds, floorImgUrl, this.map_, floorName);
+
+    this.map_.fitBounds(latLngBounds);
+};
+
+FloorsControl.prototype.clearFloorPlanOverlay = function() {
+  if (this.overlay_) {
+      this.overlay_.setMap(null);
+      this.overlay_ = null;
+  }
+};

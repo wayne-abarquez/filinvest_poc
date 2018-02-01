@@ -2,17 +2,16 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('propertyServices', ['$q', 'webServices', 'gmapServices', 'PROPERTY_ICONS', 'infoboxServices', 'floorplanServices', propertyServices]);
+        .factory('propertyServices', ['$q', '$rootScope', 'MARKER_BASE_URL', 'webServices', 'gmapServices', 'PROPERTY_ICONS', 'infoboxServices', 'floorplanServices', 'modalServices', 'PROPERTY_MARKER_SELECTED', propertyServices]);
 
-    function propertyServices($q, webServices, gmapServices, PROPERTY_ICONS, infoboxServices, floorplanServices) {
+    function propertyServices($q, $rootScope, MARKER_BASE_URL, webServices, gmapServices, PROPERTY_ICONS, infoboxServices, floorplanServices, modalServices, PROPERTY_MARKER_SELECTED) {
         var service = {};
 
         service.properties = [];
 
-        var markerBaseUrl = '/images/markers/',
+        var markerBaseUrl = MARKER_BASE_URL,
             propertyMarkers = [],
-            lastSelectedMarker,
-            infowindow;
+            lastSelectedMarker;
 
         service.loadProperties = loadProperties;
         service.hidePropertyMarkers = hidePropertyMarkers;
@@ -22,7 +21,10 @@
         service.highlightProperty = highlightProperty;
         service.setMarkerToDefault = setMarkerToDefault;
         service.initFloorplan = initFloorplan;
+        service.showPropertyDetails = showPropertyDetails;
         service.reset = reset;
+        service.setBoundsFromProperties = setBoundsFromProperties;
+        service.showGallery = showGallery;
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -32,6 +34,8 @@
             if (lastSelectedMarker && lastSelectedMarker.propertyid !== this.propertyid) lastSelectedMarker.setIcon(getMarkerDefaultIcon());
 
             lastSelectedMarker = this;
+
+            $rootScope.$broadcast(PROPERTY_MARKER_SELECTED, {propertyid: this.propertyid});
 
             // show infowindow
             infoboxServices.openInfobox(this.infobox, this);
@@ -123,6 +127,12 @@
             floorplanServices.clearFloorplanControl();
         }
 
+        function setBoundsFromProperties () {
+            gmapServices.setMapBoundsFromLatLngArray(service.properties.map(function (item) {
+                return item.latlng;
+            }));
+        }
+
         function searchProperties(filter) {
             var dfd = $q.defer();
 
@@ -140,9 +150,7 @@
 
                     loadPropertyMarkers(response.data);
 
-                    if (filter) {
-                        gmapServices.setMapBoundsFromLatLngArray(service.properties.map(function(item){return item.latlng;}));
-                    }
+                    if (filter) setBoundsFromProperties();
 
                     dfd.resolve(response.data);
                 }, function (err) {
@@ -152,7 +160,7 @@
             return dfd.promise;
         }
 
-        function highlightProperty(propId) {
+        function highlightProperty(propId, callFromOnClickMarker) {
             var foundMarker = _.findWhere(propertyMarkers, {propertyid: propId});
 
             if (!foundMarker) return;
@@ -162,8 +170,9 @@
             gmapServices.setZoomIfGreater(16);
             gmapServices.panTo(foundMarker.getPosition());
             // gmapServices.animateMarker(foundMarker);
+
             // show infowindow
-            gmapServices.triggerEvent(foundMarker, 'click');
+            if (!callFromOnClickMarker) gmapServices.triggerEvent(foundMarker, 'click');
 
         }
 
@@ -202,6 +211,20 @@
             // show its correspoding floorplan and room availability markers and show legend
 
             // show property details side panel
+        }
+
+        function showPropertyDetails(propertyId) {
+            var foundProperty = _.findWhere(service.properties, {id: propertyId});
+            if (foundProperty){
+                return modalServices.showPropertyDetailsModal(foundProperty);
+            }
+        }
+
+        function showGallery(propertyId) {
+            var foundProperty = _.findWhere(service.properties, {id: propertyId});
+            if (foundProperty) {
+                return modalServices.showPropertyGallery(foundProperty);
+            }
         }
 
         return service;

@@ -1,0 +1,119 @@
+<md-dialog id="property-details-modal" class="stick-left-modal md-whiteframe-3dp" flex layout="column">
+    <md-toolbar class="selling-filter-header md-warn">
+        <div class="md-toolbar-tools" layout="column" layout-align="start center" layout-padding flex="100">
+            <filter-address-bar></filter-address-bar>
+            <span flex></span>
+        </div>
+    </md-toolbar>
+
+    <div class="marker_info none" id="marker_info">
+        <div class="info" id="info"><span class="arrow"></span>
+            <section class="infobox-header"><img src="/images/properties/studio-city/Studio-City-Overview-bldg.jpg">
+
+                <div class="header-right-container"><p class="header-right-property-name">{{ vm.property.name | capitalize }}</p>
+
+                    <div class="header-right-property-sub"><span class="header-right-average">5.0</span><span
+                            class="header-right-stars-container"><i
+                            class="material-icons header-right-star header-right-star-1 ">star</i><i
+                            class="material-icons header-right-star header-right-star-2 ">star</i><i
+                            class="material-icons header-right-star header-right-star-3 ">star</i><i
+                            class="material-icons header-right-star header-right-star-4 ">star</i><i
+                            class="material-icons header-right-star header-right-star-5 ">star</i></span><span
+                            class="header-right-reviews">22 reviews</span></div>
+                </div>
+            </section>
+            <section class="infobox-buttons">
+                <button class="md-button box-button" ng-click="vm.back()"><i
+                        class="material-icons">chevron_left</i> <span>Back to filter</span></button>
+                <button class="md-button box-button" ng-click="vm.showGallery()"><i
+                        class="material-icons">photo_library</i> <span>Gallery</span></button>
+                <button class="md-button box-button" ng-click="vm.goTo('floorplan')"><i
+                        class="material-icons">layers</i> <span>Floor Plans</span></button>
+                <button class="md-button box-button" ng-click="vm.showUnitPlanGallery()"><i
+                        class="material-icons">border_inner</i> <span>Unit Plans</span></button>
+            </section>
+
+            <!-- MAIN Tab -->
+            <section class="infobox-body" ng-if="vm.tabShown == 'main'">
+                <div class="body-header"><h3>THE PROJECT IN A CAPSULE</h3>
+
+                    <p>Taking cue from Studio One and Studio Two, Studio City is a five-tower residential condominium
+                        laid out to accommodate open, shaded and indoor spaces for the enjoyment of young
+                        professionals.</p></div>
+                <div class="body-content" flex>
+                    <label>Features and Amenities</label>
+                    <section class="body-content-images-container">
+                        <div>
+                            <img ng-repeat="srcUrl in vm.propertyImages.gallery" ng-src="{{ srcUrl }}" alt="Features and Amenities">
+                        </div>
+                        <div>
+                            <img ng-repeat="srcUrl in vm.propertyImages.galleryReverse" ng-src="{{ srcUrl }}"
+                                 alt="Features and Amenities">
+                        </div>
+                    </section>
+
+                    <md-divider></md-divider>
+
+                    <label>Floor Plan</label>
+                    <section class="body-content-images-container">
+                        <div>
+                            <img ng-repeat="srcUrl in vm.propertyImages.floorPlan" ng-src="{{ srcUrl }}"
+                                 alt="Floor Plan">
+                        </div>
+                    </section>
+
+                    <md-divider></md-divider>
+
+                    <label>Unit Plan</label>
+                    <section class="body-content-images-container">
+                        <div>
+                            <img ng-repeat="srcUrl in vm.propertyImages.unitPlan" ng-src="{{ srcUrl }}"
+                                 alt="Unit Plan">
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Floor Plans Tab -->
+            <section class="infobox-body floor-plan-tab" ng-if="vm.tabShown == 'floorplan'">
+                <md-toolbar class="md-warn" flex>
+                    <div class="md-toolbar-tools" layout="row" layout-align="start center" layout-padding flex="100">
+                        <md-button class="md-icon-button" ng-click="vm.goTo('main')">
+                            <md-tooltip md-direction="top">Back to main</md-tooltip>
+                            <md-icon>chevron_left</md-icon>
+                        </md-button>
+                        <h3>Floor Plans</h3>
+                        <span flex></span>
+                        <md-button class="md-icon-button" ng-click="vm.showFloorPlanGallery()">
+                            <md-tooltip md-direction="top">Show Floor Plan Gallery</md-tooltip>
+                            <md-icon>collections</md-icon>
+                        </md-button>
+                    </div>
+                </md-toolbar>
+
+                <div class="body-content" layout="column" flex>
+                    <md-input-container md-no-float>
+                        <label>Floor</label>
+                        <md-select ng-change="vm.onFloorChange(vm.selectedFloor)" ng-model="vm.selectedFloor">
+                            <md-option ng-value="floor" ng-repeat="floor in vm.floors">{{ floor | uppercase}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-list flex>
+                        <md-subheader class="md-no-sticky">{{ vm.units.length }} unit/s</md-subheader>
+                        <md-list-item class="md-3-line" ng-repeat="unit in vm.units" ng-click="vm.onUnitSelected(unit)">
+                            <div class="md-list-item-text" layout="column">
+                                <div>
+                                    <h3>{{ unit.name | capitalize }}</h3>
+                                    <p ng-class="{'unit-vacant': unit.status=='vacant', 'unit-sold': unit.status=='sold', 'unit-occupied': unit.status=='occupied'}">{{ unit.status | uppercase }}</p>
+                                </div>
+                                <h4>{{ unit.type | uppercase }}</h4>
+                            </div>
+                        </md-list-item>
+                    </md-list>
+
+                </div>
+            </section>
+        </div>
+    </div>
+</md-dialog>

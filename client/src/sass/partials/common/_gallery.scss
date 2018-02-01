@@ -1,0 +1,22 @@
+#fi-gallery-modal {
+  md-toolbar {
+    .md-toolbar-tools {
+      p {
+        margin: 0;
+        font-size: 0.8rem;
+        color: #95a5a6;
+      }
+    }
+  }
+
+  .fi-gallery {
+    md-card {
+      margin: 0;
+      height: 400px;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}
