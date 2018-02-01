@@ -86,9 +86,26 @@ $max-height-item-list: 30px;
       overflow-y: auto;
       padding: 0;
 
+      .md-subheader {
+        .md-subheader-inner {
+          padding: 5px 10px;
+
+          .md-subheader-content {
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .md-subheader-location {
+        color: #3F51B5;
+      }
+
       md-list-item {
         min-height: 0;
         max-height: $max-height-item-list;
+        padding-left: 1rem;
 
         > div.md-button {
           min-height: 0;

@@ -12,6 +12,13 @@
         service.initInfobox = initInfobox;
         service.createInfoboxTemplate = createInfoboxTemplate;
         service.openInfobox = openInfobox;
+        service.closeInfobox = closeInfobox;
+
+        function closeInfobox() {
+            if (lastInfoboxOpen) {
+                lastInfoboxOpen.close();
+            }
+        }
 
         function openInfobox(infobox, marker) {
             // Close last infobox open
@@ -68,26 +75,55 @@
 
         function createBodyContent(property) {
             var content = '';
+
+
+            content += '<div class="body-header">';
+                content += '<h3>THE PROJECT IN A CAPSULE</h3>';
+                content += '<p>Taking cue from Studio One and Studio Two, Studio City is a five-tower residential condominium laid out to accommodate open, shaded and indoor spaces for the enjoyment of young professionals.</p>';
+            content += '</div>';
+
+            content += '<div class="body-content">';
+                content += '<label>Features and Amenities</label>';
+                content += '<section class="body-content-images-container">';
+                    content += '<div>';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Amenities-IMG_9426.jpg">';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Cabana.jpg">';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Pool.jpg">';
+                    content += '</div>';
+
+                    content += '<div>';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Pool.jpg">';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Cabana.jpg">';
+                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Amenities-IMG_9426.jpg">';
+                    content += '</div>';
+                content += '</section>';
+            content += '</div>';
+
             return content;
         }
 
-        function createFooterContent(property) {
+        function createButtonsContent(property) {
             var content = '';
+
+            content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-gallery"><i class="material-icons">photo_library</i> <span>Gallery</span></button>'
+            content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-floorplans"><i class="material-icons">layers</i> <span>Floorplans</span></button>'
+            content += '<button data-propertyid="' + property.id + '" class="md-button box-button" id="show-property-details"><i class="material-icons">info</i> <span>More Details</span></button>'
+
             return content;
         }
 
         function createInfoboxTemplate(property) {
-            var imageSrc = property.photos && property.photos.length
-                ? property.photos[0].src
-                : '/images/default-infowindow-bg.jpg';
+            //var imageSrc = property.photos && property.photos.length
+            //    ? property.photos[0].src
+            //    : '/images/default-infowindow-bg.jpg';
 
             return '<div class="marker_info none" id="marker_info"> ' +
                     '<div class="info" id="info">' +
                         '<span class="arrow"></span>' +
 
                         '<section class="infobox-header"> ' + createHeaderContent(property) + '</section>' +
+                        '<section class="infobox-buttons">' + createButtonsContent(property) + '</section>' +
                         '<section class="infobox-body"> ' + createBodyContent(property) + ' </section>' +
-                        '<section class="infobox-footer">' + createFooterContent(property) + '</section>' +
 
                 '</div>' +
                 '</div>';

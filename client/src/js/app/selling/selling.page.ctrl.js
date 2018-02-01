@@ -33,6 +33,10 @@
 
         function clearForm() {
             vm.filter = {};
+            vm.result = {
+                items: []
+            };
+            //TODO: hide all markers and infowindow
             vm.form.$setPristine();
             vm.form.$setValidity();
             vm.form.$setUntouched();
@@ -51,8 +55,13 @@
                             }
                         }));
                     }
-
-                    vm.result.items = [].concat(list);
+                    //vm.result.items = [].concat(list);
+                    vm.result = {
+                        province: 'Metro Manila Projects',
+                        location: 'ALABANG',
+                        projectName: 'Filinvest City',
+                        items: [].concat(list)
+                    };
                     // TODO: group the items by province
                     // TODO: then by location
                 })
@@ -63,6 +72,12 @@
 
         function onListItemClick(property) {
             propertyServices.highlightProperty(property.id);
+        }
+
+        function cleanUp() {
+            $('.show-property-gallery').off('click');
+            $('.show-property-floorplans').off('click');
+            $('.show-property-details').off('click');
         }
 
         function initialize() {
@@ -78,6 +93,23 @@
             }, function(newValue, oldValue){
                 console.log(newValue, ' = ', oldValue);
             }, true);
+
+            $(document).on('click', '#show-property-gallery', function(e){
+                var propId = $(this).data('propertyid');
+                console.log('show-property-gallery id: ',propId);
+            });
+
+            $(document).on('click', '#show-property-floorplans', function (e) {
+                var propId = $(this).data('propertyid');
+                console.log('show-property-floorplans id: ', propId);
+            });
+
+            $(document).on('click', '#show-property-details', function (e) {
+                var propId = $(this).data('propertyid');
+                console.log('show-property-details id: ', propId);
+            });
+
+            $scope.$on('$destroy', cleanUp);
         }
 
         initialize();

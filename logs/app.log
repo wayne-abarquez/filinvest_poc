@@ -276,3 +276,6 @@
 2018-01-31 18:37:10,117 INFO - run.py <module>: Starting app
 2018-01-31 23:57:58,557 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
 2018-01-31 23:58:00,240 INFO - run.py <module>: Starting app
+2018-02-01 01:54:29,714 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-02-01 01:55:26,126 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-02-01 01:55:31,810 INFO - run.py <module>: Starting app

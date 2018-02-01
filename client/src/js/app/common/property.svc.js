@@ -32,7 +32,8 @@
 
         function createPropertyMarker (data) {
             // var icon = '/images/markers/' + PROPERTY_ICONS[getRandomInt(0,3)];
-            var icon = '/images/markers/default-marker.png';
+            //var icon = '/images/markers/default-marker.png';
+            var icon = '/images/markers/' + PROPERTY_ICONS[0];
             var marker = gmapServices.createMarker(data.latlng, icon);
 
             marker.propertyid = data.id;
@@ -59,6 +60,8 @@
 
         function hidePropertyMarkers(idsToShow) {
             if (!propertyMarkers.length) return;
+
+            infoboxServices.closeInfobox();
 
             if (idsToShow && idsToShow.length) {
                 console.log('idsToShow: ', idsToShow);
