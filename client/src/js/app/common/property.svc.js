@@ -2,14 +2,16 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('propertyServices', ['$q', 'webServices', 'gmapServices', 'PROPERTY_ICONS', 'infoboxServices', propertyServices]);
+        .factory('propertyServices', ['$q', 'webServices', 'gmapServices', 'PROPERTY_ICONS', 'infoboxServices', 'floorplanServices', propertyServices]);
 
-    function propertyServices($q, webServices, gmapServices, PROPERTY_ICONS, infoboxServices) {
+    function propertyServices($q, webServices, gmapServices, PROPERTY_ICONS, infoboxServices, floorplanServices) {
         var service = {};
 
         service.properties = [];
 
-        var propertyMarkers = [],
+        var markerBaseUrl = '/images/markers/',
+            propertyMarkers = [],
+            lastSelectedMarker,
             infowindow;
 
         service.loadProperties = loadProperties;
@@ -18,22 +20,37 @@
         service.getLocations = getLocations;
         service.searchProperties = searchProperties;
         service.highlightProperty = highlightProperty;
+        service.setMarkerToDefault = setMarkerToDefault;
+        service.initFloorplan = initFloorplan;
+        service.reset = reset;
 
         function getRandomInt(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
         }
 
         function onClickPropertyMarker() {
-            console.log('onClickPropertyMarker this: ',this);
+            if (lastSelectedMarker && lastSelectedMarker.propertyid !== this.propertyid) lastSelectedMarker.setIcon(getMarkerDefaultIcon());
+
+            lastSelectedMarker = this;
 
             // show infowindow
             infoboxServices.openInfobox(this.infobox, this);
         }
 
+        function getMarkerDefaultIcon() {
+            // this is blue color
+            return markerBaseUrl + PROPERTY_ICONS[0];
+        }
+
+        function getMarkerSelectedIcon() {
+            // this is orange color
+            return markerBaseUrl + PROPERTY_ICONS[2];
+        }
+
         function createPropertyMarker (data) {
             // var icon = '/images/markers/' + PROPERTY_ICONS[getRandomInt(0,3)];
             //var icon = '/images/markers/default-marker.png';
-            var icon = '/images/markers/' + PROPERTY_ICONS[0];
+            var icon = getMarkerDefaultIcon();
             var marker = gmapServices.createMarker(data.latlng, icon);
 
             marker.propertyid = data.id;
@@ -96,20 +113,37 @@
             return dfd.promise;
         }
 
+        function reset(includeMarkers) {
+            if (includeMarkers) {
+                hidePropertyMarkers();
+                service.properties = [];
+            }
+
+            setMarkerToDefault();
+            floorplanServices.clearFloorplanControl();
+        }
+
         function searchProperties(filter) {
             var dfd = $q.defer();
 
-            console.log('searchProperties filter: ', filter);
+            // console.log('searchProperties filter: ', filter);
 
             webServices.getProperties(filter)
                 .then(function (response) {
-                    console.log('getProperties response: ', response);
+                    // console.log('getProperties response: ', response);
+
+                    reset();
+
                     hidePropertyMarkers(_.pluck(response.data, 'id'));
+
                     service.properties = response.data;
+
                     loadPropertyMarkers(response.data);
+
                     if (filter) {
                         gmapServices.setMapBoundsFromLatLngArray(service.properties.map(function(item){return item.latlng;}));
                     }
+
                     dfd.resolve(response.data);
                 }, function (err) {
                     dfd.reject(err);
@@ -123,7 +157,10 @@
 
             if (!foundMarker) return;
 
-            gmapServices.hyperZoomToPosition(foundMarker.getPosition(), 18);
+            foundMarker.setIcon(getMarkerSelectedIcon());
+
+            gmapServices.setZoomIfGreater(16);
+            gmapServices.panTo(foundMarker.getPosition());
             // gmapServices.animateMarker(foundMarker);
             // show infowindow
             gmapServices.triggerEvent(foundMarker, 'click');
@@ -136,6 +173,35 @@
 
         function getLocations() {
             return ['alabang'];
+        }
+
+        function setMarkerToDefault(propertyId) {
+            if (!propertyId && lastSelectedMarker) {
+                lastSelectedMarker.setIcon(getMarkerDefaultIcon());
+                return;
+            }
+
+            var foundMarker = _.findWhere(propertyMarkers, {propertyid: propertyId});
+
+            if (!foundMarker) return;
+
+            foundMarker.setIcon(getMarkerDefaultIcon());
+        }
+
+        function initFloorplan(propertyId) {
+            // close infobox
+            infoboxServices.closeInfobox();
+
+            // get property floorplan data in db
+            floorplanServices.initFloorplan(propertyId);
+
+
+            // show floorplan selection on rightside same as gmap controls
+            // show 1st floor for initial floorplan
+            // when floorplan selection item is clicked,
+            // show its correspoding floorplan and room availability markers and show legend
+
+            // show property details side panel
         }
 
         return service;

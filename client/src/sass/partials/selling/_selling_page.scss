@@ -102,6 +102,15 @@ $max-height-item-list: 30px;
         color: #3F51B5;
       }
 
+      .option-prop-selected {
+        > div.md-button {
+          .md-list-item-inner {
+            color: #3F51B5;
+            font-weight: 600;
+          }
+        }
+      }
+
       md-list-item {
         min-height: 0;
         max-height: $max-height-item-list;

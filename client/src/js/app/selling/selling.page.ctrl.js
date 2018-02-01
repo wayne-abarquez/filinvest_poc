@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('demoApp.selling')
-        .controller('sellingPageController', ['$scope', 'propertyServices', sellingPageController]);
+        .controller('sellingPageController', ['$rootScope', '$scope', 'propertyServices', 'INFOBOX_CLOSED', sellingPageController]);
 
-    function sellingPageController($scope, propertyServices) {
+    function sellingPageController($rootScope, $scope, propertyServices, INFOBOX_CLOSED) {
         var vm = this;
 
         vm.form = {};
@@ -27,6 +27,8 @@
             propsList: []
         };
 
+        vm.propertySelectedId = null;
+
         vm.clearForm = clearForm;
         vm.search = search;
         vm.onListItemClick = onListItemClick;
@@ -36,6 +38,9 @@
             vm.result = {
                 items: []
             };
+            vm.propertySelectedId = null;
+
+            propertyServices.reset(true);
             //TODO: hide all markers and infowindow
             vm.form.$setPristine();
             vm.form.$setValidity();
@@ -44,6 +49,7 @@
 
         function search() {
             vm.isFiltering = true;
+            vm.propertySelectedId = null;
 
             propertyServices.searchProperties(vm.filter)
                 .then(function (list) {
@@ -55,13 +61,14 @@
                             }
                         }));
                     }
-                    //vm.result.items = [].concat(list);
+
                     vm.result = {
                         province: 'Metro Manila Projects',
                         location: 'ALABANG',
                         projectName: 'Filinvest City',
                         items: [].concat(list)
                     };
+
                     // TODO: group the items by province
                     // TODO: then by location
                 })
@@ -71,13 +78,22 @@
         }
 
         function onListItemClick(property) {
+            vm.propertySelectedId = property.id;
             propertyServices.highlightProperty(property.id);
         }
 
+        function onPropertyInfoboxClosed(e, params) {
+            console.log('onPropertyInfoboxClosed: ',params);
+
+            propertyServices.setMarkerToDefault(params.propertyid);
+
+            vm.propertySelectedId = null;
+        }
+
         function cleanUp() {
-            $('.show-property-gallery').off('click');
-            $('.show-property-floorplans').off('click');
-            $('.show-property-details').off('click');
+            $(document).off('click', '#show-property-gallery');
+            $(document).off('click', '#show-property-floorplans');
+            $(document).off('click', '#show-property-details');
         }
 
         function initialize() {
@@ -94,20 +110,20 @@
                 console.log(newValue, ' = ', oldValue);
             }, true);
 
-            $(document).on('click', '#show-property-gallery', function(e){
+            $('#show-property-gallery').on('click', function(e){
                 var propId = $(this).data('propertyid');
-                console.log('show-property-gallery id: ',propId);
             });
 
             $(document).on('click', '#show-property-floorplans', function (e) {
                 var propId = $(this).data('propertyid');
-                console.log('show-property-floorplans id: ', propId);
+                propertyServices.initFloorplan(propId);
             });
 
-            $(document).on('click', '#show-property-details', function (e) {
+            $('#show-property-details').on('click', function (e) {
                 var propId = $(this).data('propertyid');
-                console.log('show-property-details id: ', propId);
             });
+
+            $rootScope.$on(INFOBOX_CLOSED, onPropertyInfoboxClosed);
 
             $scope.$on('$destroy', cleanUp);
         }

@@ -2,13 +2,15 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('webServices', ['webRequest', webServices]);
+        .factory('webServices', ['webRequest', '$q', webServices]);
 
-    function webServices(webRequest) {
+    function webServices(webRequest, $q) {
         var service = {};
 
         service.getProperties = getProperties;
         service.getPropertyTypes = getPropertyTypes;
+
+        service.loadFloorplan = loadFloorplan;
 
         function getProperties(filter) {
             return webRequest.get('/api/properties', filter);
@@ -16,6 +18,20 @@
 
         function getPropertyTypes() {
             return webRequest.get('/api/property_types');
+        }
+
+        function loadFloorplan(propertyId) {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/floors.json')
+                .then(function(response){
+                    var foundFloor = _.findWhere(response.data, {propertyid: propertyId});
+                    dfd.resolve(foundFloor || response.data[0]);
+                },function(err){
+                    dfd.reject(err);
+                });
+
+            return dfd.promise;
         }
 
         // function createBuilding(data) {

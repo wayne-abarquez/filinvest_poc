@@ -1,0 +1,53 @@
+[
+  {
+    "propertyid": 6,
+    "floors": [
+      {
+        "name": "1",
+        "image_url": "/images/properties/studio-city/floorplan/ground.jpg",
+        "bounds": {
+          "north_east": {
+            "lat": 14.424615,
+            "lng": 121.034065
+          },
+          "south_west": {
+            "lat": 14.424490,
+            "lng": 121.033881
+          }
+        }
+      },
+      {
+        "name": "UG",
+        "image_url": "/images/properties/studio-city/floorplan/upper-ground.jpg",
+        "bounds": {
+          "north_east": {
+            "lat": 14.424615,
+            "lng": 121.034065
+          },
+          "south_west": {
+            "lat": 14.424490,
+            "lng": 121.033881
+          }
+        },
+        "rooms": [
+          {
+            "name": "",
+            "type": "",
+            "floorplan_url": "",
+            "bounds": {
+              "north_east": {
+                "lat": 14.424604,
+                "lng": 121.034060
+              },
+              "south_west": {
+                "lat": 14.424583,
+                "lng": 121.033987
+              }
+            },
+            "status": ""
+          }
+        ]
+      }
+    ]
+  }
+]

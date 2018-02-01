@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('infoboxServices', ['gmapServices', infoboxServices]);
+        .factory('infoboxServices', ['$rootScope', 'gmapServices', 'INFOBOX_CLOSED', infoboxServices]);
 
-    function infoboxServices(gmapServices) {
+    function infoboxServices($rootScope, gmapServices, INFOBOX_CLOSED) {
         var service = {};
 
         var lastInfoboxOpen;
@@ -15,9 +15,7 @@
         service.closeInfobox = closeInfobox;
 
         function closeInfobox() {
-            if (lastInfoboxOpen) {
-                lastInfoboxOpen.close();
-            }
+            if (lastInfoboxOpen) lastInfoboxOpen.close();
         }
 
         function openInfobox(infobox, marker) {
@@ -47,7 +45,14 @@
 
         function initInfobox(property) {
             var template = createInfoboxTemplate(property);
-            return createInfoBox(template);
+            var infobox = createInfoBox(template);
+
+            gmapServices.addListener(infobox, 'closeclick', function(){
+               console.log('infobox closeclick');
+               $rootScope.$broadcast(INFOBOX_CLOSED, {propertyid: property.id});
+            });
+
+            return infobox;
         }
 
         function createHeaderContent(property) {
