@@ -1,0 +1,26 @@
+<md-dialog id="fi-gallery-modal">
+    <md-toolbar>
+        <div class="md-toolbar-tools" flex layout="row">
+            <md-button class="md-icon-button" ng-click="vm.close()">
+                <md-tooltip md-direction="right">Back</md-tooltip>
+                <md-icon>chevron_left</md-icon>
+            </md-button>
+
+            <span flex></span>
+
+            <div layout="column" layout-align="center end">
+                <h2>{{ vm.property.name | capitalize }}</h2>
+                <p>{{ vm.subLabel }}</p>
+            </div>
+        </div>
+    </md-toolbar>
+    <md-dialog-content>
+        <jk-carousel class="fi-gallery"
+                     data="vm.carousel.images"
+                     item-template-url="vm.carousel.templateUrl"
+                     max-width="700"
+                     max-height="400"
+                     current-index="vm.carousel.currentIndex">
+        </jk-carousel>
+    </md-dialog-content>
+</md-dialog>

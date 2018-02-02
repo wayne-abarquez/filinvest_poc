@@ -13,6 +13,7 @@
 
         .constant('APP_NAME', 'Filinvest')
         .constant('BASE_URL', window.location.origin)
+        .constant('MARKER_BASE_URL', '/images/markers/')
 
         //.config(function ($mdThemingProvider) {
         //    $mdThemingProvider.theme('default')

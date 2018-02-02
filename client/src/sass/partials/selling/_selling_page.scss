@@ -1,3 +1,6 @@
+$form-font-size: 0.8rem;
+$max-height-item-list: 30px;
+
 #selling-page {
   position: absolute;
   top: 0;
@@ -6,36 +9,130 @@
   height: 100%;
   width: 340px;
 
-  .selling-filter-dialog {
-    height: 100%;
+  md-toolbar.selling-filter-header {
+    min-height: 60px;
+    max-height: 100px;
 
-    md-toolbar {
-      min-height: 150px;
-
-      .md-toolbar-tools {
-        padding: 0;
-      }
+    .md-toolbar-tools {
+      padding: 0;
     }
+  }
+
+  .selling-filter-dialog {
 
     .selling-filter-content {
       overflow-y: auto;
+      padding: 0 0 0.5rem;
 
       label {
-        padding: 1rem 1rem 0.5rem;
         @extend .text-muted;
+        padding: .5rem .5rem 0;
         font-weight: 600;
+        font-size: $form-font-size;
       }
 
       form {
         padding: 0 1rem;
 
+        md-input-container {
+          margin: 10px 0;
+          font-size: $form-font-size;
+
+          input {
+            height: 20px;
+            min-height: 20px;
+          }
+
+          md-select {
+            md-select-value {
+              height: 20px;
+              min-height: 20px;
+            }
+          }
+        }
+
+        .price-range-inputs {
+          input {
+            height: 25px;
+            min-height: 25px;
+          }
+
+          > div {
+            max-height: 45px;
+          }
+        }
+
         label {
           padding: 0;
           font-weight: 400;
+        }
 
+        button.md-button {
+          margin: 0 1rem;
+          min-height: 0;
+          max-height: 30px;
+          line-height: 30px;
         }
       }
 
     }
+  }
+
+  .selling-result-list {
+    overflow-y: auto;
+
+    md-list {
+      overflow-y: auto;
+      padding: 0;
+
+      .md-subheader {
+        .md-subheader-inner {
+          padding: 5px 10px;
+
+          .md-subheader-content {
+            span {
+              font-weight: 600;
+            }
+          }
+        }
+      }
+
+      .md-subheader-location {
+        color: #3F51B5;
+      }
+
+      .option-prop-selected {
+        > div.md-button {
+          .md-list-item-inner {
+            color: #3F51B5;
+            font-weight: 600;
+          }
+        }
+      }
+
+      md-list-item {
+        min-height: 0;
+        max-height: $max-height-item-list;
+        padding-left: 1rem;
+
+        > div.md-button {
+          min-height: 0;
+          max-height: $max-height-item-list;
+
+          button.md-button {
+            max-height: $max-height-item-list;
+          }
+          .md-list-item-inner {
+            min-height: 0;
+            max-height: $max-height-item-list;
+
+            > p {
+              font-size: 0.8rem;
+            }
+          }
+        }
+      }
+    }
+
   }
 }

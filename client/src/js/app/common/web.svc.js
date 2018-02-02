@@ -2,15 +2,58 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('webServices', ['webRequest', webServices]);
+        .factory('webServices', ['webRequest', '$q', webServices]);
 
-    function webServices(webRequest) {
+    function webServices(webRequest, $q) {
         var service = {};
 
         service.getProperties = getProperties;
+        service.getPropertyTypes = getPropertyTypes;
 
-        function getProperties() {
-            return webRequest.get('/api/properties');
+        service.loadFloorplan = loadFloorplan;
+        service.getFloorUnits = getFloorUnits;
+
+        function getProperties(filter) {
+            return webRequest.get('/api/properties', filter);
+        }
+
+        function getPropertyTypes() {
+            return webRequest.get('/api/property_types');
+        }
+
+        function loadFloorplan(propertyId) {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/floors.json')
+                .then(function(response){
+                    var foundFloor = _.findWhere(response.data, {propertyid: propertyId});
+                    dfd.resolve(foundFloor || response.data[0]);
+                },function(err){
+                    dfd.reject(err);
+                });
+
+            return dfd.promise;
+        }
+
+        function getFloorUnits(propertyId, floorName) {
+            var dfd = $q.defer();
+
+            loadFloorplan(propertyId)
+                .then(function(propertyData){
+
+                    var foundFloor = _.findWhere(propertyData.floors, {name: floorName});
+                    if (foundFloor) {
+                        dfd.resolve(foundFloor.rooms);
+                    } else {
+                        dfd.reject();
+                    }
+
+                    dfd.resolve(foundFloor || response.data[0]);
+                }, function (err) {
+                    dfd.reject(err);
+                });
+
+            return dfd.promise;
         }
 
         // function createBuilding(data) {

@@ -4,7 +4,7 @@
     var filterAddressBarDirective = function () {
         return {
             restrict: 'E',
-            replace: 'true',
+            // replace: 'true',
             scope: {},
             templateUrl: '/partials/common/_filter_address_bar.html',
             controller: ['$scope', 'gmapServices', function filterAddressBarController($scope, gmapServices) {

@@ -1,4 +1,5 @@
 [
+[
   {
     "id": 1,
     "lat": 14.4228137,
@@ -6,7 +7,8 @@
     "type": "Commercial",
     "name": "Northgate Cyberzone",
     "price": 1000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 2,
@@ -15,7 +17,8 @@
     "type": "Condominium",
     "name": "West Parc",
     "price": 2000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 3,
@@ -24,7 +27,8 @@
     "type": "Hotel",
     "name": "The Bellevue Manila",
     "price": 3000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 4,
@@ -33,7 +37,8 @@
     "type": "Condominium",
     "name": "Studio One",
     "price": 4000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 5,
@@ -42,7 +47,8 @@
     "type": "Condominium",
     "name": "Studio Two",
     "price": 5000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 6,
@@ -51,7 +57,8 @@
     "type": "Condominium",
     "name": "Studio City",
     "price": 6000,
-    "FOR WAYNE": "has floorplan\nhttp://www.filinvest.com/projects/studio-city/"
+    "FOR WAYNE": "has floorplan\nhttp://www.filinvest.com/projects/studio-city/",
+    "location": "Alabang"
   },
   {
     "id": 7,
@@ -60,7 +67,8 @@
     "type": "Mall",
     "name": "Westgate Center",
     "price": 7000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 8,
@@ -69,7 +77,8 @@
     "type": "Hotel",
     "name": "Acacia",
     "price": 8000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 9,
@@ -78,7 +87,8 @@
     "type": "Commercial",
     "name": "The Filinvest Tent",
     "price": 9000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 10,
@@ -87,7 +97,8 @@
     "type": "Commercial",
     "name": "Asian Star",
     "price": 1000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 11,
@@ -96,7 +107,8 @@
     "type": "Hotel",
     "name": "Vivere",
     "price": 2000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 12,
@@ -105,7 +117,8 @@
     "type": "Commercial",
     "name": "Insular Life Corporate Center",
     "price": 3000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 13,
@@ -114,7 +127,8 @@
     "type": "Condominium",
     "name": "The Levels",
     "price": 4000,
-    "FOR WAYNE": "Pics are here\nhttp://www.filinvest.com/projects/the-levels/"
+    "FOR WAYNE": "Pics are here\nhttp://www.filinvest.com/projects/the-levels/",
+    "location": "Alabang"
   },
   {
     "id": 14,
@@ -123,7 +137,8 @@
     "type": "Commercial",
     "name": "Spectrum",
     "price": 5000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 15,
@@ -132,7 +147,8 @@
     "type": "Commercial",
     "name": "Parkway Corporate Center",
     "price": 6000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 16,
@@ -141,7 +157,8 @@
     "type": "Condominium",
     "name": "Aspen Condominium",
     "price": 7000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 17,
@@ -150,7 +167,8 @@
     "type": "Condominium",
     "name": "Vivant Flats",
     "price": 8000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 18,
@@ -159,7 +177,8 @@
     "type": "Condominium",
     "name": "La Vie Flats",
     "price": 9000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 19,
@@ -168,7 +187,8 @@
     "type": "Housing",
     "name": "Palms Pointe",
     "price": 1000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 20,
@@ -177,7 +197,8 @@
     "type": "Recreation",
     "name": "The Palms Country Club",
     "price": 2000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 21,
@@ -186,7 +207,8 @@
     "type": "School",
     "name": "FEU Alabang",
     "price": 3000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 22,
@@ -195,7 +217,8 @@
     "type": "Recreation",
     "name": "The Promenade",
     "price": 4000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 23,
@@ -204,7 +227,8 @@
     "type": "Hospital",
     "name": "Asian Hospital",
     "price": 5000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 24,
@@ -213,7 +237,8 @@
     "type": "Hospital",
     "name": "Ospital Ng Muntinlupa",
     "price": 6000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 25,
@@ -222,7 +247,8 @@
     "type": "Condominium",
     "name": "2301 Civic Place",
     "price": 7000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 26,
@@ -231,7 +257,8 @@
     "type": "Condominium",
     "name": "Civic Plaza",
     "price": 8000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 27,
@@ -240,7 +267,8 @@
     "type": "Condominium",
     "name": "Civic Prime",
     "price": 9000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 28,
@@ -249,7 +277,8 @@
     "type": "Condominium",
     "name": "Entrata",
     "price": 1000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 29,
@@ -258,7 +287,8 @@
     "type": "Hotel",
     "name": "Crimson Hotel",
     "price": 2000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 30,
@@ -267,7 +297,8 @@
     "type": "Mall",
     "name": "South Station",
     "price": 3000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 31,
@@ -276,7 +307,8 @@
     "type": "Commercial",
     "name": "Filinvest Alabang",
     "price": 4000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 32,
@@ -285,7 +317,8 @@
     "type": "Mall",
     "name": "Festival Supermal",
     "price": 5000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 33,
@@ -294,7 +327,8 @@
     "type": "Mall",
     "name": "Starmall",
     "price": 6000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 34,
@@ -303,7 +337,8 @@
     "type": "Condominium",
     "name": "Bristol Parkway Place",
     "price": 7000,
-    "FOR WAYNE": "Floorplan here\nhttp://www.propertyboxonline.com/uploads/1/3/2/0/13208763/3rd-36th-floor-large_1_orig.jpg"
+    "FOR WAYNE": "Floorplan here\nhttp://www.propertyboxonline.com/uploads/1/3/2/0/13208763/3rd-36th-floor-large_1_orig.jpg",
+    "location": "Alabang"
   },
   {
     "id": 35,
@@ -312,7 +347,8 @@
     "type": "Recreation",
     "name": "Filinvest City Event Grounds",
     "price": 8000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   },
   {
     "id": 36,
@@ -321,6 +357,7 @@
     "type": "Condominium",
     "name": "The Mondrian Residences",
     "price": 9000,
-    "FOR WAYNE": ""
+    "FOR WAYNE": "",
+    "location": "Alabang"
   }
 ]

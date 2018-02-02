@@ -12,16 +12,22 @@
         var BASE_URL = window.location.origin;
 
         function buildParams(params) {
-            if (params != null && params.isObject)
-                return _.map(params, function (key, val) {
-                    return key + "=" + value;
-                }).join("&");
-            return "";
-        };
+            if (params && _.isObject(params)) {
+                var paramString = '';
+                for (var k in params) {
+                    // if (params[k]) {
+                    if (!(!params[k] && params[k] !== 0)) {
+                        paramString += k + '=' + params[k] + '&';
+                    }
+                }
+                return paramString.slice(0, -1);
+            }
+            return '';
+        }
 
 
         service.get = function (url, params) {
-            return $http.get(BASE_URL + url + "?" + buildParams(params));
+            return $http.get(BASE_URL + url + '?' + buildParams(params));
         };
 
 

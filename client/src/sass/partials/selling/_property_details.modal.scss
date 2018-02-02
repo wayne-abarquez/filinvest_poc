@@ -1,0 +1,113 @@
+#property-details-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  //height: 100%;
+  height: calc(100vh - 42px);
+  min-width: 100%;
+  overflow-y: hidden;
+
+  md-toolbar.selling-filter-header {
+    min-height: 60px;
+    max-height: 100px;
+
+    .md-toolbar-tools {
+      padding: 0;
+    }
+  }
+
+  .marker_info {
+    height: 100%;
+
+    .info {
+      width: 100% !important;
+      //height: 100%;
+      height: calc(100% - 162px);
+      //overflow-y: hidden;
+
+      .infobox-body {
+        height: 100%;
+        overflow-y: auto;
+
+        //.body-content {
+        //  overflow-y: auto;
+        //}
+      }
+
+      .floor-plan-tab {
+        background: #fff;
+
+        md-toolbar {
+          min-height: 0;
+          max-height: 45px;
+          height: 45px;
+
+          h3 {
+            font-size: 1rem;
+          }
+        }
+
+        .body-content {
+          md-input-container {
+            margin: 10px;
+          }
+
+          md-list {
+            padding: 0;
+
+            .md-subheader .md-subheader-inner {
+              padding: 5px 16px;
+            }
+
+            md-list-item {
+              min-height: 50px;
+              height: 55px;
+
+              > div.md-button {
+                min-height: 50px;
+                height: 55px;
+              }
+              .md-list-item-inner {
+                .md-list-item-text {
+                  > div {
+                    line-height: 1;
+
+                    h3 {
+                      display: inline-block;
+                      font-weight: 600;
+                    }
+
+                    p {
+                      display: inline-block;
+                      float: right;
+                      font-size: 0.7rem;
+                    }
+                  }
+
+                  h4 {
+                    font-size: 0.6rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+
+      }
+    }
+  }
+}
+
+.unit-vacant {
+  color: #0db6a8;
+}
+
+.unit-sold {
+  color: #e74c3c;
+}
+
+.unit-occupied {
+  color: #9b59b6;
+}

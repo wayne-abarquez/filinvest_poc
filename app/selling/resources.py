@@ -1,7 +1,8 @@
 from flask.ext.restful import Resource, abort, marshal_with, marshal
+from flask import request
 from .fields import *
 from app import rest_api
-from .services import get_property_types, get_property_locations, get_property_for_user
+from .services import get_property_types, get_property_locations, get_property_for_user, get_property_by_filter
 from flask_login import current_user
 import logging
 
@@ -40,9 +41,12 @@ class PropertyResource(Resource):
     def get(self):
         """ GET /api/properties """
         # try:
-        list = get_property_for_user(current_user)
-        log.debug("list: {0}".format(list))
-        return list
+        args = request.args.to_dict(flat=True)
+        log.debug("Get Properties args: {0}".format(args))
+        if args:
+            return get_property_by_filter(args)
+        else:
+            return get_property_for_user(current_user)
         # except scip_service.UserNotAuthorizedError:
         # abort(401, message="Requires user to login")
         # except scip_service.UserRoleInvalidError as err:

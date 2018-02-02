@@ -7,15 +7,16 @@
     function modalServices($q, $mdDialog, $mdMedia, $rootScope) {
         var service = {};
 
-        //var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
+        var customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-        //var addProjectModal,
-        //    projectDetailModal
-        //;
+        var modalObj;
 
         /* Service Functions */
-        //service.showAddProject = showAddProject;
-        //service.showProjectDetail = showProjectDetail;
+        service.showPropertyDetailsModal = showPropertyDetailsModal;
+        service.showPropertyGallery = showPropertyGallery;
+        service.showFloorPlanGallery = showFloorPlanGallery;
+        service.showUnitPlanGallery = showUnitPlanGallery;
+
         service.hideResolveModal = hideResolveModal;
         service.closeModal = closeModal;
 
@@ -39,39 +40,94 @@
             return dfd.promise;
         }
 
-        //function showAddProject(ev, _position) {
-        //    var opts = {
-        //        controller: 'addProjectController',
-        //        controllerAs: 'vm',
-        //        templateUrl: '/partials/modals/_add-project.tmpl.html',
-        //        parent: angular.element(document.querySelector('#admin-container')),
-        //        targetEvent: ev,
-        //        hasBackdrop: false,
-        //        locals: {position: _position},
-        //        fullscreen: $mdMedia('xs'),
-        //        onComplete: function (scope, element, options) {
-        //            $('.md-scroll-mask').css('z-index', '-1');
-        //        }
-        //    };
-        //
-        //    return showModal(addProjectModal, opts);
-        //}
-        //
-        //function showProjectDetail(proj) {
-        //    var opts = {
-        //        controller: 'projectDetailsController',
-        //        controllerAs: 'vm',
-        //        templateUrl: '/partials/modals/_view-project.tmpl.html',
-        //        parent: angular.element(document.querySelector('#admin-container')),
-        //        hasBackdrop: false,
-        //        locals: {project: proj},
-        //        fullscreen: $mdMedia('xs'),
-        //        onComplete: function (scope, element, options) {
-        //            $('.md-scroll-mask').css('z-index', '-1');
-        //        }
-        //    };
-        //    return showModal(projectDetailModal, opts);
-        //}
+        function showPropertyDetailsModal(property_) {
+            var opts = {
+                controller: 'propertyDetailsController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/selling/_property-details.modal.html',
+                parent: angular.element(document.querySelector('#base-container')),
+                openFrom: $('body #marker_info span.arrow')[0],
+                hasBackdrop: false,
+                locals: {property: property_},
+                fullscreen: customFullscreen,
+                onComplete: function (scope, element, options) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
+
+        function showPropertyGallery(property_) {
+            var opts = {
+                controller: 'propertyGalleryController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/selling/_property-gallery.modal.html',
+                hasBackdrop: true,
+                locals: {property: property_},
+                multiple: true,
+                fullscreen: true,
+                onComplete: function (scope, element) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                },
+                onShowing: function (scope, element) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
+                    $(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                },
+                onRemoving: function (element, removePromise) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
+                    $(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
+
+        function showFloorPlanGallery(property_) {
+            var opts = {
+                controller: 'propertyFloorPlanGalleryController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/selling/_property-gallery.modal.html',
+                hasBackdrop: true,
+                locals: {property: property_},
+                multiple: true,
+                fullscreen: true,
+                onComplete: function (scope, element) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                },
+                onShowing: function (scope, element) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
+                    $(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                },
+                onRemoving: function (element, removePromise) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
+                    $(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
+
+        function showUnitPlanGallery(property_) {
+            var opts = {
+                controller: 'propertyUnitPlanGalleryController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/selling/_property-gallery.modal.html',
+                hasBackdrop: true,
+                locals: {property: property_},
+                multiple: true,
+                fullscreen: true,
+                onComplete: function (scope, element) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                },
+                onShowing: function (scope, element) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
+                    $(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                },
+                onRemoving: function (element, removePromise) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
+                    $(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
 
         function hideResolveModal(response) {
             $mdDialog.hide(response);
