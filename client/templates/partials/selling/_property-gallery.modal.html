@@ -1,4 +1,4 @@
-<md-dialog id="fi-gallery-modal">
+<md-dialog id="fi-gallery-modal" flex="50">
     <md-toolbar>
         <div class="md-toolbar-tools" flex layout="row">
             <md-button class="md-icon-button" ng-click="vm.close()">
@@ -15,11 +15,12 @@
         </div>
     </md-toolbar>
     <md-dialog-content>
-        <jk-carousel class="fi-gallery"
+        <jk-carousel layout-wrap class="fi-gallery"
                      data="vm.carousel.images"
                      item-template-url="vm.carousel.templateUrl"
                      max-width="700"
                      max-height="400"
+                     auto-slide="true" auto-slide-time="3000"
                      current-index="vm.carousel.currentIndex">
         </jk-carousel>
     </md-dialog-content>

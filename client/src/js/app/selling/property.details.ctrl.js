@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('demoApp.selling')
-        .controller('propertyDetailsController', ['property', 'modalServices', '$timeout', 'floorplanServices', propertyDetailsController]);
+        .controller('propertyDetailsController', ['property', 'modalServices', '$timeout', 'floorplanServices', 'PROPERTY_THUMBNAILS', propertyDetailsController]);
 
-    function propertyDetailsController(property, modalServices, $timeout, floorplanServices) {
+    function propertyDetailsController(property, modalServices, $timeout, floorplanServices, PROPERTY_THUMBNAILS) {
         var vm = this;
 
         vm.floors = ['1', 'UG'];
@@ -12,22 +12,7 @@
 
         vm.tabShown = 'main';
 
-        vm.propertyImages = {
-            gallery: [
-                '/images/properties/studio-city/interior/Studio-City-Amenities-IMG_9426.jpg',
-                '/images/properties/studio-city/interior/Studio-City-Cabana.jpg',
-                '/images/properties/studio-city/interior/Studio-City-Pool.jpg'
-            ],
-            floorPlan: [
-                '/images/properties/studio-city/floorplan/Arista-Calibato-ground-floor.jpg',
-                '/images/properties/studio-city/floorplan/upper-ground.jpg'
-            ],
-            unitPlan: [
-                '/images/properties/studio-city/floorplan/Unit-Plan.jpg',
-                '/images/properties/studio-city/floorplan/standard-studio.jpg',
-                '/images/properties/studio-city/floorplan/Studio3.jpg'
-            ]
-        };
+        vm.propertyImages = PROPERTY_THUMBNAILS;
 
         vm.back = back;
         vm.showGallery = showGallery;

@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('demoApp')
-        .factory('infoboxServices', ['$rootScope', 'gmapServices', 'INFOBOX_CLOSED', infoboxServices]);
+        .factory('infoboxServices', ['$rootScope', 'gmapServices', 'INFOBOX_CLOSED', 'PROPERTY_THUMBNAILS', infoboxServices]);
 
-    function infoboxServices($rootScope, gmapServices, INFOBOX_CLOSED) {
+    function infoboxServices($rootScope, gmapServices, INFOBOX_CLOSED, PROPERTY_THUMBNAILS) {
         var service = {};
 
         var lastInfoboxOpen;
@@ -57,7 +57,7 @@
 
         function createHeaderContent(property) {
             var content = '';
-            content += '<img src="/images/properties/studio-city/Studio-City-Overview-bldg.jpg">';
+            content += '<img src="'+ PROPERTY_THUMBNAILS.header +'">';
             content += '<div class="header-right-container">';
                 content += '<p class="header-right-property-name"> ' + property.name + '</p>';
                 content += '<div class="header-right-property-sub">';
@@ -86,15 +86,15 @@
                 content += '<label>Features and Amenities</label>';
                 content += '<section class="body-content-images-container">';
                     content += '<div>';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Amenities-IMG_9426.jpg">';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Cabana.jpg">';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Pool.jpg">';
+                        PROPERTY_THUMBNAILS.gallery.forEach(function(src){
+                            content += '<img src="'+src+'">';
+                        });
                     content += '</div>';
 
                     content += '<div>';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Pool.jpg">';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Cabana.jpg">';
-                        content += '<img src="/images/properties/studio-city/interior/Studio-City-Amenities-IMG_9426.jpg">';
+                        PROPERTY_THUMBNAILS.gallery.reverse().forEach(function (src) {
+                            content += '<img src="' + src + '">';
+                        });
                     content += '</div>';
                 content += '</section>';
             content += '</div>';
