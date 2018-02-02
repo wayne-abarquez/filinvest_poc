@@ -68,10 +68,16 @@
                 fullscreen: true,
                 onComplete: function (scope, element) {
                     $('.md-scroll-mask').css('z-index', '-1');
+                    //setTimeout(function(){
+                    //    $('#fi-gallery-modal .fi-gallery.jk-carousel').resize();
+                    //
+                    //    //    $(element).closest('.md-dialog-container').resize();
+                    ////    $('#fi-gallery-modal').resize();
+                    //}, 200);
                 },
                 onShowing: function (scope, element) {
-                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
                     $(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
                 },
                 onRemoving: function (element, removePromise) {
                     $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
