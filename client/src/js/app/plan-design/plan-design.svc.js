@@ -11,6 +11,18 @@ angular.module('demoApp.planDesign')
 
         service.showConstructionStatusMarkersByBounds = showConstructionStatusMarkersByBounds;
         service.showMarker = showMarker;
+        service.getLegend = getLegend;
+        service.resetMapObjects = resetMapObjects;
+
+
+        function getLegend() {
+            return {
+              '0 - 25%': MARKER_BASE_URL + PROPERTY_ICONS[3],
+              '26 - 75%': MARKER_BASE_URL + PROPERTY_ICONS[2],
+              '76 - 100%': MARKER_BASE_URL + PROPERTY_ICONS[1],
+              'Ready for Occupancy': MARKER_BASE_URL + PROPERTY_ICONS[0]
+            };
+        }
 
         function showMarker(propId) {
             var found = _.findWhere(service.properties, {id: propId});

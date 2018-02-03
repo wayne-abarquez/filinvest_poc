@@ -7,8 +7,9 @@ angular.module('demoApp.planDesign')
     function planDesignPageController($rootScope, $q, FILTER_ADDRESS_RESULT_RETURNED, TILES_LOADED, hazardMapServices, planDesignServices, alertServices, gmapServices) {
         var vm = this;
 
+        vm.showHazardDial = false;
+
         vm.hazardBtn = {
-            isOpen: false,
             isFloodMapActivated: false,
             isLandslideMapActivated: false,
             isFaultLineActivated: false,
@@ -17,6 +18,25 @@ angular.module('demoApp.planDesign')
 
         vm.constructionBtn = {
             isEnabled: false
+        };
+
+        vm.legend = {
+            construct: {},
+            hazard: {
+                show: false,
+                flood: {
+                    srcImage: '/images/plan-and-design/inundation-legend.png'
+                },
+                landslide: {
+                    srcImage: '/images/plan-and-design/landslide-legend.png'
+                },
+                faultline: {
+                    srcImage: '/images/plan-and-design/faultline-legend.png'
+                },
+                stormsurge: {
+                    srcImage: '/images/plan-and-design/inundation-legend.png'
+                }
+            },
         };
 
         vm.result = [];
@@ -39,6 +59,21 @@ angular.module('demoApp.planDesign')
                 ' Loading ' + layerName + ' layer' +
                 '</div>' +
                 '</md-toast>'
+            });
+        }
+
+        function showHazardLegend(layer) {
+            if (!vm.legend.hazard.show) vm.legend.hazard.show = true;
+            if (!vm.legend.hazard[layer].show) vm.legend.hazard[layer].show = true;
+        }
+
+        function hideHazardLegend(layer) {
+            if (vm.legend.hazard[layer].show) vm.legend.hazard[layer].show = false;
+
+            vm.legend.hazard.show = false;
+
+            vm.legend.hazard.show = _.reduce(vm.legend.hazard, function (val, item) {
+                return  val || (item.show || false);
             });
         }
 
@@ -71,9 +106,15 @@ angular.module('demoApp.planDesign')
                 // get the result on callback
                 // show the list
                 getConstructionStatusData(gmapServices.map.getBounds());
+                // show legend
+                vm.legend.construct.show = true;
             } else {
                 // hide markers
                 // reset list
+                planDesignServices.resetMapObjects();
+                vm.result = [];
+                // hide legend
+                vm.legend.construct.show = false;
             }
 
         }
@@ -83,10 +124,12 @@ angular.module('demoApp.planDesign')
 
             if (vm.hazardBtn.isFloodMapActivated) {
                 showHazardSpinner('Flood');
+                showHazardLegend('flood');
                 hazardMapServices.loadFloodMap();
                 return;
             }
 
+            hideHazardLegend('flood');
             hazardMapServices.hideFloodMap();
             alertServices.showToast('Flood layer deactivated', 'bottom right');
         }
@@ -96,10 +139,12 @@ angular.module('demoApp.planDesign')
 
             if (vm.hazardBtn.isLandslideMapActivated) {
                 showHazardSpinner('Landslide');
+                showHazardLegend('landslide');
                 hazardMapServices.loadLandslideLayer();
                 return;
             }
 
+            hideHazardLegend('landslide');
             hazardMapServices.hideLandslideLayer();
             alertServices.showToast('Landslide layer deactivated', 'bottom right');
         }
@@ -109,10 +154,12 @@ angular.module('demoApp.planDesign')
 
             if (vm.hazardBtn.isFaultLineActivated) {
                 showHazardSpinner('Fault line');
+                showHazardLegend('faultline');
                 hazardMapServices.loadFaultLines();
                 return;
             }
 
+            hideHazardLegend('faultline');
             hazardMapServices.hideFaultLines();
             alertServices.showToast('Fault line layer deactivated', 'bottom right');
         }
@@ -122,18 +169,22 @@ angular.module('demoApp.planDesign')
 
             if (vm.hazardBtn.isStormSurgeActivated) {
                 showHazardSpinner('Storm Surge');
+                showHazardLegend('stormsurge');
                 hazardMapServices.loadStormSurgeLayer(1);
                 return;
             }
 
+            hideHazardLegend('stormsurge');
             hazardMapServices.hideStormSurgeLayer();
             alertServices.showToast('Storm Surge layer deactivated', 'bottom right');
         }
 
         function initialize () {
-            $rootScope.$on(FILTER_ADDRESS_RESULT_RETURNED, function(e, params){
-                console.log('FILTER_ADDRESS_RESULT_RETURNED: ',params);
+            vm.legend.construct = {
+                data: planDesignServices.getLegend()
+            };
 
+            $rootScope.$on(FILTER_ADDRESS_RESULT_RETURNED, function(e, params){
                 if (vm.constructionBtn.isEnabled) {
                     // show construction markers
                     var bounds = params.geometry && params.geometry.viewport
@@ -147,6 +198,11 @@ angular.module('demoApp.planDesign')
             $rootScope.$on(TILES_LOADED, function(e, params){
                 alertServices.showToast(params.layer + ' layer successfully loaded', 'bottom right');
             });
+
+            //var flag = _.map(vm.legend.hazard, function(item, key){
+            //    console.log('item: ',item, ' key: ', key);
+            //    return item.key && item[key].show ? item[key].show : false;
+            //});
 
             //var epsg4326 = new proj4.Proj('EPSG:4326');
             //var epsg3857 = new proj4.Proj('EPSG:3857');

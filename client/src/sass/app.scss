@@ -22,12 +22,16 @@
 
   // Pages
   "partials/selling/_selling_page",
+  "partials/selling/_property_filter",
+  "partials/selling/_property_list",
   "partials/selling/_floor",
   "partials/selling/_property_details.modal",
 
   "partials/plan-design/_plan_design_page",
 
-// Libraries Overrides
+  "partials/operations/_operations_page",
+
+  // Libraries Overrides
   //"libs/_v-accordion"
   "libs/_bootstrap-labels-badges"
 

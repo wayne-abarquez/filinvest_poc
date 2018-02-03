@@ -6,10 +6,12 @@
             'ui.router',
             'ngMaterial',
             'ngMessages',
+            'ngHtmlWindow',
             'oitozero.ngSweetAlert',
             'demoApp.home',
             'demoApp.selling',
-            'demoApp.planDesign'
+            'demoApp.planDesign',
+            'demoApp.operations'
         ])
 
         .constant('APP_NAME', 'Filinvest')
@@ -52,11 +54,21 @@
                     controllerAs: 'vm'
                 })
 
+                // planning and design
                 .state({
                     name: 'map.planDesign',
                     url: '/plan-and-design',
                     templateUrl: '/partials/plan-design/index.page.html',
                     controller: 'planDesignPageController',
+                    controllerAs: 'vm'
+                })
+
+                // operations
+                .state({
+                    name: 'map.operations',
+                    url: '/operations',
+                    templateUrl: '/partials/operations/index.page.html',
+                    controller: 'operationsPageController',
                     controllerAs: 'vm'
                 })
 

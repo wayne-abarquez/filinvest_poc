@@ -29,14 +29,16 @@
 <md-button id="construction-status-btn" aria-label="menu" class="md-icon-button md-raised"
            ng-click="vm.toggleConstructionStatus()"
            ng-class="{'md-primary': vm.constructionBtn.isEnabled}">
+    <md-tooltip md-direction="left">Construction Status</md-tooltip>
     <md-icon>build</md-icon>
 </md-button>
 
 <md-fab-speed-dial id="hazard-options" md-direction="left" class="md-fab md-scale md-fab-top-right"
-                   ng-mouseenter="vm.hazardBtn.isOpen=true" ng-mouseleave="vm.hazardBtn.isOpen=false">
+                   ng-mouseenter="vm.showHazardDial=true" ng-mouseleave="vm.showHazardDial=false">
     <md-fab-trigger>
         <md-button aria-label="menu" class="md-icon-button md-raised"
                    ng-class="{'md-warn': vm.hazardBtn.isFloodMapActivated || vm.hazardBtn.isLandslideMapActivated || vm.hazardBtn.isFaultLineActivated || vm.hazardBtn.isStormSurgeActivated}">
+            <md-tooltip md-direction="left">Hazard Map</md-tooltip>
             <md-icon>warning</md-icon>
         </md-button>
     </md-fab-trigger>
@@ -74,8 +76,37 @@
 </md-fab-speed-dial>
 
 
-<!--
-<md-button id="apps-menu-btn" class="md-icon-button">
-    <md-icon>apps</md-icon>
-</md-button>
--->
+<md-card id="construction-status-legend" ng-if="vm.legend.construct.show">
+    <label>Construction Status</label>
+    <md-divider></md-divider>
+    <ul>
+        <li ng-repeat="(k,v) in vm.legend.construct.data">
+            <img ng-src="{{v}}" alt="{{ k }}">
+            <span>{{ k }}</span>
+        </li>
+    </ul>
+</md-card>
+
+<md-card id="hazard-legend"
+         ng-class="{'legend-stack-top': vm.legend.construct.show, 'legend-hazard-initial': !vm.result.length}"
+         ng-if="vm.legend.hazard.show">
+
+    <section class="hazard-legend-flood"
+             ng-if="vm.legend.hazard.flood.show || vm.legend.hazard.stormsurge.show">
+        <img ng-src="{{ vm.legend.hazard.flood.srcImage }}">
+    </section>
+
+    <md-divider></md-divider>
+
+    <section class="hazard-legend-faultline"
+             ng-if="vm.legend.hazard.faultline.show">
+        <img ng-src="{{ vm.legend.hazard.faultline.srcImage }}">
+    </section>
+
+    <md-divider></md-divider>
+
+    <section class="hazard-legend-faultline"
+             ng-if="vm.legend.hazard.landslide.show">
+        <img ng-src="{{ vm.legend.hazard.landslide.srcImage }}">
+    </section>
+</md-card>

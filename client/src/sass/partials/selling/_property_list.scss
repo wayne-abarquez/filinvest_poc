@@ -1,0 +1,57 @@
+.property-list {
+  overflow-y: auto;
+
+  md-list {
+    overflow-y: auto;
+    padding: 0;
+
+    .md-subheader {
+      .md-subheader-inner {
+        padding: 5px 10px;
+
+        .md-subheader-content {
+          span {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+
+    .md-subheader-location {
+      color: #3F51B5;
+    }
+
+    .option-prop-selected {
+      > div.md-button {
+        .md-list-item-inner {
+          color: #3F51B5;
+          font-weight: 600;
+        }
+      }
+    }
+
+    md-list-item {
+      min-height: 0;
+      max-height: $max-height-item-list;
+      padding-left: 1rem;
+
+      > div.md-button {
+        min-height: 0;
+        max-height: $max-height-item-list;
+
+        button.md-button {
+          max-height: $max-height-item-list;
+        }
+        .md-list-item-inner {
+          min-height: 0;
+          max-height: $max-height-item-list;
+
+          > p {
+            font-size: 0.8rem;
+          }
+        }
+      }
+    }
+  }
+
+}

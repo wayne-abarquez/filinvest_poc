@@ -22,7 +22,6 @@ angular.module('demoApp.planDesign')
         service.hideFaultLines = hideFaultLines;
         service.hideStormSurgeLayer = hideStormSurgeLayer;
 
-
         function loadFloodMap() {
             // initialize overlaymaptypes array
             gmapServices.initOverlayMapTypesArray();

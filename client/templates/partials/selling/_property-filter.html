@@ -1,0 +1,54 @@
+<div layout="column" class="property-filter md-whiteframe-1dp">
+    <label>PROPERTY SEARCH</label>
+
+    <form name="vm.form" flex="nogrow" layout="column">
+        <md-input-container>
+            <label>Property Type</label>
+            <md-select ng-model="vm.filter.propTypeId">
+                <md-option ng-value="type.id"
+                           ng-repeat="type in vm.options.propTypes">{{ type.name | capitalize }}</md-option>
+            </md-select>
+        </md-input-container>
+
+        <md-input-container>
+            <label>Location</label>
+            <md-select ng-model="vm.filter.location">
+                <md-option ng-value="loc" ng-repeat="loc in vm.options.propsLocation">{{ loc | capitalize }}</md-option>
+            </md-select>
+        </md-input-container>
+
+        <div layout="column" class="price-range-inputs">
+            <label>Price Range</label>
+
+            <div layout="row">
+                <md-input-container md-no-float>
+                    <input type="number"
+                           placeholder="Min"
+                           max="{{ vm.filter.maxPrice }}"
+                           ng-model="vm.filter.minPrice">
+                </md-input-container>
+                <md-input-container md-no-float>
+                    <input type="number"
+                           placeholder="Max"
+                           min="{{ vm.filter.minPrice }}"
+                           ng-model="vm.filter.maxPrice">
+                </md-input-container>
+            </div>
+        </div>
+
+        <md-input-container>
+            <label>Property</label>
+            <md-select ng-model="vm.filter.propertyId">
+                <md-option ng-value="prop.id"
+                           ng-repeat="prop in vm.options.propsList">{{ prop.name | capitalize }}</md-option>
+            </md-select>
+        </md-input-container>
+
+        <section layout="row" layout-align="end center" flex>
+            <md-button ng-click="vm.clearForm()">Clear</md-button>
+            <md-button ng-click="vm.search()" class="md-raised md-primary"
+                       ng-disabled="vm.form.$invalid || vm.isFiltering">Search
+            </md-button>
+        </section>
+    </form>
+</div>

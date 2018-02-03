@@ -1,0 +1,24 @@
+#operations-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 300px;
+
+  .md-dialog-content {
+    background-color: #fff;
+    max-height: calc(100vh - 107px);
+    overflow-y: auto;
+
+    //md-list {
+    //  md-list-item {
+    //    .md-list-item-inner {
+    //      .label {
+    //        margin: 0 2px;
+    //        color: #fff;
+    //        line-height: 1;
+    //      }
+    //    }
+    //  }
+    //}
+  }
+}

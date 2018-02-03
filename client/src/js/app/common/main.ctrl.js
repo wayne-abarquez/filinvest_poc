@@ -72,7 +72,7 @@
                 icon: 'person_pin'
             },
             {
-                state: 'operations',
+                state: 'map.operations',
                 title: 'Operations',
                 icon: 'autorenew'
             }
