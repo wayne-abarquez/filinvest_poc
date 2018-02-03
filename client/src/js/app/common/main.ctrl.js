@@ -44,9 +44,22 @@
                 icon: 'work'
             },
             {
-                state: 'planning-design',
+                state: 'map.planDesign',
                 title: 'Planning and Design',
-                icon: 'build'
+                icon: 'build',
+                isToggled: false,
+                children: [
+                    {
+                        state: 'planning-design.construction-status',
+                        title: 'Construction Status',
+                        icon: 'build',
+                    },
+                    {
+                        state: 'planning-design.hazard',
+                        title: 'Hazard',
+                        icon: 'build',
+                    }
+                ]
             },
             {
                 state: 'permits',
@@ -65,10 +78,16 @@
             }
         ];
 
+        vm.onItemClick = onItemClick;
         vm.toggleMainMenu = buildToggler('mainMenuSidenav');
         vm.openRightMenu = openRightMenu;
         vm.logout = logout;
 
+
+        function onItemClick(item) {
+            item.isToggled = !item.isToggled;
+            console.log('onItemClick: ', item);
+        }
 
         function buildToggler(navID) {
             return function () {

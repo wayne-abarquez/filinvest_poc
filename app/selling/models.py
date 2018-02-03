@@ -12,6 +12,7 @@ class PropertyType(db.Model, OrmObject):
 class PropertyStatus:
     AVAILABLE = 'available'
     SOLD = 'sold'
+    READY_FOR_OCCUPANCY = 'ready for occupancy'
 
 
 class ProjectStatus:
@@ -19,6 +20,9 @@ class ProjectStatus:
     ONPROGRESS = 'on-progress'
     ONHOLD = 'on-hold'
     COMPLETED = 'completed'
+    READY_FOR_OCCUPANCY = 'ready for occupancy'
+
+    LIST = [PLANNING, ONHOLD, ONPROGRESS, COMPLETED, READY_FOR_OCCUPANCY]
 
 
 class Project(BaseModel):
@@ -30,7 +34,7 @@ class Project(BaseModel):
     city = db.Column(db.String(200))
     full_address = db.Column(db.Text)
     completion = db.Column(db.SmallInteger, default=100, nullable=False)
-    status = db.Column(db.String(10), nullable=False, default=ProjectStatus.COMPLETED)
+    status = db.Column(db.String(50), nullable=False, default=ProjectStatus.COMPLETED)
 
 
 class Property(BaseModel):
@@ -44,7 +48,7 @@ class Property(BaseModel):
     city = db.Column(db.String(200))
     full_address = db.Column(db.Text)
     completion = db.Column(db.SmallInteger, default=100, nullable=False)
-    status = db.Column(db.String(10), nullable=False, default=PropertyStatus.AVAILABLE)
+    status = db.Column(db.String(50), nullable=False, default=ProjectStatus.COMPLETED)
 
     type = db.relationship(PropertyType, foreign_keys=typeid)
 

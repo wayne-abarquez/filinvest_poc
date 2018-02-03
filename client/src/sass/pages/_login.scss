@@ -10,15 +10,15 @@
     background-color: $primary-color;
     color: $primary-font-color;
     padding: 0 5rem;
+    max-height: 60px;
 
     .company-logo-container {
       img {
-        max-height: 8vh;
+        max-height: 60px;
       }
     }
   }
 
-  .login-frame {
     md-card {
       max-width: 400px;
       margin: auto;
@@ -34,7 +34,7 @@
     .ui-login-container {
 
       > div {
-        margin: 1rem 4rem 0 0 !important;
+        margin: 0 4rem 0 0;
       }
 
         .md-headline {
@@ -90,7 +90,6 @@
         width: auto;
       }
     }
-  }
 
   .round-avatar {
     -webkit-border-radius: 50%;

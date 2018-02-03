@@ -7,11 +7,17 @@
     function alertServices($mdToast, SweetAlert) {
         var service = {};
 
+        service.showToast = showToast;
+        service.showCustomToast = showCustomToast;
         service.showBottomLeftToast = showBottomLeftToast;
         service.showTopRightToast = showTopRightToast;
         service.showNoDataAvailablePrompt = showNoDataAvailablePrompt;
         //service.showFilterSelectionEmpty = showFilterSelectionEmpty;
         //service.showQueryIsEmpty = showQueryIsEmpty;
+
+        function showCustomToast(opts) {
+            $mdToast.show(opts);
+        }
 
         function showToast(message, position) {
             $mdToast.show(

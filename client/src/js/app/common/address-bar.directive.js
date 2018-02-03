@@ -7,7 +7,7 @@
             // replace: 'true',
             scope: {},
             templateUrl: '/partials/common/_filter_address_bar.html',
-            controller: ['$scope', 'gmapServices', function filterAddressBarController($scope, gmapServices) {
+            controller: ['$rootScope', 'gmapServices', 'FILTER_ADDRESS_RESULT_RETURNED', function ($rootScope, gmapServices, FILTER_ADDRESS_RESULT_RETURNED) {
 
                 var autocomplete,
                     place;
@@ -19,6 +19,8 @@
                         console.log("Autocomplete's returned place contains no geometry");
                         return;
                     }
+
+                    $rootScope.$broadcast(FILTER_ADDRESS_RESULT_RETURNED, place);
 
                     // If the place has a geometry, then present it on a map.
                     if (place.geometry.viewport) {

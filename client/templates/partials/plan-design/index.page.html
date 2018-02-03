@@ -1,0 +1,81 @@
+<div id="plan-design-page" class="md-whiteframe-4dp" layout="column" flex>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <filter-address-bar></filter-address-bar>
+        </div>
+    </md-toolbar>
+
+    <div class="md-dialog-content" flex="nogrow" ng-if="vm.result && vm.result.length">
+        <md-list flex>
+            <md-subheader class="md-no-sticky">{{ vm.result.length }} result/s</md-subheader>
+            <md-list-item class="md-2-line" ng-repeat="item in vm.result" ng-click="vm.onItemClick(item)">
+                <div class="md-list-item-text" layout="column">
+                    <div layout="row">
+                        <h3>{{ item.name }}</h3>
+                        <span flex></span>
+                        <span class="label">{{ item.completion }}%</span>
+                    </div>
+                    <div layout="row">
+                        <span class="label label-default">{{ item.type.name | uppercase }}</span>
+                        <span class="label label-{{item.labelClass}}">{{ item.status | capitalize }}</span>
+                    </div>
+                </div>
+            </md-list-item>
+        </md-list>
+    </div>
+</div>
+
+
+<md-button id="construction-status-btn" aria-label="menu" class="md-icon-button md-raised"
+           ng-click="vm.toggleConstructionStatus()"
+           ng-class="{'md-primary': vm.constructionBtn.isEnabled}">
+    <md-icon>build</md-icon>
+</md-button>
+
+<md-fab-speed-dial id="hazard-options" md-direction="left" class="md-fab md-scale md-fab-top-right"
+                   ng-mouseenter="vm.hazardBtn.isOpen=true" ng-mouseleave="vm.hazardBtn.isOpen=false">
+    <md-fab-trigger>
+        <md-button aria-label="menu" class="md-icon-button md-raised"
+                   ng-class="{'md-warn': vm.hazardBtn.isFloodMapActivated || vm.hazardBtn.isLandslideMapActivated || vm.hazardBtn.isFaultLineActivated || vm.hazardBtn.isStormSurgeActivated}">
+            <md-icon>warning</md-icon>
+        </md-button>
+    </md-fab-trigger>
+
+    <md-fab-actions>
+        <md-button class="md-fab md-raised md-mini"
+                   ng-class="{'md-primary': vm.hazardBtn.isFloodMapActivated}"
+                   ng-click="vm.toggleFloodMap()">
+            <md-tooltip md-direction="top">Flood layer</md-tooltip>
+            <md-icon>pool</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-raised md-mini"
+                   ng-class="{'md-primary': vm.hazardBtn.isLandslideMapActivated}"
+                   ng-click="vm.toggleLandslideLayer()">
+            <md-tooltip md-direction="top">Landslide layer</md-tooltip>
+            <md-icon>terrain</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-raised md-mini"
+                   ng-class="{'md-primary': vm.hazardBtn.isFaultLineActivated}"
+                   ng-click="vm.toggleFaultLineLayer()">
+            <md-tooltip md-direction="top">Faultline layer</md-tooltip>
+            <md-icon>timeline</md-icon>
+        </md-button>
+
+        <md-button class="md-fab md-raised md-mini"
+                   ng-class="{'md-primary': vm.hazardBtn.isStormSurgeActivated}"
+                   ng-click="vm.toggleStormSurgeLayer()">
+            <md-tooltip md-direction="top">Storm Surge layer</md-tooltip>
+            <md-icon>multiline_chart</md-icon>
+        </md-button>
+
+    </md-fab-actions>
+</md-fab-speed-dial>
+
+
+<!--
+<md-button id="apps-menu-btn" class="md-icon-button">
+    <md-icon>apps</md-icon>
+</md-button>
+-->

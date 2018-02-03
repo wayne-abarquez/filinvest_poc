@@ -8,13 +8,21 @@
         var service = {};
 
         service.getProperties = getProperties;
+        service.getPropertiesByBounds = getPropertiesByBounds;
         service.getPropertyTypes = getPropertyTypes;
 
         service.loadFloorplan = loadFloorplan;
         service.getFloorUnits = getFloorUnits;
 
+        service.getFaultLineData = getFaultLineData;
+
+
         function getProperties(filter) {
             return webRequest.get('/api/properties', filter);
+        }
+
+        function getPropertiesByBounds(boundsParam) {
+            return webRequest.get('/api/properties', {bounds: boundsParam});
         }
 
         function getPropertyTypes() {
@@ -53,6 +61,18 @@
                     dfd.reject(err);
                 });
 
+            return dfd.promise;
+        }
+
+        function getFaultLineData() {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/faultline-data.json')
+                .then(function(response){
+                    dfd.resolve(response.data);
+                }, function(err){
+                    dfd.reject(err);
+                });
             return dfd.promise;
         }
 

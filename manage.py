@@ -26,9 +26,11 @@ def dropdb():
         db.drop_all()
         print "Database Dropped"
 
+
 @manager.command
 def populatedb():
     BaseSeeder.load_data()
+
 
 @manager.command
 def load_locations():

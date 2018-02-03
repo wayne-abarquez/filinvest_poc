@@ -1,0 +1,46 @@
+#plan-design-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 300px;
+
+  .md-dialog-content {
+    background-color: #fff;
+    max-height: calc(100vh - 107px);
+    overflow-y: auto;
+
+    md-list {
+      md-list-item {
+        .md-list-item-inner {
+          .label {
+            margin: 0 2px;
+            color: #fff;
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+#hazard-options {
+  top: 220px;
+  right: 0;
+}
+
+#construction-status-btn {
+  position: absolute;
+  top: 175px;
+  right: 0;
+  z-index: 20;
+}
+
+//#apps-menu-btn {
+//  right: 100px;
+//  top: 5px;
+//  bottom: auto;
+//  left: auto;
+//  position: absolute;
+//  z-index: 20;
+//  //box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .26);
+//}

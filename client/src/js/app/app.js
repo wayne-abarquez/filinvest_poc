@@ -8,7 +8,8 @@
             'ngMessages',
             'oitozero.ngSweetAlert',
             'demoApp.home',
-            'demoApp.selling'
+            'demoApp.selling',
+            'demoApp.planDesign'
         ])
 
         .constant('APP_NAME', 'Filinvest')
@@ -48,6 +49,14 @@
                     url: '/selling',
                     templateUrl: '/partials/selling/selling.page.html',
                     controller: 'sellingPageController',
+                    controllerAs: 'vm'
+                })
+
+                .state({
+                    name: 'map.planDesign',
+                    url: '/plan-and-design',
+                    templateUrl: '/partials/plan-design/index.page.html',
+                    controller: 'planDesignPageController',
                     controllerAs: 'vm'
                 })
 

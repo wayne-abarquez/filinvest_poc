@@ -1,11 +1,12 @@
 from app import app, db
 from app.authentication.models import Role, User
-from app.selling.models import Project, PropertyType, Property, PropertyLocation
+from app.selling.models import Project, PropertyType, ProjectStatus, Property, PropertyLocation
 from app.utils.forms_helper import parse_coordinates
 from app.utils.gis_json_fields import PointToLatLng
 import json
 import time
 import requests
+from random import randint
 from sqlalchemy import and_
 
 
@@ -86,16 +87,27 @@ class BaseSeeder:
         properties = []
         with open('./app/seeder/datasource/properties.json') as json_data:
             for item in list(json.load(json_data)):
+                stat = ProjectStatus.LIST[randint(2, 4)]
+
+                if stat == ProjectStatus.ONPROGRESS:
+                    compl = randint(1, 99)
+                elif stat == ProjectStatus.COMPLETED or stat == ProjectStatus.READY_FOR_OCCUPANCY:
+                    compl = 100
+
                 type = PropertyType.query.filter_by(name=item['type'].lower()).first()
+
                 prop = {
                     'name': item['name'].title(),
                     'typeid': type.id,
                     'projectid': 1,
                     'price': item['price'],
                     'location': item['location'],
-                    'latlng': parse_coordinates({'lat': item['lat'], 'lng': item['lng']})
+                    'latlng': parse_coordinates({'lat': item['lat'], 'lng': item['lng']}),
+                    'completion': compl,
+                    'status': stat
                 }
                 properties.append(prop)
+
         db.session.bulk_insert_mappings(Property, properties)
         db.session.commit()
         print "Properties loaded."

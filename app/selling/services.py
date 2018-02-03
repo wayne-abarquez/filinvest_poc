@@ -1,6 +1,6 @@
 from .models import PropertyType, Property, PropertyLocation
 from sqlalchemy import func
-from app.utils import forms_helper
+from app.utils import forms_helper, gis_helper
 import logging
 
 log = logging.getLogger(__name__)
@@ -14,8 +14,24 @@ def get_property_locations():
     return PropertyLocation.query.all()
 
 
+def get_property_by_bounds(bounds):
+    box = gis_helper.GISHelper.bounds_to_box(bounds)
+
+    if box is None:
+        return []
+
+    bounding_box = gis_helper.GISHelper.make_bound_box(box)
+
+    return Property.query \
+        .filter(Property.latlng.intersects(bounding_box)) \
+        .all()
+
+
 def get_property_by_filter(args):
     q = Property.query
+
+    if 'bounds' in args and args['bounds']:
+        return get_property_by_bounds(args['bounds'])
 
     if 'propertyId' in args and args['propertyId']:
         return [q.get(args['propertyId'])]
@@ -27,7 +43,7 @@ def get_property_by_filter(args):
         elif key == 'location':
             q = q.filter(func.lower(Property.location) == value.lower())
 
-    if  'maxPrice' in args and args['maxPrice']:
+    if 'maxPrice' in args and args['maxPrice']:
         minPrice = args['minPrice'] if 'minPrice' in args and args['minPrice'] else 0
         q = q.filter(Property.price.between(minPrice, args['maxPrice']))
 
