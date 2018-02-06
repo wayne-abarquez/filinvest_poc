@@ -19,8 +19,7 @@
 
         .constant('NOAH_GEOSERVER_BASE_URL', 'http://202.90.159.177/geoserver/wms')
 
-        .constant('PHILVOCS_GEOSERVER_BASE_URL', 'http://faultfinder.phivolcs.dost.gov.ph/ows/wms/serve/s_37749/wms_2_37749')
-
+        .constant('PHILVOCS_GEOSERVER_BASE_URL', 'http://faultfinder.phivolcs.dost.gov.ph/ows/wms/serve/s_30055/wms_2_30055')
     ;
 
 }());

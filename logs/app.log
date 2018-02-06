@@ -320,3 +320,5 @@
 2018-02-05 22:37:11,619 INFO - run.py <module>: Starting app
 2018-02-06 15:22:53,319 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
 2018-02-06 15:22:54,001 INFO - run.py <module>: Starting app
+2018-02-06 22:01:12,961 INFO - __init__.py <module>: Will output log to /var/www/filinvest_poc/logs/app.log
+2018-02-06 22:01:13,541 INFO - run.py <module>: Starting app
