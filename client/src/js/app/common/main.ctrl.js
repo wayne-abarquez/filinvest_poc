@@ -29,20 +29,20 @@
                 icon: 'local_atm'
             },
             {
-                state: 'estate-mgmt',
+                state: 'map.estateMgmt',
                 title: 'Estate Mgmt',
                 icon: 'account_balance'
             },
-            {
-                state: 'property-mgmt',
-                title: 'Property Mgmt',
-                icon: 'store_mall_directory'
-            },
-            {
-                state: 'business-dev',
-                title: 'Business Development',
-                icon: 'work'
-            },
+            //{
+            //    state: 'property-mgmt',
+            //    title: 'Property Mgmt',
+            //    icon: 'store_mall_directory'
+            //},
+            //{
+            //    state: 'business-dev',
+            //    title: 'Business Development',
+            //    icon: 'work'
+            //},
             {
                 state: 'map.planDesign',
                 title: 'Planning and Design',
@@ -62,12 +62,12 @@
                 ]
             },
             {
-                state: 'permits',
+                state: 'map.permits',
                 title: 'Permits',
                 icon: 'assignment'
             },
             {
-                state: 'gsn',
+                state: 'map.gsn',
                 title: 'GSN',
                 icon: 'person_pin'
             },

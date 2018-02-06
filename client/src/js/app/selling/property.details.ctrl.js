@@ -2,9 +2,9 @@
     'use strict';
 
     angular.module('demoApp.selling')
-        .controller('propertyDetailsController', ['property', 'modalServices', '$timeout', 'floorplanServices', 'PROPERTY_THUMBNAILS', propertyDetailsController]);
+        .controller('propertyDetailsController', ['property', '$scope', '$rootScope', 'modalServices', '$timeout', 'floorplanServices', 'propertyServices', 'PROPERTY_THUMBNAILS', propertyDetailsController]);
 
-    function propertyDetailsController(property, modalServices, $timeout, floorplanServices, PROPERTY_THUMBNAILS) {
+    function propertyDetailsController(property, $scope, $rootScope, modalServices, $timeout, floorplanServices, propertyServices, PROPERTY_THUMBNAILS) {
         var vm = this;
 
         vm.floors = ['1', 'UG'];
@@ -31,7 +31,6 @@
 
             $timeout(function(){
                 var result = floorplanServices.getUnitsByFloor(floor);
-                console.log('on flor hcnage result: ', result);
                 vm.units = result;
             }, 500);
 
@@ -65,19 +64,46 @@
             modalServices.showUnitPlanGallery(vm.property);
         }
 
+        function showUnitInteriorGallery(unitName, unitType) {
+            modalServices.showUnitInteriorGallery(unitName, unitType);
+        }
+
+        function cleanUp() {
+            // show markers
+            propertyServices.showOnlyPropertyMarkers();
+
+            // hide legend
+            $rootScope.showUnitLegend = false;
+
+            console.log('clean up show prop markers');
+        }
+
         function initialize() {
             vm.property = property;
 
             vm.propertyImages.galleryReverse = [].concat(vm.propertyImages.gallery).reverse();
 
-            //gmapServices.addMapListener('click', function(e){
-            //    console.log('map click e: ', JSON.stringify(e.latLng.toJSON()));
-            //});
+            // hide markers temporarily
+            propertyServices.hideOnlyPropertyMarkers();
+
+            // show unit legend by status
+            $rootScope.showUnitLegend = true;
 
             vm.selectedFloor = '1';
             $timeout(function(){
                 onFloorChange(vm.selectedFloor);
             }, 1000);
+
+
+            $scope.$on('$destroy', cleanUp);
+
+            $(document).on('click', '#show-unit-gallery-btn', function () {
+                var unitName = $(this).data('unitname');
+                var unitType = $(this).data('unittype');
+                console.log('on click gallery button type: ',unitType);
+                // show modal
+                showUnitInteriorGallery(unitName, unitType);
+            });
         }
 
         initialize();

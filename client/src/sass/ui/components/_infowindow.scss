@@ -5,6 +5,12 @@ $boxHeaderHeight: 100px;
 $boxBodyHeight: 330px;
 $boxButtonsHeight: 70px;
 
+$constuctWidth: 280px;
+$constuctHeight: 350px;
+
+$unitWidth: 320px;
+$unitHeight: 240px;
+
 $infowindow-bg: #fff;
 
 .property-infobox {
@@ -19,8 +25,138 @@ $infowindow-bg: #fff;
   }
 }
 
+
+.unit-infobox {
+  .info {
+    width: $unitWidth !important;
+    height: $unitHeight !important;
+
+    .arrow {
+      top: 115px !important;
+      border-right-color: #fff !important;
+    }
+
+    .infobox-header {
+      padding: 8px 0;
+      height: auto !important;
+      background-color: $primary-color;
+
+      .body-header {
+        width: 100% !important;
+        padding: 0 12px;
+        color: #fff;
+
+        h3 {
+          display: inline-block;
+          margin: 4px 0;
+        }
+
+        > div {
+          h3 {
+            font-size: 16px;
+          }
+          span {
+            float: right;
+            margin: 5px 1px;
+            border-radius: 10px;
+            font-size: 9px;
+            text-transform: uppercase;
+
+            &:first-of-type {
+              margin-right: 15px !important;
+            }
+          }
+        }
+
+
+      }
+
+      .fab-right-top-btn {
+        position: absolute;
+        right: 10px;
+        top: 35px;
+      }
+
+    }
+
+    .infobox-body {
+      background: #fff !important;
+      height: 180px !important;
+      overflow-y: auto;
+
+      .body-content {
+        padding: 5px 0 0 0;
+      }
+    }
+
+  }
+}
+
+
+.construct-infowindow {
+  .info {
+    height: $constuctHeight !important;
+    width: $constuctWidth !important;
+    padding: 8px;
+
+    .arrow {
+      top: 165px !important;
+      border-right-color: #fff !important;
+    }
+
+    .construct-infobox-header {
+      img {
+        max-width: $constuctWidth;
+      }
+    }
+
+    .construct-infobox-body {
+      label {
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      span {
+        font-size: 13px;
+      }
+
+      .completion-percent {
+        color: orange;
+
+      }
+
+      .completion {
+        img {
+          width: $constuctWidth;
+          max-height: 80px;
+          object-fit: cover;
+        }
+      }
+
+      input {
+        width: 80%;
+        vertical-align: middle;
+      }
+
+      button.stop {
+        display: none;
+      }
+
+      hr {
+        border-color: rgba(0, 0, 0, 0.10);
+      }
+
+      p {
+        font-size: 12px;
+        @extend .text-muted;
+      }
+    }
+  }
+}
+
 .marker_info {
   font-family: 'Roboto', sans-serif;
+
 
   .info {
     background-color: $infowindow-bg;
@@ -182,9 +318,6 @@ $infowindow-bg: #fff;
         }
       }
     }
-
-
-
   }
 
 }

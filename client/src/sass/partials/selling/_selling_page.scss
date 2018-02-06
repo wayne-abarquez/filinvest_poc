@@ -22,3 +22,33 @@ $max-height-item-list: 30px;
   //}
 
 }
+
+#unit-status-legend {
+  max-height: 90px;
+  min-width: 0px;
+  position: absolute;
+  top: 0;
+  left: 345px;
+  margin: 8px 4px;
+  z-index: 20;
+  background-color: #fff;
+  padding: 6px;
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+
+    li {
+      img {
+        max-height: 23px;
+      }
+      span {
+        padding: 4px 6px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

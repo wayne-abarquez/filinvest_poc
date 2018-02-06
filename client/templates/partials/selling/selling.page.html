@@ -11,5 +11,17 @@
         <property-filter></property-filter>
     </div>
 
-    <property-list></property-list>
+    <property-list on-item-marker-click="onItemMarkerClick" on-list-item-click="onListItemClick" result="vm.result" property-selected-id="propertySelectedId"></property-list>
 </div>
+
+
+<md-card id="unit-status-legend" ng-if="showUnitLegend" ng-cloak flex> <!--   -->
+    <ul>
+        <li ng-repeat="(key, val) in unitMarkerIcons">
+            <div layout="row" layout="center center">
+                <img ng-src="{{ markerBaseUrl }}{{ val }}">
+                <span class="text-muted">{{ key }}</span>
+            </div>
+        </li>
+    </ul>
+</md-card>

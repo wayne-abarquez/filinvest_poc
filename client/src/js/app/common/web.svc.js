@@ -14,6 +14,9 @@
         service.loadFloorplan = loadFloorplan;
         service.getFloorUnits = getFloorUnits;
 
+        service.getLayersData = getLayersData;
+        service.getLayer = getLayer;
+
         service.getFaultLineData = getFaultLineData;
 
 
@@ -68,11 +71,36 @@
             var dfd = $q.defer();
 
             webRequest.get('/static/data/faultline-data.json')
+                .then(function (response) {
+                    dfd.resolve(response.data);
+                }, function (err) {
+                    dfd.reject(err);
+                });
+            return dfd.promise;
+        }
+
+        function getLayersData() {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/layers.json')
                 .then(function(response){
                     dfd.resolve(response.data);
                 }, function(err){
                     dfd.reject(err);
                 });
+            return dfd.promise;
+        }
+
+        function getLayer(url) {
+            var dfd = $q.defer();
+
+            webRequest.get(url)
+                .then(function (response) {
+                    dfd.resolve(response.data);
+                }, function (err) {
+                    dfd.reject(err);
+                });
+
             return dfd.promise;
         }
 

@@ -4,17 +4,13 @@
     var propertyListDirective = function () {
         return {
             restrict: 'E',
-            replace: 'true',
-            scope: '=',
+            scope: {
+                result: '=',
+                onListItemClick: '=',
+                propertySelectedId: '='
+            },
             templateUrl: '/partials/selling/_property-list.html',
-            //controller: ['$rootScope', function ($rootScope) {
-            //
-            //    function initialize() {
-            //    }
-            //
-            //    initialize();
-            //
-            //}]
+            replace: true
         };
     };
 

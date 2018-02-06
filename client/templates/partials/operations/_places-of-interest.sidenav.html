@@ -1,0 +1,45 @@
+<section id="poi-panel-container" ng-controller="placesOfInterestPanelController as poiCtl" layout="column" flex ng-cloak>
+
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp md-dialog-sm" md-disable-backdrop md-component-id="poiPanel" style="max-width:250px;">
+
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    Places
+                    <span flex></span>
+                    <md-button ng-click="poiCtl.reloadPOIs()" class="md-icon-button">
+                        <md-tooltip md-direction="top">Reload POIs</md-tooltip>
+                        <md-icon>refresh</md-icon>
+                    </md-button>
+                    <md-button ng-click="poiCtl.closeSidenav()" class="md-icon-button">
+                        <md-tooltip md-direction="top">Hide Panel</md-tooltip>
+                        <md-icon>chevron_right</md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-content layout-padding>
+                <form>
+                    <label>Select Types</label>
+                    <section layout-margin flex>
+                        <md-button class="md-icon-button" ng-class="{'md-accent md-raised': item.isSelected}" ng-click="item.isSelected = !item.isSelected" ng-repeat="item in poiCtl.placeTypes">
+                            <md-tooltip md-direction="top">{{ item.label }}</md-tooltip>
+                            <md-icon>{{ item.icon }}</md-icon>
+                        </md-button>
+                    </section>
+                </form>
+
+                <md-divider></md-divider>
+
+                <md-list flex>
+                    <md-list-item class="md-3-line" ng-repeat="item in poiCtl.pois" ng-click="poiCtl.onClickPOI(item)">
+                        <div class="md-list-item-text" layout="column">
+                            <h3><md-icon style="color: {{item.color}}">{{ item.mdIcon }}</md-icon> {{ item.name }}</h3>
+                            <p>{{ item.vicinity }}</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </md-content>
+
+        </md-sidenav>
+
+
+</section>

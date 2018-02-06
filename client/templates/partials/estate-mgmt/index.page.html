@@ -1,0 +1,14 @@
+<div id="estate-mgmt-page" class="md-whiteframe-4dp" layout="column" flex>
+
+</div>
+
+<section flex>
+    <div ng-include="'partials/estate-mgmt/_layers.sidenav.html'" ng-cloak></div>
+</section>
+
+<md-button class="md-fab md-fab-top-left"
+           ng-click="esMgmtCtl.toggleLayerPanel()">
+    <md-tooltip md-direction="top">Show Layers Panel</md-tooltip>
+    <md-icon>layers</md-icon>
+</md-button>
+

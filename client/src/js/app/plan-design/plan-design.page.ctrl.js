@@ -2,9 +2,9 @@
 'use strict';
 
 angular.module('demoApp.planDesign')
-    .controller('planDesignPageController', ['$rootScope', '$q', 'FILTER_ADDRESS_RESULT_RETURNED', 'TILES_LOADED', 'hazardMapServices', 'planDesignServices', 'alertServices', 'gmapServices', planDesignPageController]);
+    .controller('planDesignPageController', ['$rootScope', '$q', '$scope', 'FILTER_ADDRESS_RESULT_RETURNED', 'TILES_LOADED', 'hazardMapServices', 'planDesignServices', 'alertServices', 'gmapServices', '$interval', planDesignPageController]);
 
-    function planDesignPageController($rootScope, $q, FILTER_ADDRESS_RESULT_RETURNED, TILES_LOADED, hazardMapServices, planDesignServices, alertServices, gmapServices) {
+    function planDesignPageController($rootScope, $q, $scope, FILTER_ADDRESS_RESULT_RETURNED, TILES_LOADED, hazardMapServices, planDesignServices, alertServices, gmapServices, $interval) {
         var vm = this;
 
         vm.showHazardDial = false;
@@ -80,7 +80,7 @@ angular.module('demoApp.planDesign')
         function getConstructionStatusData(bounds) {
             var dfd = $q.defer();
 
-            planDesignServices.showConstructionStatusMarkersByBounds(bounds.toUrlValue())
+            planDesignServices.showConstructionStatusMarkersByBounds(bounds.toUrlValue(), $scope)
                 .then(function(data){
                     if (!data.length || !data) alertServices.showToast('No Properties on this area.', 'bottom right');
                     vm.result = data;
@@ -179,6 +179,25 @@ angular.module('demoApp.planDesign')
             alertServices.showToast('Storm Surge layer deactivated', 'bottom right');
         }
 
+        function closest(num, arr) {
+            var curr = arr[0];
+            var diff = Math.abs (num - curr);
+            for (var val = 0; val < arr.length; val++) {
+                var newdiff = Math.abs (num - arr[val]);
+                if (newdiff < diff) {
+                    diff = newdiff;
+                    curr = arr[val];
+                }
+            }
+            return curr;
+        }
+
+        function cleanUp() {
+            planDesignServices.resetMapObjects();
+        }
+
+        var updateSliderInterval;
+
         function initialize () {
             vm.legend.construct = {
                 data: planDesignServices.getLegend()
@@ -198,6 +217,45 @@ angular.module('demoApp.planDesign')
             $rootScope.$on(TILES_LOADED, function(e, params){
                 alertServices.showToast(params.layer + ' layer successfully loaded', 'bottom right');
             });
+
+            var selection = [41, 80, 94, 99];
+
+            $(document).on('change', '#construct-completion-input-range', function(){
+                var propertyId = $(this).data('propertyid');
+                var value = $(this).val();
+                var closestValue = closest(value, selection);
+                //$(this).val(closestValue);
+
+                var index = selection.indexOf(closestValue);
+
+                planDesignServices.updateConstructInfoboxContent(propertyId, index);
+            });
+
+            $(document).on('click', '.construct-infowindow .play', function () {
+                $(this).hide();
+                $('.construct-infowindow .stop').css('display', 'inline-block');
+
+                var propertyId = $('#construct-completion-input-range').data('propertyid');
+
+                var index = 0;
+
+                updateSliderInterval = $interval(function(){
+                    if (index >= selection.length) index = 0;
+                    $('#construct-completion-input-range').val(selection[index]);
+                    planDesignServices.updateConstructInfoboxContent(propertyId, index);
+                    index++;
+                }, 2000, false);
+
+            });
+
+            $(document).on('click', '.construct-infowindow .stop', function () {
+                $(this).hide();
+                $('.construct-infowindow .play').css('display', 'inline-block');
+
+                if (updateSliderInterval) $interval.cancel(updateSliderInterval);
+            });
+
+            $scope.$on('$destroy', cleanUp);
 
             //var flag = _.map(vm.legend.hazard, function(item, key){
             //    console.log('item: ',item, ' key: ', key);

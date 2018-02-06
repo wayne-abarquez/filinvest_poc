@@ -75,9 +75,9 @@
     </md-fab-actions>
 </md-fab-speed-dial>
 
-
+<!-- CONSTRUCTION LEGEND -->
 <md-card id="construction-status-legend" ng-if="vm.legend.construct.show">
-    <label>Construction Status</label>
+    <label>Completion Status</label>
     <md-divider></md-divider>
     <ul>
         <li ng-repeat="(k,v) in vm.legend.construct.data">
@@ -87,6 +87,7 @@
     </ul>
 </md-card>
 
+<!-- HAZARD LEGEND -->
 <md-card id="hazard-legend"
          ng-class="{'legend-stack-top': vm.legend.construct.show, 'legend-hazard-initial': !vm.result.length}"
          ng-if="vm.legend.hazard.show">

@@ -2,97 +2,36 @@
     'use strict';
 
     angular.module('demoApp.selling')
-        .controller('sellingPageController', ['$rootScope', '$scope', 'propertyServices', 'INFOBOX_CLOSED', 'PROPERTY_MARKER_SELECTED', 'alertServices', 'floorplanServices', sellingPageController]);
+        .controller('sellingPageController', ['$rootScope', '$scope', 'propertyServices', 'INFOBOX_CLOSED', 'PROPERTY_MARKER_SELECTED', 'UNIT_MARKER_ICONS', 'MARKER_BASE_URL', 'alertServices', 'floorplanServices', sellingPageController]);
 
-    function sellingPageController($rootScope, $scope, propertyServices, INFOBOX_CLOSED, PROPERTY_MARKER_SELECTED, alertServices, floorplanServices) {
+    function sellingPageController($rootScope, $scope, propertyServices, INFOBOX_CLOSED, PROPERTY_MARKER_SELECTED, UNIT_MARKER_ICONS, MARKER_BASE_URL, alertServices, floorplanServices) {
         var vm = this;
-
-        //vm.form = {};
-        //vm.isFiltering = false;
-        //vm.hasSearched = false;
 
         vm.result = {
             items: []
         };
 
-        //vm.filter =  {
-        //    propTypeId: '', // property type id
-        //    propertyLocation: '', // property location
-        //    minPrice: '',
-        //    maxPrice: '',
-        //    propertyId: '' // property id
-        //};
+        vm.markerBaseUrl = MARKER_BASE_URL;
 
-        //vm.options = {
-        //    propTypes: [],
-        //    propsLocation: [],
-        //    propsList: []
-        //};
+        $rootScope.showUnitLegend = false;
 
-        vm.propertySelectedId = null;
+        $scope.propertySelectedId = null;
 
-        //vm.clearForm = clearForm;
-        //vm.search = search;
-        vm.onListItemClick = onListItemClick;
+        $scope.onListItemClick = onListItemClick;
 
-        //function clearForm() {
-        //    vm.filter = {};
-        //    vm.result = {
-        //        items: []
-        //    };
-        //    vm.propertySelectedId = null;
-        //
-        //    propertyServices.reset(true);
-        //    //TODO: hide all markers and infowindow
-        //    vm.form.$setPristine();
-        //    vm.form.$setValidity();
-        //    vm.form.$setUntouched();
-        //}
-        //
-        //function search() {
-        //    vm.hasSearched = true;
-        //
-        //    vm.isFiltering = true;
-        //    vm.propertySelectedId = null;
-        //
-        //    propertyServices.searchProperties(vm.filter)
-        //        .then(function (list) {
-        //            if (!vm.filter.propId) {
-        //                vm.options.propsList = [''].concat(list.map(function (item) {
-        //                    return {
-        //                        id: item.id,
-        //                        name: item.name
-        //                    }
-        //                }));
-        //            }
-        //
-        //            vm.result = {
-        //                province: 'Metro Manila Projects',
-        //                location: 'ALABANG',
-        //                projectName: 'Filinvest City',
-        //                items: [].concat(list)
-        //            };
-        //
-        //            // TODO: group the items by province
-        //            // TODO: then by location
-        //        })
-        //        .finally(function(){
-        //            vm.isFiltering = false;
-        //        });
-        //}
-
-        function onListItemClick(property) {
-            vm.propertySelectedId = property.id;
-            propertyServices.highlightProperty(property.id);
+        function onListItemClick(item) {
+            $scope.propertySelectedId = item.id;
+            propertyServices.highlightProperty(item.id);
         }
 
         function onPropertyInfoboxClosed(e, params) {
             propertyServices.setMarkerToDefault(params.propertyid);
-            vm.propertySelectedId = null;
+            $scope.propertySelectedId = null;
             floorplanServices.clearFloorplanControl();
         }
 
         function cleanUp() {
+            propertyServices.reset(true);
             $(document).off('click', '#show-property-gallery');
             $(document).off('click', '#show-property-floorplans');
             $(document).off('click', '#show-property-details');
@@ -107,18 +46,17 @@
         }
 
         function initialize() {
-            //propertyServices.getPropertyTypes()
-            //    .then(function (response) {
-            //        vm.options.propTypes = [''].concat(response.data);
-            //    });
-            //
-            //vm.options.propsLocation = [''].concat(propertyServices.getLocations());
-
             //$scope.$watch(function(){
             //    return vm.filter;
             //}, function(newValue, oldValue){
             //    console.log(newValue, ' = ', oldValue);
             //}, true);
+
+            $rootScope.markerBaseUrl = MARKER_BASE_URL;
+            $rootScope.unitMarkerIcons = angular.merge({}, UNIT_MARKER_ICONS);
+
+            console.log('markerbaseurl: ',vm.markerBaseUrl);
+            console.log('unit icons:',vm.unitMarkerIcons);
 
             $(document).on('click', '#show-property-gallery', function(e){
                 var propId = $(this).data('propertyid');
@@ -144,16 +82,16 @@
             $rootScope.$on(PROPERTY_MARKER_SELECTED, function(e, params){
                 if (!$scope.$$phase) {
                     $scope.$apply(function(){
-                        vm.propertySelectedId = params.propertyid;
+                        $scope.propertySelectedId = params.propertyid;
                     });
                 } else {
-                    vm.propertySelectedId = params.propertyid;
+                    $scope.propertySelectedId = params.propertyid;
                 }
 
                 propertyServices.highlightProperty(params.propertyid, true);
 
-                var container = $('#selling-page .property-list md-list'),
-                    scrollTo = $('#selling-page .property-list md-list md-list-item#property-item-' + params.propertyid);
+                var container = $('.property-list md-list'),
+                    scrollTo = $('.property-list md-list md-list-item#property-item-' + params.propertyid);
 
                 var scrollToValue = scrollTo.offset().top - container.offset().top + container.scrollTop();
 
@@ -163,6 +101,9 @@
             });
 
             $rootScope.$on(INFOBOX_CLOSED, onPropertyInfoboxClosed);
+
+
+
 
             $scope.$on('$destroy', cleanUp);
         }

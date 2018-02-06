@@ -8,7 +8,7 @@
             scope: '=',
             templateUrl: '/partials/selling/_property-filter.html',
             controllerAs: 'vm',
-            controller: ['propertyServices', function (propertyServices) {
+            controller: ['$scope', 'propertyServices', '$rootScope', 'ON_PROPERTY_FILTER_RESULT', function ($scope, propertyServices, $rootScope, ON_PROPERTY_FILTER_RESULT) {
                 var vm = this;
 
                 vm.form = {};
@@ -36,7 +36,7 @@
                     vm.result = {
                         items: []
                     };
-                    vm.propertySelectedId = null;
+                    $scope.propertySelectedId = null;
 
                     propertyServices.reset(true);
                     //TODO: hide all markers and infowindow
@@ -49,7 +49,7 @@
                     vm.hasSearched = true;
 
                     vm.isFiltering = true;
-                    vm.propertySelectedId = null;
+                    $scope.propertySelectedId = null;
 
                     propertyServices.searchProperties(vm.filter)
                         .then(function (list) {
@@ -69,6 +69,7 @@
                                 items: [].concat(list)
                             };
 
+                            $rootScope.$broadcast(ON_PROPERTY_FILTER_RESULT, vm.result);
                             // TODO: group the items by province
                             // TODO: then by location
                         })

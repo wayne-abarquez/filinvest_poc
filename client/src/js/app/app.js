@@ -4,14 +4,17 @@
     angular
         .module('demoApp', [
             'ui.router',
-            'ngMaterial',
             'ngMessages',
-            'ngHtmlWindow',
+            'ngAnimate',
+            'ngMaterial',
             'oitozero.ngSweetAlert',
             'demoApp.home',
             'demoApp.selling',
+            'demoApp.estateMgmt',
             'demoApp.planDesign',
-            'demoApp.operations'
+            'demoApp.operations',
+            'demoApp.permits',
+            'demoApp.gsn'
         ])
 
         .constant('APP_NAME', 'Filinvest')
@@ -22,6 +25,22 @@
         //    $mdThemingProvider.theme('default')
         //        .primaryPalette('indigo')
         //        .accentPalette('seaGreen');
+        //})
+
+        .factory('preventTemplateCache', function () {
+            var v = Date.now();
+            return {
+                'request': function (config) {
+                    if (config.url.indexOf('templates') !== -1) {
+                        config.url = config.url + '?t=' + v;
+                    }
+                    return config;
+                }
+            }
+        })
+
+        //.config(function ($httpProvider) {
+        //    $httpProvider.interceptors.push('preventTemplateCache');
         //})
 
         .config(function($stateProvider, $urlRouterProvider) {
@@ -54,6 +73,15 @@
                     controllerAs: 'vm'
                 })
 
+                // estate mgmt state
+                .state({
+                    name: 'map.estateMgmt',
+                    url: '/estate-mgmt',
+                    templateUrl: '/partials/estate-mgmt/index.page.html',
+                    controller: 'estateMgmtPageController',
+                    controllerAs: 'esMgmtCtl'
+                })
+
                 // planning and design
                 .state({
                     name: 'map.planDesign',
@@ -63,13 +91,31 @@
                     controllerAs: 'vm'
                 })
 
+                // permits
+                .state({
+                    name: 'map.permits',
+                    url: '/permits',
+                    templateUrl: '/partials/permits/index.page.html',
+                    controller: 'permitsPageController',
+                    controllerAs: 'pmtCtl'
+                })
+
+                // gsn
+                .state({
+                    name: 'map.gsn',
+                    url: '/gsn',
+                    templateUrl: '/partials/gsn/index.page.html',
+                    controller: 'gsnPageController',
+                    controllerAs: 'gsnCtl'
+                })
+
                 // operations
                 .state({
                     name: 'map.operations',
                     url: '/operations',
                     templateUrl: '/partials/operations/index.page.html',
                     controller: 'operationsPageController',
-                    controllerAs: 'vm'
+                    controllerAs: 'opCtl'
                 })
 
                 //.state('pageNotFoundState', {

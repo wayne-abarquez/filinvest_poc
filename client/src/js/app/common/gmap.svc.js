@@ -34,6 +34,9 @@
         service.lastInfoboxOpen = null;
         service.infoboxes = [];
 
+        service.placesService = null;
+
+
         var initialOverlayMapTypeSize = 6;
 
         /**
@@ -127,6 +130,8 @@
         service.initOverlayMapTypesArray = initOverlayMapTypesArray;
         service.loadGeoServerTiles1 = loadGeoServerTiles1;
         service.createMapLabel = createMapLabel;
+        service.getPlacesService = getPlacesService;
+        service.hideLabel = hideLabel;
 
 
         function apiAvailable() {
@@ -351,7 +356,7 @@
         function createCircleMarker(_position, color) {
             var icon = {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 5,
+                scale: 4,
                 fillColor: color || '#6ac1ff',
                 fillOpacity: 1,
                 strokeColor: 'black',
@@ -359,7 +364,7 @@
             };
 
             var marker = service.initMarker(_position, icon);
-            service.markers.push(marker);
+            //service.markers.push(marker);
 
             return marker;
         }
@@ -394,6 +399,10 @@
             markerArray.forEach(function (marker) {
                 service.showMarker(marker);
             });
+        }
+
+        function hideLabel(label) {
+            if (label) label.setMap(null);
         }
 
         function hideMarker(marker) {
@@ -1120,6 +1129,12 @@
             label.bindTo('position', marker, 'position');
 
             return label;
+        }
+
+        function getPlacesService() {
+            if (!service.placesService) service.placesService = new google.maps.places.PlacesService(service.map);
+
+            return service.placesService;
         }
 
        return service;

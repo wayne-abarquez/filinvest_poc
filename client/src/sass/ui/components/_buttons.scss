@@ -33,7 +33,6 @@
 
 .box-button {
   margin: 0;
-  //margin: 0.5rem;
   min-width: 60px;
   min-height: 55px;
 
@@ -45,4 +44,11 @@
     line-height: 1;
     padding: 0.5rem 0;
   }
+}
+
+.map-fab-top-right {
+  position: absolute;
+  right: 0;
+  top: 160px;
+  z-index: 20;
 }

@@ -25,10 +25,28 @@
         service.reset = reset;
         service.setBoundsFromProperties = setBoundsFromProperties;
         service.showGallery = showGallery;
+        service.getBoundsFromProperties = getBoundsFromProperties;
 
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
+        service.hideOnlyPropertyMarkers = hideOnlyPropertyMarkers;
+        service.showOnlyPropertyMarkers = showOnlyPropertyMarkers;
+
+        function hideOnlyPropertyMarkers() {
+            gmapServices.hideMarkers(propertyMarkers);
         }
+
+        function showOnlyPropertyMarkers() {
+            gmapServices.showMarkers(propertyMarkers);
+        }
+
+        function getBoundsFromProperties() {
+            return gmapServices.getBoundsFromPath(service.properties.map(function (item) {
+                return item.latlng;
+            }));
+        }
+
+        //function getRandomInt(min, max) {
+        //    return Math.floor(Math.random() * (max - min + 1)) + min;
+        //}
 
         function onClickPropertyMarker() {
             if (lastSelectedMarker && lastSelectedMarker.propertyid !== this.propertyid) lastSelectedMarker.setIcon(getMarkerDefaultIcon());
@@ -118,13 +136,13 @@
         }
 
         function reset(includeMarkers) {
+            setMarkerToDefault();
+            floorplanServices.clearFloorplanControl();
+
             if (includeMarkers) {
                 hidePropertyMarkers();
                 service.properties = [];
             }
-
-            setMarkerToDefault();
-            floorplanServices.clearFloorplanControl();
         }
 
         function setBoundsFromProperties () {

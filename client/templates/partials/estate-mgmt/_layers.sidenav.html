@@ -1,0 +1,110 @@
+<section id="poi-panel-container" ng-controller="layersPanelController as layerCtl" layout="column" flex
+         ng-cloak>
+
+    <md-sidenav class="md-sidenav-left md-whiteframe-4dp md-dialog-sm" md-disable-backdrop md-component-id="layerPanel"
+                style="max-width:250px;">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button ng-click="layerCtl.closeSidenav()" class="md-icon-button">
+                    <md-tooltip md-direction="top">Hide Panel</md-tooltip>
+                    <md-icon>chevron_left</md-icon>
+                </md-button>
+                <span style="font-size:14px;">Estate Management</span>
+                <span flex></span>
+                <!--<md-button ng-click="layerCtl.reload()" class="md-icon-button">
+                    <md-tooltip md-direction="top">Reload POIs</md-tooltip>
+                    <md-icon>refresh</md-icon>
+                </md-button>-->
+            </div>
+        </md-toolbar>
+
+        <md-content layout-padding flex>
+
+
+            <!-- FIRST LAYER -->
+            <v-accordion class="vAccordion--default" multiple
+                         layout-margin>
+                <v-pane id="{{parent.layerId}}"
+                        ng-repeat="parent in layerCtl.layers track by $index"
+                        expanded="parent.model">
+                    <v-pane-header>
+                        <div layout="row" flex>
+                            <md-switch class="switch-sm md-default" md-no-ink
+                                       ng-change="layerCtl.toggleLayer(parent.model, parent)"
+                                       ng-model="parent.model">
+                                <img ng-if="parent.icon"
+                                     class="md-whiteframe-1dp"
+                                     ng-src="{{ parent.icon }}" alt="">
+                                <span>{{ parent.label }}</span>
+                            </md-switch>
+                        </div>
+                    </v-pane-header>
+                    <v-pane-content> <!--  ng-show="parent.children && parent.children.length" -->
+
+                        <!-- SECOND LAYER -->
+                        <v-accordion class="vAccordion--default" multiple
+                                     layout-margin
+                                     ng-if="parent.children && parent.children.length">
+                            <v-pane id="{{ child.layerId }}"
+                                    ng-repeat="child in parent.children"
+                                    expanded="child.model">
+                                <v-pane-header>
+                                    <div layout="row" flex>
+                                        <md-switch class="switch-sm md-default"
+                                                   ng-change="layerCtl.toggleLayer(child.model, child)"
+                                                   ng-model="child.model">
+                                            <img ng-if="child.icon"
+                                                 class="md-whiteframe-1dp"
+                                                 ng-src="{{child.icon}}" alt="">
+                                            <span>{{ child.label }}</span>
+                                        </md-switch>
+                                    </div>
+                                </v-pane-header>
+                                <v-pane-content>
+
+                                    <!-- THIRD LAYER -->
+                                    <v-accordion class="vAccordion--default" multiple
+                                                 layout-margin
+                                                 ng-if="child.children && child.children.length">
+                                        <v-pane id="{{ childer.layerId }}"
+                                                ng-repeat="childer in child.children"
+                                                expanded="childer.model">
+                                            <v-pane-header>
+                                                <div layout="row" flex>
+                                                    <md-switch class="switch-sm md-default"
+                                                               ng-change="layerCtl.toggleLayer(childer.model, childer)"
+                                                               ng-model="childer.model">
+                                                        <span class="circle"
+                                                              ng-style="childer.color ? { backgroundColor: childer.color } : { backgroundColor: '#95a5a6' }"></span>
+                                                        <img ng-if="childer.icon"
+                                                             class="md-whiteframe-1dp"
+                                                             ng-src="{{ childer.icon }}"
+                                                             alt="">
+                                                        <span>{{ childer.label }}</span>
+                                                    </md-switch>
+                                                </div>
+                                            </v-pane-header>
+                                            <v-pane-content>
+
+
+                                            </v-pane-content>
+                                        </v-pane>
+                                    </v-accordion>
+
+                                </v-pane-content>
+                            </v-pane>
+                        </v-accordion>
+
+
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+
+
+
+
+        </md-content>
+
+    </md-sidenav>
+</section>

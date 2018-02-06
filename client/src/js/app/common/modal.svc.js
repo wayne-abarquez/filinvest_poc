@@ -16,6 +16,7 @@
         service.showPropertyGallery = showPropertyGallery;
         service.showFloorPlanGallery = showFloorPlanGallery;
         service.showUnitPlanGallery = showUnitPlanGallery;
+        service.showUnitInteriorGallery = showUnitInteriorGallery;
 
         service.hideResolveModal = hideResolveModal;
         service.closeModal = closeModal;
@@ -118,6 +119,32 @@
                 templateUrl: '/partials/selling/_property-gallery.modal.html',
                 hasBackdrop: true,
                 locals: {property: property_},
+                multiple: true,
+                fullscreen: true,
+                onComplete: function (scope, element) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                },
+                onShowing: function (scope, element) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 1);
+                    $(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                },
+                onRemoving: function (element, removePromise) {
+                    $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
+                    $(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
+
+        function showUnitInteriorGallery(unitName, unitType) {
+            var unit = {name: unitName, type: unitType};
+
+            var opts = {
+                controller: 'propertyUnitInteriorGalleryController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/selling/_unit-interior-gallery.modal.html',
+                hasBackdrop: true,
+                locals: {unit: unit},
                 multiple: true,
                 fullscreen: true,
                 onComplete: function (scope, element) {
