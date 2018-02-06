@@ -22,10 +22,23 @@
 
   // Pages
   "partials/selling/_selling_page",
+  "partials/selling/_property_filter",
+  "partials/selling/_property_list",
   "partials/selling/_floor",
-  "partials/selling/_property_details.modal"
+  "partials/selling/_property_details.modal",
+
+  "partials/estate-mgmt/_estate_mgmt_page",
+
+  "partials/plan-design/_plan_design_page",
+
+  "partials/operations/_operations_page",
+
+  "partials/permits/_permits_page",
+
+  "partials/gsn/_gsn_page",
 
   // Libraries Overrides
-  //"libs/_v-accordion"
+  "libs/_v-accordion",
+  "libs/_bootstrap-labels-badges"
 
 ;

@@ -10,6 +10,8 @@
 
         .constant('PROPERTY_MARKER_SELECTED', 'PROPERTY_MARKER_SELECTED')
 
+        .constant('ON_PROPERTY_FILTER_RESULT', 'ON_PROPERTY_FILTER_RESULT')
+
         .constant('UNIT_MARKER_ICONS', {
             'sold': 'unit_pinlet-small-sold.png',
             'vacant': 'unit_pinlet-small-vacant.png',

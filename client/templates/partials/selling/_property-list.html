@@ -1,0 +1,15 @@
+<div class="property-list" layout="column" flex ng-cloak>
+    <md-list flex ng-if="result.items.length">
+        <md-subheader class="md-no-sticky">{{ result.province }}</md-subheader>
+        <md-subheader class="md-no-sticky md-subheader-location">{{ result.location }}</md-subheader>
+        <md-subheader class="md-no-sticky">{{ result.projectName }}</md-subheader>
+        <md-list-item class="md-3-line"
+                      id="property-item-{{item.id}}"
+                      ng-class="{'option-prop-selected': propertySelectedId == item.id}"
+                      ng-repeat="item in result.items"
+                      ng-click="onListItemClick(item)">
+            <p>{{ item.name | capitalize }}</p>
+        </md-list-item>
+    </md-list>
+    <!--<p style="text-align:center;" layout-padding ng-if="!result.items.length && hasSearched">No result</p>-->
+</div>

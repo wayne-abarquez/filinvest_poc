@@ -29,46 +29,65 @@
                 icon: 'local_atm'
             },
             {
-                state: 'estate-mgmt',
+                state: 'map.estateMgmt',
                 title: 'Estate Mgmt',
                 icon: 'account_balance'
             },
+            //{
+            //    state: 'property-mgmt',
+            //    title: 'Property Mgmt',
+            //    icon: 'store_mall_directory'
+            //},
+            //{
+            //    state: 'business-dev',
+            //    title: 'Business Development',
+            //    icon: 'work'
+            //},
             {
-                state: 'property-mgmt',
-                title: 'Property Mgmt',
-                icon: 'store_mall_directory'
-            },
-            {
-                state: 'business-dev',
-                title: 'Business Development',
-                icon: 'work'
-            },
-            {
-                state: 'planning-design',
+                state: 'map.planDesign',
                 title: 'Planning and Design',
-                icon: 'build'
+                icon: 'build',
+                isToggled: false,
+                children: [
+                    {
+                        state: 'planning-design.construction-status',
+                        title: 'Construction Status',
+                        icon: 'build',
+                    },
+                    {
+                        state: 'planning-design.hazard',
+                        title: 'Hazard',
+                        icon: 'build',
+                    }
+                ]
             },
             {
-                state: 'permits',
+                state: 'map.permits',
                 title: 'Permits',
                 icon: 'assignment'
             },
             {
-                state: 'gsn',
+                state: 'map.gsn',
                 title: 'GSN',
                 icon: 'person_pin'
             },
             {
-                state: 'operations',
+                state: 'map.operations',
                 title: 'Operations',
                 icon: 'autorenew'
             }
         ];
 
+        vm.onItemClick = onItemClick;
         vm.toggleMainMenu = buildToggler('mainMenuSidenav');
         vm.openRightMenu = openRightMenu;
         vm.logout = logout;
 
+
+        function onItemClick(item) {
+            item.isToggled = !item.isToggled;
+            console.log('onItemClick: ', item);
+        }
 
         function buildToggler(navID) {
             return function () {

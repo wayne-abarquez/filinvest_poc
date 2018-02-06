@@ -1,5 +1,4 @@
-<md-sidenav ng-click="mainCtl.toggleMainMenu()"
-            md-component-id="mainMenuSidenav"
+<md-sidenav md-component-id="mainMenuSidenav"
             class="md-whiteframe-z2"
             id="main-menu-sidenav">
     <div class="user-info">
@@ -14,7 +13,7 @@
     <md-list>
         <md-list-item ng-repeat="it in mainCtl.menu">
             <md-divider></md-divider>
-            <a ui-sref="{{it.state}}">
+            <a ui-sref="{{it.state}}" ng-click="mainCtl.toggleMainMenu()">
                 <md-icon>{{it.icon}}</md-icon>
                 <span class="title">{{it.title}}</span>
                 <span class="arrow material-icons">keyboard_arrow_right</span>

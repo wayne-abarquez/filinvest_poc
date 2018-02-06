@@ -1,0 +1,86 @@
+#permits-page {
+
+}
+
+//#side-panel-container {
+  md-sidenav.permits-sidenav-panel {
+
+    md-content {
+      padding: 8px 0;
+
+      .result-header {
+        img {
+          max-width: 200px;
+          max-height: 70px !important;
+        }
+      }
+
+      .filter-container {
+        form {
+          padding: 0 12px;
+
+          md-input-container {
+            margin: 8px 0;
+          }
+          button.md-button {
+            margin: 0;
+          }
+        }
+      }
+
+      .completion-container-result {
+        padding: 8px;
+        font-size: 13px;
+        @extend .text-muted;
+
+        label {
+          font-weight:600;
+        }
+
+
+        div.img-container {
+          margin: 5px 0;
+          img {
+            min-width: 225px;
+            max-width: 225px;
+            max-height: 80px;
+            object-fit: cover;
+
+          }
+        }
+      }
+
+      .permits-result-container {
+        table {
+          padding: 0 4px;
+          border-collapse: collapse;
+          border: 1px solid #eceeef;
+          font-size: 13px;
+
+          thead {
+            tr {
+              th {
+                border: 1px solid #eceeef;
+                text-align: left;
+              }
+            }
+          }
+
+          tbody {
+            tr {
+              td {
+                border: 1px solid #eceeef;
+              }
+              td:last-of-type {
+                text-align: right;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+//}

@@ -111,3 +111,18 @@
 .unit-occupied {
   color: #9b59b6;
 }
+
+.sellers-hub-logo-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 8px;
+  background-color: $primary-color;
+  border-radius: 50px;
+  border: solid rgba(0, 0, 0, 0.10) 1px;
+  padding: 5px 0;
+
+  img {
+    max-width: 150px;
+  }
+}

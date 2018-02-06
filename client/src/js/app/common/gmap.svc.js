@@ -34,6 +34,11 @@
         service.lastInfoboxOpen = null;
         service.infoboxes = [];
 
+        service.placesService = null;
+
+
+        var initialOverlayMapTypeSize = 6;
+
         /**
          * Service Functions
          */
@@ -121,6 +126,12 @@
         service.triggerEvent = triggerEvent;
         service.animateMarker = animateMarker;
         service.hyperZoomToPosition = hyperZoomToPosition;
+        service.loadGeoServerTiles = loadGeoServerTiles;
+        service.initOverlayMapTypesArray = initOverlayMapTypesArray;
+        service.loadGeoServerTiles1 = loadGeoServerTiles1;
+        service.createMapLabel = createMapLabel;
+        service.getPlacesService = getPlacesService;
+        service.hideLabel = hideLabel;
 
 
         function apiAvailable() {
@@ -345,7 +356,7 @@
         function createCircleMarker(_position, color) {
             var icon = {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 5,
+                scale: 4,
                 fillColor: color || '#6ac1ff',
                 fillOpacity: 1,
                 strokeColor: 'black',
@@ -353,7 +364,7 @@
             };
 
             var marker = service.initMarker(_position, icon);
-            service.markers.push(marker);
+            //service.markers.push(marker);
 
             return marker;
         }
@@ -388,6 +399,10 @@
             markerArray.forEach(function (marker) {
                 service.showMarker(marker);
             });
+        }
+
+        function hideLabel(label) {
+            if (label) label.setMap(null);
         }
 
         function hideMarker(marker) {
@@ -677,19 +692,21 @@
             service.panTo(bounds.getCenter());
         }
 
-        function createPolyline(path, lineColor) {
+        function createPolyline(path, opts) {
             if (!service.apiAvailable()) return null;
-            var polylineOptions = {
+
+            var polylineOptions = angular.extend({}, {
                 path: path,
-                clickable: true,
+                clickable: false,
                 draggable: false,
                 editable: false,
                 map: service.map,
-                strokeColor: lineColor || '#ff0000',
+                strokeColor: '#ff0000',
                 strokeOpacity: 1,
-                strokeWeight: 2,
+                strokeWeight: 1,
                 zIndex: 100
-            };
+            }, opts);
+
             return new google.maps.Polyline(polylineOptions);
         }
 
@@ -884,7 +901,7 @@
                 getTileUrl: function (coord, zoom) {
                     var z2 = Math.pow(2, zoom);
                     var y = coord.y,
-                        x = coord.x >= 0 ? coord.x : z2 + coord.x
+                        x = coord.x >= 0 ? coord.x : z2 + coord.x;
 
                     return srcUrl + '/' + zoom + "/" + x + "/" + y + ".png";
                 },
@@ -948,7 +965,179 @@
             setMapCenter(latLng);
         }
 
-        return service;
+        function initOverlayMapTypesArray() {
+            if (!service.map.overlayMapTypes.getLength()) {
+                for (var i = 0; i < initialOverlayMapTypeSize; i++) {
+                    service.map.overlayMapTypes.push(null);
+                }
+            }
+        }
+
+        /**
+         * Converts point with projection 4326 to 3857
+         * @param latLng
+         * @returns {{lng: number, lat: number}}
+         */
+        function srsConversion(latLng) {
+            if ((Math.abs(latLng.lng()) > 180 || Math.abs(latLng.lat()) > 90))
+                return;
+
+            var num = latLng.lng() * 0.017453292519943295;
+            var x = 6378137.0 * num;
+            var a = latLng.lat() * 0.017453292519943295;
+
+            return {lng: x, lat: 3189068.5 * Math.log((1.0 + Math.sin(a)) / (1.0 - Math.sin(a)))};
+        }
+
+        //function loadGeoServerTiles(srcUrl, insertIndex, layerName) {
+        //    if (!service.apiAvailable()) return;
+        //
+        //    var url,
+        //        s,
+        //        twidth = 256,
+        //        theight = 256;
+        //
+        //    var _insertIndex = insertIndex || 0;
+        //
+        //    var imageTile = new google.maps.ImageMapType({
+        //        getTileUrl: function (coord, zoom) {
+        //            // Compose URL for overlay tile
+        //                s = Math.pow(2, zoom);
+        //                twidth = 256;
+        //                theight = 256;
+        //
+        //            //latlng bounds of the 4 corners of the google tile
+        //            //Note the coord passed in represents the top left hand (NW) corner of the tile.
+        //            var swLatLng = service.map.getProjection().fromPointToLatLng(new google.maps.Point(coord.x * twidth / s, (coord.y + 1) * theight / s)); // bottom left / SW
+        //            var neLatLng = service.map.getProjection().fromPointToLatLng(new google.maps.Point((coord.x + 1) * twidth / s, coord.y * theight / s)); // top right / NE
+        //
+        //            // Bounding box coords for tile in WMS pre-1.3 format (x,y)
+        //            var bbox = parseFloat(swLatLng.lat()) + "," + parseFloat(swLatLng.lng()) + "," + parseFloat(neLatLng.lat()) + "," + parseFloat(neLatLng.lng());
+        //
+        //            url = srcUrl + '&BBOX=' + bbox; // set bounding box for tile
+        //
+        //            return url;
+        //        },
+        //        tileSize: new google.maps.Size(256, 256),
+        //        isPng: true,
+        //        opacity: 1.0
+        //    });
+        //
+        //    service.map.overlayMapTypes.insertAt(_insertIndex, imageTile);
+        //
+        //    return imageTile;
+        //}
+
+        // this is for fault line
+        function loadGeoServerTiles1(srcUrl, insertIndex, layerName) {
+            if (!service.apiAvailable()) return;
+
+            var url,
+                bbox,
+                twidth = 256,
+                theight = 256,
+                _insertIndex = insertIndex || 0;
+
+            var imageTile = new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    var proj = service.map.getProjection();
+
+                    var zfactor = Math.pow(2, zoom),
+                        twidth = 256,
+                        theight = 256;
+
+                    var top = proj.fromPointToLatLng(new google.maps.Point(coord.x * twidth / zfactor, coord.y * theight / zfactor));
+                    var bot = proj.fromPointToLatLng(new google.maps.Point((coord.x + 1) * twidth / zfactor, (coord.y + 1) * theight / zfactor));
+
+                    bbox = top.lng() + "," + bot.lat() + "," + bot.lng() + "," + top.lat();
+
+                    url = srcUrl + '&BBOX=' + bbox; // set bounding box for tile
+
+                    return url;
+                },
+                tileSize: new google.maps.Size(256, 256),
+                isPng: true,
+                opacity: 1.0,
+                name: layerName
+            });
+
+            service.map.overlayMapTypes.insertAt(_insertIndex, imageTile);
+
+            return imageTile;
+        }
+
+        function loadGeoServerTiles(srcUrl, insertIndex, layerName, is3857) {
+            if (!service.apiAvailable()) return;
+
+            var url,
+                bbox,
+                s,
+                twidth = 256,
+                theight = 256,
+                swLatLng,
+                neLatLng,
+                swComp,
+                neComp;
+
+            var _insertIndex = insertIndex || 0;
+
+            var imageTile = new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    // Compose URL for overlay tile
+                    s = Math.pow(2, zoom);
+                    twidth = 256;
+                    theight = 256;
+
+                    //latlng bounds of the 4 corners of the google tile
+                    //Note the coord passed in represents the top left hand (NW) corner of the tile.
+                    swComp = {
+                        x: coord.x * twidth / s,
+                        y: (coord.y + 1) * theight / s
+                    };
+
+                    neComp = {
+                        x: (coord.x + 1) * twidth / s,
+                        y: coord.y * theight / s
+                    };
+
+                    swLatLng = service.map.getProjection().fromPointToLatLng(new google.maps.Point(swComp.x, swComp.y)); // bottom left / SW
+                    neLatLng = service.map.getProjection().fromPointToLatLng(new google.maps.Point(neComp.x, neComp.y)); // top right / NE
+
+                    if (is3857) {
+                        swLatLng = srsConversion(swLatLng);
+                        neLatLng = srsConversion(neLatLng);
+                    }
+
+                    bbox = swLatLng.lng + ',' + swLatLng.lat + ',' + neLatLng.lng + ',' + neLatLng.lat;
+
+                    return srcUrl + '&BBOX=' + bbox; // set bounding box for tile
+                },
+                tileSize: new google.maps.Size(256, 256),
+                isPng: true,
+                opacity: 1.0,
+                name: layerName
+            });
+
+            service.map.overlayMapTypes.insertAt(_insertIndex, imageTile);
+
+            return imageTile;
+        }
+
+        function createMapLabel(content, marker) {
+            var label = new Label({map: service.map, text: content});
+
+            label.bindTo('position', marker, 'position');
+
+            return label;
+        }
+
+        function getPlacesService() {
+            if (!service.placesService) service.placesService = new google.maps.places.PlacesService(service.map);
+
+            return service.placesService;
+        }
+
+       return service;
     }
 }());
 

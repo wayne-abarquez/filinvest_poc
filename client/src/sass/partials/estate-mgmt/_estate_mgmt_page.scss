@@ -1,0 +1,23 @@
+#estate-mgmt-page {
+
+}
+
+#poi-panel-container {
+  md-sidenav {
+    z-index: 21 !important;
+
+    md-content {
+      v-accordion {
+        margin: 0;
+        padding: 6px 6px 6px 20px;
+
+        span.circle {
+          display: inline-block !important;
+          width: 10px !important;
+          height: 10px !important;
+          border-radius: 50% !important;
+        }
+      }
+    }
+  }
+}

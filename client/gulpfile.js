@@ -19,7 +19,8 @@ gulp.paths = {
     templates: templatesDir,
     destFonts: templatesDir + 'fonts/',
     destCss: templatesDir + 'css/',
-    destJs: templatesDir + 'js/'
+    destJs: templatesDir + 'js/',
+    nodeModulesDir: 'node_modules/'
 };
 
 require('require-dir')('./gulp');

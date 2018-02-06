@@ -1,0 +1,14 @@
+<div id="permits-page" class="md-whiteframe-4dp" layout="column" flex>
+
+</div>
+
+<section flex>
+    <div ng-include="'partials/permits/_sidepanel.sidenav.html'" ng-cloak></div>
+</section>
+
+<md-button class="md-fab md-fab-top-left"
+           ng-click="pmtCtl.toggleSidePanel()">
+    <md-tooltip md-direction="top">Show Filter</md-tooltip>
+    <md-icon>filter_list</md-icon>
+</md-button>
+

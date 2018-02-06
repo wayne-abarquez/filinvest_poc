@@ -12,8 +12,10 @@ property_fields = dict(
     id=fields.Integer,
     typeid=fields.Integer,
     name=fields.String,
+    location=fields.String,
     latlng=PointToLatLng(attribute='latlng'),
     price=fields.Float,
+    completion=fields.Integer,
     status=fields.String,
     date_created=fields.DateTime("iso8601"),
     date_modified=fields.DateTime("iso8601")

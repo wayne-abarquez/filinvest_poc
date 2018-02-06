@@ -1,0 +1,85 @@
+<section id="side-panel-container" ng-controller="sidePanelController as panelCtl" layout="column" flex
+         ng-cloak>
+
+    <md-sidenav class="permits-sidenav-panel md-sidenav-left md-whiteframe-4dp md-dialog-sm" md-disable-backdrop md-component-id="sidePanel"
+                style="max-width:250px;">
+
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button ng-click="panelCtl.toggleSidenav()" class="md-icon-button">
+                    <md-tooltip md-direction="right">Hide Panel</md-tooltip>
+                    <md-icon>chevron_left</md-icon>
+                </md-button>
+                <span style="font-size:14px;">Permits</span>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-content layout="column" flex>
+
+            <section class="result-header" layout="row" layout-align="center center">
+                <img ng-src="{{panelCtl.result.headerImageSrc}}" alt="">
+            </section>
+
+            <section class="filter-container" layout="row">
+                <form name="panelCtl.form" flex layout="column">
+                    <md-input-container>
+                        <label>Tower</label>
+                        <md-select ng-model="panelCtl.filter.location">
+                            <md-option ng-value="loc"
+                                       ng-repeat="loc in panelCtl.options.propsLocation">{{ loc | capitalize }}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-input-container>
+                        <label>Permit</label>
+                        <md-select ng-model="panelCtl.filter.location">
+                            <md-option ng-value="loc"
+                                       ng-repeat="loc in panelCtloptions.propsLocation">{{ loc | capitalize }}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <div layout="row">
+                        <md-button ng-click="panelCtl.clearForm()">Clear</md-button>
+                        <md-button ng-click="panelCtl.search()" class="md-primary"
+                                   ng-disabled="panelCtl.form.$invalid || panelCtl.isFiltering">Search
+                        </md-button>
+                    </div>
+                </form>
+            </section>
+
+
+            <section class="completion-container-result" layout="column" ng-if="panelCtl.result.completion">
+                <label>Permits and Status:</label>
+                <div>
+                    <span>{{ panelCtl.result.completion.tower | capitalize }}</span> - <span style="color:orange;">{{ panelCtl.result.completion.completionPercentage }}</span>% Completed
+                </div>
+                <div>
+                    As of <span>{{ panelCtl.result.completion.date | capitalize }}</span>
+                </div>
+                <div class="img-container">
+                    <img ng-src="{{ panelCtl.result.completion.imageSrc }}" alt="">
+                </div>
+            </section>
+
+            <section class="permits-result-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th ng-repeat="item in panelCtl.table.header">{{ item | capitalize }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in panelCtl.result.permits">
+                            <td ng-repeat="item in panelCtl.table.header">
+                                {{ row[item] }}%
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </md-content>
+
+    </md-sidenav>
+</section>

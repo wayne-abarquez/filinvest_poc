@@ -1,0 +1,108 @@
+#plan-design-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 300px;
+
+  .md-dialog-content {
+    background-color: #fff;
+    max-height: calc(100vh - 107px);
+    overflow-y: auto;
+
+    md-list {
+      md-list-item {
+        .md-list-item-inner {
+          .label {
+            margin: 0 2px;
+            color: #fff;
+            line-height: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+#hazard-options {
+  top: 220px;
+  right: 0;
+}
+
+#construction-status-btn {
+  position: absolute;
+  top: 175px;
+  right: 0;
+  z-index: 20;
+}
+
+
+.legend-default {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  z-index: 20;
+  padding: 8px;
+  margin: 5px;
+}
+
+.legend-stack-top {
+  top: 150px !important;
+}
+
+.legend-hazard-initial {
+  left: 0 !important;
+  bottom: 0 !important;
+  top: auto !important;
+}
+
+#construction-status-legend {
+  @extend .legend-default;
+
+  label {
+    padding: 0 3px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  md-divider {
+    margin: 3px 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      padding: 3px 0 0;
+
+      img {
+        max-width: 15px;
+        margin-right: 5px;
+      }
+
+      span {
+        font-size: 12px;
+        font-weight: 600;
+        vertical-align: super;
+      }
+    }
+  }
+}
+
+
+#hazard-legend {
+  @extend .legend-default;
+
+  .hazard-legend-flood {
+    img {
+      max-width: 130px;
+    }
+  }
+
+  .hazard-legend-faultline {
+    img {
+      max-width: 230px;
+    }
+  }
+}

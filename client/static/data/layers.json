@@ -1,0 +1,62 @@
+[
+  {
+    "label": "Facilities",
+    "layerId": 1,
+    "icon": "",
+    "children": [
+      {
+        "label": "BCN",
+        "layerId": 2,
+        "icon": "",
+        "children": [
+        ]
+      },
+      {
+        "label": "Manhole",
+        "layerId": 3,
+        "icon": "",
+        "children": [
+          {
+            "label": "Globe MH",
+            "layerId": 4,
+            "color": "#4190df"
+          },
+          {
+            "label": "PLDT MH",
+            "layerId": 7,
+            "color": "#fb40c5"
+          }
+        ]
+      },
+      {
+        "label": "Hydrant",
+        "layerId": 10,
+        "icon": "",
+        "children": [
+          {
+            "label": "E-Hydrant",
+            "layerId": 11,
+            "color": "#4836f7"
+          },
+          {
+            "label": "P-Hydrant",
+            "layerId": 12,
+            "color": "#f90d22"
+          }
+        ]
+      },
+      {
+        "label": "Lug",
+        "layerId": 13,
+        "icon": "",
+        "children": [
+          {
+            "label": "Meralco Pole",
+            "layerId": 14,
+            "color": "#68a977"
+          }
+        ]
+      }
+    ]
+  }
+]

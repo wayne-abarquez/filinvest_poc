@@ -1,0 +1,25 @@
+<div id="operations-page" class="md-whiteframe-4dp" layout="column" flex>
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <filter-address-bar></filter-address-bar>
+        </div>
+    </md-toolbar>
+
+    <div class="md-dialog-content" flex="nogrow">
+        <property-filter></property-filter>
+    </div>
+
+    <property-list on-item-marker-click="onItemMarkerClick" on-list-item-click="onListItemClick" result="vm.result"
+                   property-selected-id="propertySelectedId"></property-list>
+</div>
+
+<section flex>
+    <div ng-include="'partials/operations/_places-of-interest.sidenav.html'" ng-cloak></div>
+</section>
+
+<md-button class="md-icon-button md-raised md-accent md-primary map-fab-top-right"
+           ng-click="opCtl.showPOIPanel()">
+    <md-tooltip md-direction="left">Show Places of Interest</md-tooltip>
+    <md-icon>layers</md-icon>
+</md-button>
+

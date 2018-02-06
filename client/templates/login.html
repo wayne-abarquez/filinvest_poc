@@ -15,7 +15,7 @@
 {% raw %}
 <div class="full-height full-bg-image" ng-cloak>
     <div id="ui-login" class="login-frame" layout-fill flex layout="column">
-        <div flex-lg="10" layout="row" class="header-container">
+        <div flex-lg="10" layout="row" class="header-container" hide-xs>
             <div class="company-logo-container" layout="column" layout-align="center center">
                 <a>
                     <img class="company-logo" src="/resources/images/company_logo.png">
@@ -30,14 +30,14 @@
         <div class="ui-login-container"  layout="row" flex layout-fill layout-align="end start">
             <span flex="15"></span>
 
-            <div id="login-img-left" layout="column" layout-align="center center">
+            <div id="login-img-left" layout="column" layout-align="center center" hide-xs hide-sm>
                 <img flex src="/resources/images/navigation-map-with-red-pin.png">
             </div>
 
             <span flex></span>
 
-            <div flex="30" flex-lg="30" flex-md="70" flex-sm="100" style=" margin: 1rem 5rem 0 0;">
-                <md-card>
+            <div flex-gt-md="25" flex-lt-md="100" style="margin: 1rem 5rem 0 0;">
+                <md-card flex-lt-md="100">
                     <md-toolbar id="login-toolbar" layout="column" layout-align="center center">
                         <div class="padding-20 text-center" flex>
                             <!--<div><img ng-src="/resources/images/navagis_logo.png" alt=""></div>
@@ -50,18 +50,6 @@
 {% endraw %}
                         <form name="login" action="" method="POST" novalidate>
                             {{ form.csrf_token }}
-
-                            <div class="login-errors">
-                            {% with messages = get_flashed_messages() %}
-                                {% if messages %}
-                                    <ul>
-                                        {% for message in messages %}
-                                            <li>{{message}}</li>
-                                        {% endfor %}
-                                    </ul>
-                                {% endif %}
-                            {% endwith %}
-                            </div>
 
 {% raw %}
                         <!-- <div class="login-errors"><span>Invalid Username/Password.</span></div> -->
@@ -80,6 +68,21 @@
                                     <div ng-message when="required"><span>Please Enter Password</span></div>
                                 </div>
                             </md-input-container>
+                            {% endraw %}
+
+                            <div class="login-errors">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                <ul>
+                                    {% for message in messages %}
+                                    <li>{{message}}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+
+                            {% raw %}
 
                             <!--<div layout="row" layout-align="space-between center">-->
                             <div layout="row" layout-align="end end">

@@ -1,0 +1,12 @@
+$height: 40px;
+
+.md-dialog-sm {
+  md-toolbar {
+    height: $height;
+    min-height: $height;
+
+    .md-toolbar-tools {
+      height: $height;
+    }
+  }
+}

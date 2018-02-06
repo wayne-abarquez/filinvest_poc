@@ -8,13 +8,24 @@
         var service = {};
 
         service.getProperties = getProperties;
+        service.getPropertiesByBounds = getPropertiesByBounds;
         service.getPropertyTypes = getPropertyTypes;
 
         service.loadFloorplan = loadFloorplan;
         service.getFloorUnits = getFloorUnits;
 
+        service.getLayersData = getLayersData;
+        service.getLayer = getLayer;
+
+        service.getFaultLineData = getFaultLineData;
+
+
         function getProperties(filter) {
             return webRequest.get('/api/properties', filter);
+        }
+
+        function getPropertiesByBounds(boundsParam) {
+            return webRequest.get('/api/properties', {bounds: boundsParam});
         }
 
         function getPropertyTypes() {
@@ -49,6 +60,43 @@
                     }
 
                     dfd.resolve(foundFloor || response.data[0]);
+                }, function (err) {
+                    dfd.reject(err);
+                });
+
+            return dfd.promise;
+        }
+
+        function getFaultLineData() {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/faultline-data.json')
+                .then(function (response) {
+                    dfd.resolve(response.data);
+                }, function (err) {
+                    dfd.reject(err);
+                });
+            return dfd.promise;
+        }
+
+        function getLayersData() {
+            var dfd = $q.defer();
+
+            webRequest.get('/static/data/layers.json')
+                .then(function(response){
+                    dfd.resolve(response.data);
+                }, function(err){
+                    dfd.reject(err);
+                });
+            return dfd.promise;
+        }
+
+        function getLayer(url) {
+            var dfd = $q.defer();
+
+            webRequest.get(url)
+                .then(function (response) {
+                    dfd.resolve(response.data);
                 }, function (err) {
                     dfd.reject(err);
                 });

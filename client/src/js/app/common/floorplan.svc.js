@@ -2,10 +2,49 @@
 'use strict';
 
 angular.module('demoApp')
-    .factory('floorplanServices', ['webServices', 'gmapServices', '$timeout', '$filter', 'MARKER_BASE_URL', 'UNIT_MARKER_ICONS', floorplanServices]);
+    .factory('floorplanServices', ['webServices', 'gmapServices', '$timeout', 'MARKER_BASE_URL', 'UNIT_MARKER_ICONS', 'infoboxServices', floorplanServices]);
 
-    function floorplanServices (webServices, gmapServices, $timeout, $filter, MARKER_BASE_URL, UNIT_MARKER_ICONS) {
+    function floorplanServices (webServices, gmapServices, $timeout, MARKER_BASE_URL, UNIT_MARKER_ICONS, infoboxServices) {
         var service = {};
+
+        var unitImages = {
+            'studio': {
+                'hi-res': [
+                    '/images/properties/studio-city/interior/units/studio/livingdining-1br.jpg',
+                    '/images/properties/studio-city/interior/units/studio/livingdining-2br.jpg',
+                    '/images/properties/studio-city/interior/units/studio/living-2br.jpg',
+                    '/images/properties/studio-city/interior/units/studio/kidsbr-2br.jpg',
+                    '/images/properties/studio-city/interior/units/studio/Bedroom-2br.jpg',
+                    '/images/properties/studio-city/interior/units/studio/bedroom2-2BR.jpg'
+                ],
+                'thumbnails': [
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/livingdining-1br_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/livingdining-2br_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/living-2br_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/kidsbr-2br_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/Bedroom-2br_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/studio/bedroom2-2BR_tn.jpg'
+                ]
+            },
+            '1-bedroom': {
+                'hi-res': [
+                    '/images/properties/studio-city/interior/units/1-bedroom/1-1.jpg',
+                    '/images/properties/studio-city/interior/units/1-bedroom/2-1.jpg',
+                    '/images/properties/studio-city/interior/units/1-bedroom/3.jpg',
+                    '/images/properties/studio-city/interior/units/1-bedroom/5.jpg',
+                    '/images/properties/studio-city/interior/units/1-bedroom/6.jpg',
+                    '/images/properties/studio-city/interior/units/1-bedroom/7.jpg'
+                ],
+                'thumbnails': [
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/1-1_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/2-1_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/3_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/5_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/6_tn.jpg',
+                    '/images/properties/studio-city/thumbnails/interior/units/1-bedroom/7_tn.jpg'
+                ]
+            }
+        };
 
         var floorData,
             floorControl;
@@ -16,11 +55,17 @@ angular.module('demoApp')
         var floorUnits = [],
             floorUnitInfowindow;
 
+
         service.initFloorplan = initFloorplan;
         service.clearFloorplanControl = clearFloorplanControl;
         service.hideFloorUnits = hideFloorUnits;
         service.getUnitsByFloor = getUnitsByFloor;
         service.triggerClickUnit = triggerClickUnit;
+        service.getUnitInteriorImages = getUnitInteriorImages;
+
+        function getUnitInteriorImages(type) {
+            return unitImages[type.toLowerCase()];
+        }
 
         function triggerClickUnit(unitId) {
             var foundUnit = _.findWhere(floorUnits, {id: unitId});
@@ -34,11 +79,9 @@ angular.module('demoApp')
         }
 
         function onClickUnitMarker() {
-            if (!floorUnitInfowindow) floorUnitInfowindow = gmapServices.createInfoWindow('');
-
-            floorUnitInfowindow.setContent(this.content);
-
-            floorUnitInfowindow.open(this.getMap(), this);
+            infoboxServices.openInfoboxUnit(this.content, this, {
+                pixelOffset: new google.maps.Size(26, -145)
+            });
         }
 
         function hideFloorUnits() {
@@ -58,26 +101,14 @@ angular.module('demoApp')
             }
         }
 
-        function generateUnitInfowindowContent(data) {
-            var content = '<div class="md-whiteframe-3dp">';
-            var except = ['id', 'latlng', 'marker', 'unitplan_url'];
-            for (var k in data) {
-                if (except.indexOf(k) > -1) continue;
-                content += '<div>' + $filter('capitalize')(k) + ': ' + '<b>' + $filter('capitalize')(data[k]) + '</b></div>';
-            }
-            content += '</div>';
-            return content;
-        }
-
         function createUnitMarker(data) {
+            console.log('createUnitMarker: ',data);
             var icon = MARKER_BASE_URL + UNIT_MARKER_ICONS[data.status.toLowerCase()];
             var marker = gmapServices.createMarker(data.latlng, icon);
 
             marker.unitId = data.id;
 
-            marker.content = generateUnitInfowindowContent(data);
-            // create content for infowindow
-            //marker.infobox = infoboxServices.initInfobox(data);
+            marker.content = infoboxServices.createUnitContent(data, unitImages[data.type.toLowerCase()]);
 
             gmapServices.addListener(marker, 'click', onClickUnitMarker.bind(marker));
 

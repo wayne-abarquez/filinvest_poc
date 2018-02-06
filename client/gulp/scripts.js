@@ -21,6 +21,7 @@ gulp.task('vendor-scripts', function () {
         paths.bower + 'ngSweetAlert/SweetAlert.min.js',
         paths.bower + 'v-accordion/dist/v-accordion.min.js',
         paths.bower + 'angular-jk-carousel/dist/jk-carousel.min.js'
+        //paths.nodeModulesDir + 'angular-html-window/src/ngHtmlWindow.js',
     ])
         .pipe($.plumber())
         .pipe($.concat('vendor.min.js'))

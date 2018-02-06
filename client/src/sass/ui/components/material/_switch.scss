@@ -1,0 +1,53 @@
+.switch-sm {
+  .md-label {
+    @extend .text-muted;
+    font-size: 12px;
+  }
+  .md-container {
+    width: 25px;
+    height: 20px;
+    margin-right: 2px;
+    cursor: pointer;
+
+    .md-bar {
+      width: 18px;
+      height: 8px;
+      top: 4px;
+    }
+
+    .md-thumb-container {
+      width: 10px;
+
+      .md-thumb {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+  //
+  //&: {
+  //
+  //}
+  //
+
+}
+
+// color
+//md-switch.md-default-theme.md-checked .md-thumb, md-switch.md-checked .md-thumb {
+//  background-color: #607D8B;
+//}
+
+$switchColor: #607D8B;
+
+md-switch.md-checked.md-default {
+  .md-container {
+    .md-bar {
+      background-color: rgba($switchColor, 0.5);
+    }
+  }
+  .md-thumb-container {
+    .md-thumb {
+      background-color: $switchColor;
+    }
+  }
+}

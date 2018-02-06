@@ -31,7 +31,6 @@ class PropertyLocationResource(Resource):
         return get_property_locations()
 
 
-
 class PropertyResource(Resource):
     """
     Resource for getting all Property based on User's role
