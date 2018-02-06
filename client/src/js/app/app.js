@@ -14,18 +14,22 @@
             'demoApp.planDesign',
             'demoApp.operations',
             'demoApp.permits',
-            'demoApp.gsn'
+            'demoApp.gsn',
+            'demoApp.propertyMgmt'
         ])
 
         .constant('APP_NAME', 'Filinvest')
         .constant('BASE_URL', window.location.origin)
         .constant('MARKER_BASE_URL', '/images/markers/')
 
-        //.config(function ($mdThemingProvider) {
+        .config(function ($mdThemingProvider) {
+            $mdThemingProvider.theme('docs-dark', 'default')
+                .primaryPalette('yellow')
+                .dark();
         //    $mdThemingProvider.theme('default')
         //        .primaryPalette('indigo')
         //        .accentPalette('seaGreen');
-        //})
+        })
 
         .factory('preventTemplateCache', function () {
             var v = Date.now();
@@ -80,6 +84,15 @@
                     templateUrl: '/partials/estate-mgmt/index.page.html',
                     controller: 'estateMgmtPageController',
                     controllerAs: 'esMgmtCtl'
+                })
+
+                // property mgmt state
+                .state({
+                    name: 'map.propertyMgmt',
+                    url: '/property-mgmt',
+                    templateUrl: '/partials/property-mgmt/index.page.html',
+                    controller: 'propertyMgmtPageController',
+                    controllerAs: 'propMgmtCtl'
                 })
 
                 // planning and design

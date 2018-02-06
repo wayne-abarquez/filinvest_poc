@@ -18,6 +18,8 @@
         service.showUnitPlanGallery = showUnitPlanGallery;
         service.showUnitInteriorGallery = showUnitInteriorGallery;
 
+        service.showAddPropertyModal = showAddPropertyModal;
+
         service.hideResolveModal = hideResolveModal;
         service.closeModal = closeModal;
 
@@ -157,6 +159,33 @@
                 onRemoving: function (element, removePromise) {
                     $('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
                     $(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
+                }
+            };
+            return showModal(modalObj, opts);
+        }
+
+        function showAddPropertyModal() {
+            var opts = {
+                controller: 'addPropertyController',
+                controllerAs: 'vm',
+                templateUrl: '/partials/property-mgmt/_add-property.modal.html',
+                hasBackdrop: false,
+                //multiple: true,
+                //fullscreen: true,
+                onComplete: function (scope, element) {
+                    $('.md-scroll-mask').css('z-index', '-1');
+                },
+                onShowing: function (scope, element) {
+                    setTimeout(function(){
+                        $('body #add-property-modal').closest('.md-dialog-container').addClass('md-dialog-container-half');
+
+                    }, 200);
+                    //$(element).closest('.md-dialog-container').addClass('md-dialog-container-default');
+                },
+                onRemoving: function (element, removePromise) {
+                    $('body md-dialog#add-property-modal').closest('.md-dialog-container').removeClass('md-dialog-container-half');
+                    //$('body md-dialog#property-details-modal').closest('.md-dialog-container').css('zIndex', 80);
+                    //$(element).closest('.md-dialog-container').removeClass('md-dialog-container-default');
                 }
             };
             return showModal(modalObj, opts);
