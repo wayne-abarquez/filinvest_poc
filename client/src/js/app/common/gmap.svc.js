@@ -132,6 +132,7 @@
         service.createMapLabel = createMapLabel;
         service.getPlacesService = getPlacesService;
         service.hideLabel = hideLabel;
+        service.updateMapStyle = updateMapStyle;
 
 
         function apiAvailable() {
@@ -1135,6 +1136,14 @@
             if (!service.placesService) service.placesService = new google.maps.places.PlacesService(service.map);
 
             return service.placesService;
+        }
+
+        function updateMapStyle(mapStyleArr) {
+            if (!service.map) return;
+
+            service.map.setOptions({
+                styles: mapStyleArr
+            });
         }
 
        return service;

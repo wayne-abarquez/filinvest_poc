@@ -14,22 +14,18 @@
             'demoApp.planDesign',
             'demoApp.operations',
             'demoApp.permits',
-            'demoApp.gsn',
-            'demoApp.propertyMgmt'
+            'demoApp.gsn'
         ])
 
         .constant('APP_NAME', 'Filinvest')
         .constant('BASE_URL', window.location.origin)
         .constant('MARKER_BASE_URL', '/images/markers/')
 
-        .config(function ($mdThemingProvider) {
-            $mdThemingProvider.theme('docs-dark', 'default')
-                .primaryPalette('yellow')
-                .dark();
+        //.config(function ($mdThemingProvider) {
         //    $mdThemingProvider.theme('default')
         //        .primaryPalette('indigo')
         //        .accentPalette('seaGreen');
-        })
+        //})
 
         .factory('preventTemplateCache', function () {
             var v = Date.now();
@@ -40,7 +36,7 @@
                     }
                     return config;
                 }
-            }
+            };
         })
 
         //.config(function ($httpProvider) {
@@ -56,7 +52,7 @@
                     url: '/',
                     templateUrl: '/partials/home/home.page.html',
                     controller: 'indexController',
-                    controllerAs: 'vm'
+                    controllerAs: 'idxCtl'
                 })
 
                 // map page
@@ -84,15 +80,6 @@
                     templateUrl: '/partials/estate-mgmt/index.page.html',
                     controller: 'estateMgmtPageController',
                     controllerAs: 'esMgmtCtl'
-                })
-
-                // property mgmt state
-                .state({
-                    name: 'map.propertyMgmt',
-                    url: '/property-mgmt',
-                    templateUrl: '/partials/property-mgmt/index.page.html',
-                    controller: 'propertyMgmtPageController',
-                    controllerAs: 'propMgmtCtl'
                 })
 
                 // planning and design

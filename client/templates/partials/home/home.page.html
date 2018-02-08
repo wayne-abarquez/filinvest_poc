@@ -1,3 +1,160 @@
-<div id="index-container">
+<md-content id="index-container" flex ng-float>
+    <div layout="column" layout-padding>
 
-</div>
+        <div class="widget-row-container" layout="row" layout-sm="column" layout-margin>
+
+            <!-- SOLD LOTS WIDGET -->
+            <div class="widget md-whiteframe-z1" palette-background="deep-orange:500" flex="25">
+                <div class="widget-content" layout="row" layout-align="space-between center" layout-padding>
+                    <div layout="column" layout-align="start center">
+                        <md-icon>terrain</md-icon>
+                    </div>
+                    <div class="widget-value-container" layout="column" layout-align="center end">
+                        <p class="md-display-3">
+                            {{ idxCtl.soldLotsCtr }} / {{ lots.length }}
+                        </p>
+                        <p class="md-body-2">Sold Lots</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SOLD CONDO UNITS WIDGET -->
+            <div class="widget md-whiteframe-z1" palette-background="cyan:500" flex="25">
+                <div class="widget-content" layout="row" layout-align="space-between center" layout-padding>
+                    <div layout="column" layout-align="start center">
+                        <md-icon>
+                            hotel
+                        </md-icon>
+                    </div>
+                    <div class="widget-value-container" layout="column" layout-align="center end">
+                        <p class="md-display-3">
+                            {{ idxCtl.soldCondoUnitsCtr }} / {{ condoUnits.length }}
+                        </p>
+                        <p class="md-body-2">Sold Condo Units</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLANNED PROJECTS WIDGET -->
+            <div class="widget md-whiteframe-z1" palette-background="indigo:500" flex="25">
+                <div class="widget-content" layout="row" layout-align="space-between center" layout-padding>
+                    <div layout="column" layout-align="start center">
+                        <md-icon>
+                            assignment
+                        </md-icon>
+                    </div>
+                    <div class="widget-value-container" layout="column" layout-align="center end">
+                        <p class="md-display-3">
+                            {{ idxCtl.plannedProjectsCtr }}
+                        </p>
+                        <p class="md-body-2">Planning Projects</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IN-PROGRESS PROJECTS WIDGET -->
+            <div class="widget md-whiteframe-z1" palette-background="teal:500" flex="25">
+                <div class="widget-content" layout="row" layout-align="space-between center" layout-padding>
+                    <div layout="column" layout-align="start center">
+                        <md-icon>
+                            schedule
+                        </md-icon>
+                    </div>
+                    <div class="widget-value-container" layout="column" layout-align="center end">
+                        <p class="md-display-3">
+                            {{ idxCtl.progressProjectsCtr }}
+                        </p>
+                        <p class="md-body-2">In-Progress Projects</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="widget-row-container" layout="row" layout-sm="column" layout-margin>
+
+            <!-- PROJECT SALES PIE CHART WIDGET -->
+            <div class="widget md-whiteframe-z1" flex>
+                <div layout="row" layout-padding layout-align="space-between center">
+                    <div flex layout="column">
+                        <md-progress-linear md-mode="indeterminate" flex
+                                            ng-show="dashboardCtl.projectPieChart.showLoading"></md-progress-linear>
+                        <h3 class="md-subhead">{{ dashboardCtl.projectPieChart.currentKpiType.name }}</h3>
+                        <p class="md-body-1">{{ dashboardCtl.projectPieChart.selectedDate }}</p>
+                    </div>
+                    <md-menu>
+                        <md-button class="md-icon-button" ng-click="dashboardCtl.openMenu($mdOpenMenu, $event)">
+                            <md-icon md-menu-origin>more_vert</md-icon>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item ng-click="dashboardCtl.refreshPieChart()">
+                                <md-button>Refresh</md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="dashboardCtl.changePieKPIType()">Change KPI</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                </div>
+                <div class="widget-content" layout-align="center center" layout-padding
+                     ng-hide="dashboardCtl.projectPieChart.showLoading">
+                    <div class="chart-container">
+                        <canvas id="pie"
+                                class="chart chart-pie"
+                                chart-data="dashboardCtl.projectPieChart.data"
+                                chart-labels="dashboardCtl.projectPieChart.labels"
+                                chart-legend="true"
+                                chart-click="dashboardCtl.onPieChartClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- PROJECT SALES LINE WIDGET -->
+            <div class="widget md-whiteframe-z1" flex>
+                <div layout="row" layout-padding layout-align="space-between center">
+                    <div flex layout="column">
+                        <md-progress-linear md-mode="indeterminate" flex
+                                            ng-show="dashboardCtl.projectLineChart.showLoading"></md-progress-linear>
+                        <h3 class="md-subhead">Sales v Quota <span style="font-size:13px;color:#7f8c8d;"
+                                                                   ng-if="dashboardCtl.projectLineChart.currentKpiType">({{ dashboardCtl.projectLineChart.currentKpiType.name }})</span>
+                            - {{ dashboardCtl.projectLineChart.currentProject.project_name }} Project</h3>
+                        <!--<p class="md-body-1">{{ dashboardCtl.projectPieChartDate }}</p>-->
+                    </div>
+                    <md-menu>
+                        <md-button class="md-icon-button" ng-click="dashboardCtl.openMenu($mdOpenMenu, $event)">
+                            <md-icon md-menu-origin>more_vert</md-icon>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item>
+                                <md-button ng-click="dashboardCtl.refreshLineChart()">Refresh</md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="dashboardCtl.changeProject()">Change Project</md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button ng-click="dashboardCtl.changeKPIType()">Change KPI Type</md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+
+                </div>
+                <div class="widget-content" layout-align="center center" layout-padding
+                     ng-hide="dashboardCtl.projectLineChart.showLoading">
+                    <div class="chart-container">
+                        <canvas id="line" class="chart chart-line" chart-data="dashboardCtl.projectLineChart.data"
+                                chart-labels="dashboardCtl.projectLineChart.labels" chart-legend="true"
+                                chart-series="dashboardCtl.projectLineChart.series"
+                                chart-click="dashboardCtl.onLineChartClick">
+                        </canvas>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</md-content>
