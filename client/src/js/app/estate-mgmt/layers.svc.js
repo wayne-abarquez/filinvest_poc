@@ -13,13 +13,6 @@ angular.module('demoApp.estateMgmt')
         var defaultColor = '#95a5a6';
         var bounds;
 
-        var data = {
-            'globe mh': '/static/data/globe-mh.json',
-            'pldt mh': '/static/data/pldt-mh.json',
-            'meralco pole': '/static/data/meralco-poles.json'
-        };
-
-
         service.loadLayers = loadLayers;
         service.hideLayers = hideLayers;
 
@@ -31,11 +24,21 @@ angular.module('demoApp.estateMgmt')
         }
 
         function loadLayer(layer) {
+            console.log('loadLayer: ',layer);
+
+            if (!layer.dataSrc) return;
+
             var dfd = $q.defer();
             var label = layer.label.toLowerCase();
 
-            if (data[label]) {
-                webServices.getLayer(data[label])
+            if (layer.isMapStyle) {
+                webServices.getLayer(layer.dataSrc)
+                    .then(function (result) {
+                        console.log('load map style: ',result);
+                        gmapServices.updateMapStyle(result);
+                    });
+            } else if (layer.isMarkers) {
+                webServices.getLayer(layer.dataSrc)
                     .then(function (result){
                        var marker,
                            latLng;
@@ -100,12 +103,14 @@ angular.module('demoApp.estateMgmt')
                 return;
             }
 
-            if (!item.children) {
-                hideLayerMarkers(item)
-            } else {
+            if (item.children) {
                 item.children.forEach(function (layerItem) {
                     hideLayers(layerItem);
                 });
+            } else if (item.isMapStyle) {
+                gmapServices.updateMapStyle([], true);
+            } else if (item.isMarkers) {
+                    hideLayerMarkers(item);
             }
         }
 

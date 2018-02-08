@@ -1,0 +1,49 @@
+<md-dialog class="md-dialog-sm" id="add-property-modal">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon>chevron_left</md-icon>
+                </md-button>
+                <h2>New Property</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-content md-theme="docs-dark" layout-padding layout-gt-sm="row">
+                    <div layout="row">
+                        <md-input-container flex>
+                            <label>Property Name</label>
+                            <input ng-model="user.title">
+                        </md-input-container>
+
+                        <md-input-container flex>
+                            <label>Property Type</label>
+                            <md-select ng-model="user.state">
+                                <md-option ng-repeat="state in states" value="{{ state.abbrev }}">
+                                    {{ state.abbrev }}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+                    </div>
+                </md-content>
+
+
+                <div layout-gt-sm="row" layout-padding flex>
+                    <md-input-container flex>
+                        <label>Address</label>
+                        <textarea ng-model="user.biography" md-maxlength="150" rows="2"
+                                  md-select-on-focus></textarea>
+                    </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row" layout-padding  flex>
+                    <md-button class="md-block"><md-icon>photo_size_select_small</md-icon> Draw Site boundary</md-button>
+                </div>
+
+            </div>
+        </md-dialog-content>
+    </form>
+ </md-dialog>

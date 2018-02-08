@@ -23,7 +23,6 @@ angular.module('demoApp.estateMgmt')
         }
 
         function reload() {
-
         }
 
         function closeSidenav() {

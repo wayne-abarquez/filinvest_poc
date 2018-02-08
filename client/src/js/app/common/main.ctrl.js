@@ -33,11 +33,11 @@
                 title: 'Estate Mgmt',
                 icon: 'account_balance'
             },
-            //{
-            //    state: 'property-mgmt',
-            //    title: 'Property Mgmt',
-            //    icon: 'store_mall_directory'
-            //},
+            {
+                state: 'map.propertyMgmt',
+                title: 'Property Mgmt',
+                icon: 'location_city'
+            },
             //{
             //    state: 'business-dev',
             //    title: 'Business Development',

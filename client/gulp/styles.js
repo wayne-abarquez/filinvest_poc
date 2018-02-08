@@ -19,7 +19,7 @@ gulp.task('vendor-css', function () {
        paths.bower + 'angular-material/angular-material.min.css',
        paths.bower + 'sweetalert/dist/sweetalert.css',
        paths.bower + 'angular-jk-carousel/dist/jk-carousel.min.css',
-       paths.nodeModulesDir + 'angular-html-window/src/ngHtmlWindow.css',
+       paths.bower + 'angular-chart.js/dist/angular-chart.min.css'
    ])
        .pipe($.concatCss('vendor.min.css'))
        .pipe($.csso())

@@ -1,0 +1,39 @@
+#property-mgmt-page {
+
+}
+
+  md-sidenav.properties-panel-container {
+    z-index: 21 !important;
+
+    md-toolbar {
+      .md-toolbar-tools {
+
+      }
+
+      .md-button.right-btn {
+        position: absolute;
+        right: 15px;
+        top: 10px;
+      }
+    }
+
+    md-content {
+
+    }
+  }
+
+
+  #add-property-modal {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: 90%;
+
+    form {
+
+      .md-dialog-content {
+        padding: 0 !important;
+      }
+    }
+  }

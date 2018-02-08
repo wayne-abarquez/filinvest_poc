@@ -36,7 +36,7 @@
                     }
                     return config;
                 }
-            }
+            };
         })
 
         //.config(function ($httpProvider) {
@@ -52,7 +52,7 @@
                     url: '/',
                     templateUrl: '/partials/home/home.page.html',
                     controller: 'indexController',
-                    controllerAs: 'vm'
+                    controllerAs: 'idxCtl'
                 })
 
                 // map page

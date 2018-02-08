@@ -12,6 +12,13 @@
         ]
       },
       {
+        "label": "Road Network",
+        "layerId": 5,
+        "icon": "",
+        "dataSrc": "/static/data/road-network.map-styles.json",
+        "isMapStyle": true
+      },
+      {
         "label": "Manhole",
         "layerId": 3,
         "icon": "",
@@ -19,12 +26,16 @@
           {
             "label": "Globe MH",
             "layerId": 4,
-            "color": "#4190df"
+            "color": "#4190df",
+            "dataSrc": "/static/data/globe-mh.json",
+            "isMarkers": true
           },
           {
             "label": "PLDT MH",
             "layerId": 7,
-            "color": "#fb40c5"
+            "color": "#fb40c5",
+            "dataSrc": "/static/data/pldt-mh.json",
+            "isMarkers": true
           }
         ]
       },
@@ -53,7 +64,9 @@
           {
             "label": "Meralco Pole",
             "layerId": 14,
-            "color": "#68a977"
+            "color": "#68a977",
+            "dataSrc": "/static/data/meralco-poles.json",
+            "isMarkers": true
           }
         ]
       }

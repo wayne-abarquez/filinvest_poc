@@ -26,9 +26,9 @@
         service.setBoundsFromProperties = setBoundsFromProperties;
         service.showGallery = showGallery;
         service.getBoundsFromProperties = getBoundsFromProperties;
-
         service.hideOnlyPropertyMarkers = hideOnlyPropertyMarkers;
         service.showOnlyPropertyMarkers = showOnlyPropertyMarkers;
+
 
         function hideOnlyPropertyMarkers() {
             gmapServices.hideMarkers(propertyMarkers);
@@ -43,10 +43,6 @@
                 return item.latlng;
             }));
         }
-
-        //function getRandomInt(min, max) {
-        //    return Math.floor(Math.random() * (max - min + 1)) + min;
-        //}
 
         function onClickPropertyMarker() {
             if (lastSelectedMarker && lastSelectedMarker.propertyid !== this.propertyid) lastSelectedMarker.setIcon(getMarkerDefaultIcon());

@@ -1,0 +1,14 @@
+<div id="property-mgmt-page" class="md-whiteframe-4dp" layout="column" flex>
+
+</div>
+
+<section flex>
+    <div ng-include="'partials/property-mgmt/_properties-panel.sidenav.html'" ng-cloak></div>
+</section>
+
+<md-button class="md-fab md-fab-top-left"
+           ng-click="propMgmtCtl.togglePanel()">
+    <md-tooltip md-direction="top">Show Properties Panel</md-tooltip>
+    <md-icon>view_list</md-icon>
+</md-button>
+
